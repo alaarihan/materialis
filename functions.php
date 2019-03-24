@@ -49,7 +49,13 @@ if (version_compare(phpversion(), MATERIALIS_THEME_REQUIRED_PHP_VERSION, '>=')) 
 
      
 
-    do_action("materialis_customize_register_options");
+    if ( ! materialis_can_show_cached_value("materialis_cached_kirki_style_materialis")) {
+        
+        if ( ! materialis_skip_customize_register()) {
+            do_action("materialis_customize_register_options");
+        }
+    }
+
 } else {
     add_action('admin_notices', 'materialis_php_version_notice');
 }

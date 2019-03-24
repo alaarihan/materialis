@@ -244,7 +244,7 @@ if (location.hash) {
         if (id.length === 0 && anchors) {
             // anchors.closest('ul').find('.current_page_item').removeClass('current_page_item');
             anchors.parent().andSelf().removeClass('current_page_item current-menu-item');
-            loc = (window.location + "").split('#')[0].replace(/\/$/, "");
+            var loc = (window.location + "").split('#')[0].replace(/\/$/, "");
             anchors.closest('ul').find('[href$="' + loc + '"]').parent().andSelf().addClass('current-menu-item');
             if (!loc.length) {
                 anchors.closest('ul').find('[href$="' + window.location + '"]').parent().andSelf().addClass('current-menu-item');

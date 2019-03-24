@@ -66,7 +66,9 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 		 */
 		public function init() {
 
-			Kirki_Fonts_Google::get_instance();
+            if ( ! materialis_can_show_cached_value('materialis_google_fonts')) {
+				Kirki_Fonts_Google::get_instance();
+            }
 
 			global $wp_customize;
 
@@ -101,11 +103,37 @@ if ( ! class_exists( 'Kirki_Styles_Frontend' ) ) {
 			$configs = Kirki::$config;
 			if ( ! $this->processed ) {
 				foreach ( $configs as $config_id => $args ) {
+                    
+                    if ($config_id === 'global') {
+                        continue;
+                    }
+                    
 					if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
 						continue;
 					}
+                    
+                    $styles = '';
+                    
+                    $cached_kirki_style_key = "materialis_cached_kirki_style_{$config_id}";
+                    
+                    if (materialis_can_show_cached_value($cached_kirki_style_key)) {
+                        $styles = materialis_get_cached_value($cached_kirki_style_key, null);
+                        if ($styles !== null) {
+                            $styles = "/** cached kirki style */{$styles}";
+                        }
+                        
+                    }
+                    
+                    if ( ! $styles) {
+                        
 					$styles = self::loop_controls( $config_id );
 					$styles = apply_filters( 'kirki/' . $config_id . '/dynamic_css', $styles );
+                        if ( ! materialis_is_customize_preview() && ! empty($styles)) {
+                            materialis_cache_value($cached_kirki_style_key, $styles);
+                        }
+                    }
+                    
+                    
 					if ( ! empty( $styles ) ) {
 						wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', null, null );
 						wp_add_inline_style( 'kirki-styles-' . $config_id, $styles );

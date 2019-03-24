@@ -230,7 +230,7 @@ function kirkiSetSettingValue(setting, value) {
         wp.customize.instance(setting).set(value);
 
     } else if ('kirki-repeater' === controlType) {
-        debugger;
+
         // Do nothing
     } else if ('kirki-spacing' === controlType) {
 

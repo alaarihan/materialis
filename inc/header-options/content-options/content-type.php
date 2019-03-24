@@ -1179,4 +1179,3 @@ function materialis_print_hero_content_borders_hook()
 }
 
 add_action('wp_head', 'materialis_print_hero_content_borders_hook');
-

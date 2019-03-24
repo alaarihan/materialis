@@ -62,12 +62,12 @@ class BackgroundTypesControl extends BaseControl
                 }
                 }
                 wp.customize('<?php echo esc_html($this->settings['default']->id); ?>').bind(updateControlBinds);
-                $('[<?php $this->link();?>]').change(updateControlBinds);
+                $('[<?php $this->link(); ?>]').change(updateControlBinds);
                 updateControlBinds();
             });
         </script>
     <?php
-}
+    }
 }
 
 class RowsListControl extends BaseControl
@@ -76,7 +76,7 @@ class RowsListControl extends BaseControl
     public function enqueue()
     {
 
-        $jsUrl = get_template_directory_uri() . "/customizer/js/";
+        $jsUrl  = get_template_directory_uri() . "/customizer/js/";
         wp_enqueue_script('materialis-row-list-control', $jsUrl . "/row-list-control.js");
     }
 
@@ -91,7 +91,7 @@ class RowsListControl extends BaseControl
 
     public function dataAttrs()
     {
-        $data = 'data-name="' . esc_attr($this->id) . '"';
+        $data = 'data-name="' .  esc_attr($this->id) . '"';
 
         echo $data;
     }
@@ -101,7 +101,7 @@ class RowsListControl extends BaseControl
         $data = 'data-selection="radio"';
 
         if (isset($this->data['selection'])) {
-            $data = 'data-selection="' . esc_attr($this->data['selection']) . '"';
+            $data = 'data-selection="'.esc_attr($this->data['selection']).'"';
         }
 
         echo $data;
@@ -112,32 +112,33 @@ class RowsListControl extends BaseControl
         return $this->data['dataSource'];
     }
 
+
     public function render_content()
     {
         ?>
-        <div <?php $this->dateSelection();?> data-type="row-list-control" data-apply="<?php echo esc_attr($this->data['type']) ?>"  class="list-holder">
-            <?php ($this->data['type'] === "mod_changer") ? $this->renderModChanger() : $this->renderPresetsChanger()?>
+        <div <?php $this->dateSelection(); ?> data-type="row-list-control" data-apply="<?php echo esc_attr($this->data['type']) ?>"  class="list-holder">
+            <?php ($this->data['type'] === "mod_changer") ? $this->renderModChanger() : $this->renderPresetsChanger() ?>
         </div>
 
-        <?php $proMessage = isset($this->data['pro_message']) ? $this->data['pro_message'] : false;?>
+        <?php $proMessage = isset($this->data['pro_message']) ? $this->data['pro_message'] : false ; ?>
 
-        <?php if ($proMessage && apply_filters('materialis_show_inactive_plugin_infos', true)): ?>
+        <?php if($proMessage && apply_filters('materialis_show_inactive_plugin_infos', true)): ?>
             <div class="list-control-pro-message">
                 <?php echo wp_kses_post($proMessage); ?>
             </div>
-        <?php endif;?>
+        <?php endif; ?>
 
         <?php
-}
+    }
 
     public function filterDefault($data)
     {
         if (is_array($data)) {
             $data = $this->filterArrayDefaults($data);
         } else {
-            $data = str_replace('[tag_companion_uri]', get_template_directory_uri(), $data);
-            $data = str_replace('[tag_theme_uri]', get_template_directory_uri(), $data);
-            $data = str_replace('[tag_style_uri]', get_stylesheet_directory_uri(), $data);
+            $data  = str_replace('[tag_companion_uri]', get_template_directory_uri(), $data);
+            $data   = str_replace('[tag_theme_uri]', get_template_directory_uri(), $data);
+            $data   = str_replace('[tag_style_uri]', get_stylesheet_directory_uri(), $data);
         }
 
         return $data;
@@ -154,25 +155,25 @@ class RowsListControl extends BaseControl
 
     public function renderPresetsChanger()
     {
-        $items      = $this->getSourceData();
-        $optionsVar = uniqid('cp_' . $this->id . '_');?>
+        $items = $this->getSourceData();
+        $optionsVar = uniqid('cp_' . $this->id . '_'); ?>
             <script>
                 var <?php echo esc_html($optionsVar) ?> = {};
             </script>
-            <ul <?php $this->dataAttrs();?> class="list rows-list from-theme">
+            <ul <?php $this->dataAttrs(); ?> class="list rows-list from-theme">
                 <?php foreach ($items as $item):
-        ?>
+                ?>
                     <script>
-                         <?php $settingsData = $this->filterArrayDefaults($item['settings']);?>
+                         <?php $settingsData = $this->filterArrayDefaults($item['settings']); ?>
                          <?php echo esc_html($optionsVar); ?>["<?php echo esc_html($item['id']); ?>"] = <?php echo json_encode($settingsData) ?>;
                     </script>
 
                     <?php
-$proOnly   = isset($item['pro-only']) ? "pro-only" : "";
-        $titleAttr = $item['id'];
-        $titleAttr = str_replace("pro_", "", $item['id']);
-        $titleAttr = str_replace("free_", "", $titleAttr);
-        ?>
+                    $proOnly = isset($item['pro-only']) ? "pro-only" : "";
+                    $titleAttr = $item['id'];
+                    $titleAttr = str_replace("pro_","",$item['id']);
+                    $titleAttr = str_replace("free_","",$titleAttr);
+                    ?>
 
 
                     <li class="item available-item <?php echo esc_attr($proOnly); ?>" title="<?php echo esc_attr($titleAttr); ?>" data-varname="<?php echo esc_attr($optionsVar); ?>" data-id="<?php echo esc_attr($item['id']); ?>">
@@ -180,93 +181,88 @@ $proOnly   = isset($item['pro-only']) ? "pro-only" : "";
                             <img data-src="<?php echo esc_url($item['thumb']); ?>" src="" />
                         </div>
 
-                        <?php if ($proOnly): ?>
-                            <span data-id="<?php echo esc_attr($item['id']); ?>" data-pro-only="true" class="available-item-hover-button" <?php $this->getSettingAttr();?> >
-                                <?php esc_html_e('Available in PRO', 'materialis');?>
+                        <?php if ($proOnly) : ?>
+                            <span data-id="<?php echo esc_attr($item['id']); ?>" data-pro-only="true" class="available-item-hover-button" <?php $this->getSettingAttr(); ?> >
+                                <?php esc_html_e('Available in PRO', 'materialis'); ?>
                             </span>
-                        <?php else: ?>
-                            <span data-id="<?php echo esc_attr($item['id']); ?>" class="available-item-hover-button" <?php $this->getSettingAttr();?> >
+                        <?php else : ?>
+                            <span data-id="<?php echo esc_attr($item['id']); ?>" class="available-item-hover-button" <?php $this->getSettingAttr(); ?> >
                                 <?php echo esc_html($this->data['insertText']); ?>
                             </span>
-                        <?php endif;?>
+                        <?php endif; ?>
 
-                        <div title="<?php esc_attr_e('Section is already in page', 'materialis');?>" class="checked-icon"></div>
-                            <div title="<?php esc_attr_e('Pro Only', 'materialis');?>" class="pro-icon"></div>
+                        <div title="<?php esc_attr_e('Section is already in page', 'materialis'); ?>" class="checked-icon"></div>
+                            <div title="<?php esc_attr_e('Pro Only', 'materialis'); ?>" class="pro-icon"></div>
                             <span class="item-preview" data-preview="<?php echo esc_attr($item['preview']); ?>">
                                 <i class="icon"></i>
                             </span>
                             <?php if (isset($item['description'])): ?>
                                 <span class="description"> <?php echo esc_html($item['description']); ?> </span>
-                            <?php endif;?>
+                            <?php endif; ?>
                     </li>
-                <?php endforeach;?>
+                <?php endforeach; ?>
             </ul>
-            <input type="hidden" value="<?php echo esc_attr($this->value()); ?>" <?php $this->link();?> />
+            <input type="hidden" value="<?php echo esc_attr($this->value()); ?>" <?php $this->link(); ?> />
 
             <?php ;
     }
 }
 
-class Activate_Companion_Control extends BaseControl
-{
-    public function get_link($slug = false)
-    {
+class Activate_Companion_Control extends BaseControl {
+    public function get_link($slug = false) {
         $tgmpa = \TGM_Plugin_Activation::get_instance();
-        $path  = $tgmpa->plugins[$slug]['file_path'];
-        return add_query_arg(array(
-            'action'        => 'activate',
-            'plugin'        => rawurlencode($path),
-            'plugin_status' => 'all',
-            'paged'         => '1',
-            '_wpnonce'      => wp_create_nonce('activate-plugin_' . $path),
-        ), network_admin_url('plugins.php'));
-    }
+        $path = $tgmpa->plugins[ $slug ]['file_path'];
+        return add_query_arg( array(
+          'action'        => 'activate',
+          'plugin'        => rawurlencode( $path ),
+          'plugin_status' => 'all',
+          'paged'         => '1',
+          '_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $path ),
+        ), network_admin_url( 'plugins.php' ));
+  }
 
-    public function render_content()
-    {
-        $data  = $this->data;
+  public function render_content() {
+        $data = $this->data;
         $label = $data['label'];
-        $msg   = $data['msg'];
-        $slug  = $data['slug'];
-        ?>
+        $msg = $data['msg'];
+        $slug = $data['slug'];
+      ?>
       <div class="one-page-express-enable-companion">
         <?php
-printf('<p>%1$s</p>', $msg);
-        printf('<a class="%1$s button" href="%2$s">%3$s</a>', "activate", esc_url($this->get_link($slug)), $label);
+          printf('<p>%1$s</p>', $msg);
+          printf('<a class="%1$s button" href="%2$s">%3$s</a>', "activate", esc_url($this->get_link($slug)), $label);
         ?>
       </div>
       <?php
-}
+  }
 }
 
-class Install_Companion_Control extends BaseControl
-{
-    public function get_link($slug = false)
-    {
+
+class Install_Companion_Control extends BaseControl {
+    public function get_link($slug = false) {
         return add_query_arg(
-            array(
-                'action'   => 'install-plugin',
-                'plugin'   => $slug,
-                '_wpnonce' => wp_create_nonce('install-plugin_' . $slug),
-            ),
-            network_admin_url('update.php')
+          array(
+            'action' => 'install-plugin',
+            'plugin' =>  $slug,
+            '_wpnonce'      => wp_create_nonce( 'install-plugin_' .  $slug ),
+          ),
+          network_admin_url( 'update.php' )
         );
-    }
-    public function render_content()
-    {
-        $data  = $this->data;
+  }
+  public function render_content() {
+        $data = $this->data;
         $label = $data['label'];
-        $msg   = $data['msg'];
-        $slug  = $data['slug'];
-        ?>
+        $msg = $data['msg'];
+        $slug = $data['slug'];
+      ?>
       <div class="one-page-express-enable-companion">
         <?php
-printf('<p>%1$s</p>', $msg);
-        printf('<a class="%1$s button" href="%2$s">%3$s</a>', "install-now", esc_url($this->get_link($slug)), $label);
+          printf('<p>%1$s</p>', $msg);
+          printf('<a class="%1$s button" href="%2$s">%3$s</a>', "install-now", esc_url($this->get_link($slug)), $label);
         ?>
       </div>
       <?php
-}
+    }
 }
 
 class Kirki_Controls_Radio_HTML_Control extends \Kirki_Controls_Radio_Image_Control
@@ -296,8 +292,9 @@ class Kirki_Controls_Radio_HTML_Control extends \Kirki_Controls_Radio_Image_Cont
             <# } #>
         </div>
         <?php
+    }
 }
-}
+
 
 class Kirki_Controls_Separator_Control extends \WP_Customize_Control
 {
@@ -314,43 +311,45 @@ class Kirki_Controls_Separator_Control extends \WP_Customize_Control
             <# } #>
         </div>
         <?php
+    }
 }
-}
+
 
 class Info_Control extends \WP_Customize_Control
 {
     public $type = 'ope-info';
 
-    public function render_content()
+
+     public function render_content()
     {
 
-        $proLink   = esc_url("https://extendthemes.com/go/materialis-upgrade");
-        $proText   = esc_html__('Check all PRO features', 'materialis');
+        $proLink = esc_url("https://extendthemes.com/go/materialis-upgrade");
+        $proText = esc_html__('Check all PRO features','materialis');
         $proButton = "<br/><a href='$proLink' class='button button-small button-orange upgrade-to-pro' target='_blank'>$proText</a>";
-        $label     = str_replace("@BTN@", $proButton, $this->label);
+        $label = str_replace("@BTN@", $proButton, $this->label);
         ?>
                 <p><?php echo $label ?></p>
         <?php
-}
+    }
 }
 
 class Info_PRO_Control extends Info_Control
 {
     public $type = 'ope-info-pro';
 
-    protected function render()
-    {
-        if (!$this->active_callback()) {
-            return;
+
+    protected  function  render() {
+        if(!$this->active_callback()){
+            return ;
         }
         parent::render();
     }
 
-    public function active_callback()
-    {
-        $active = apply_filters('materialis_show_info_pro_messages', true);
+
+    public function active_callback() {
+        $active =  apply_filters('materialis_show_info_pro_messages', true);
         return $active;
-    }
+	}
 
 }
 
@@ -360,34 +359,34 @@ class Info_PRO_Section extends \WP_Customize_Section
 
     protected function render()
     {
-        if (!$this->active_callback()) {
-            echo "";
-            return;
+        if(!$this->active_callback()){
+           echo "" ;
+           return ;
         }
 
-        $classes = 'try-pro accordion-section control-section control-section-' . $this->type;
+    	$classes = 'try-pro accordion-section control-section control-section-' . $this->type;
         ?>
-        	<li id="accordion-section-<?php echo esc_attr($this->id); ?>" class="<?php echo esc_attr($classes); ?>">
+        	<li id="accordion-section-<?php echo esc_attr( $this->id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
 				<div class="ope-pro-header accordion-section-title">
-                    <a href="//extendthemes.com/go/materialis-upgrade/#pricing" target="_blank" class="button"><?php _e("Upgrade to PRO", 'materialis')?></a>
+                    <a href="//extendthemes.com/go/materialis-upgrade/#pricing" target="_blank" class="button"><?php _e("Upgrade to PRO",'materialis') ?></a>
 				</div>
 			</li>
 
 			<?php ;
     }
 
-    public function active_callback()
-    {
-        $active = apply_filters('materialis_show_main_info_pro_messages', true);
+     public function active_callback() {
+        $active =  apply_filters('materialis_show_main_info_pro_messages',true);
         return $active;
-    }
+	}
 
 }
 
 class MaterialIconsIconControl extends \Kirki_Customize_Control
 {
-    public $type         = 'material-icons-icon-control';
+    public $type = 'material-icons-icon-control';
     public $button_label = '';
+
 
     public function __construct($manager, $id, $args = array())
     {
@@ -396,23 +395,26 @@ class MaterialIconsIconControl extends \Kirki_Customize_Control
         parent::__construct($manager, $id, $args);
     }
 
+
     public function enqueue()
     {
         wp_enqueue_style('material-icons', get_template_directory_uri() . '/assets/css/material-icons.min.css');
-        wp_enqueue_style('material-icons-media-tab', get_template_directory_uri() . "/customizer/css/mdi-tab.css", array('media-views'));
-        wp_enqueue_script('material-icons-media-tab', get_template_directory_uri() . "/customizer/js/mdi-tab.js", array('media-views'));
-        wp_enqueue_script('material-icons-icon-control', get_template_directory_uri() . "/customizer/js/material-icons-icon-control.js");
+        wp_enqueue_style('material-icons-media-tab',  get_template_directory_uri() . "/customizer/css/mdi-tab.css", array('media-views'));
+        wp_enqueue_script('material-icons-media-tab',  get_template_directory_uri() . "/customizer/js/mdi-tab.js", array('media-views'));
+        wp_enqueue_script('material-icons-icon-control',  get_template_directory_uri() . "/customizer/js/material-icons-icon-control.js");
         wp_localize_script('material-icons-icon-control', 'ficTexts', array(
-            'media_title'        => esc_html__('Select Material Icon', 'materialis'),
-            'media_button_label' => esc_html__('Choose Icon', 'materialis'),
+            'media_title'=> esc_html__('Select Material Icon', 'materialis'),
+            'media_button_label'=> esc_html__('Choose Icon', 'materialis'),
         ));
     }
+
 
     public function to_json()
     {
         parent::to_json();
         $this->json['button_label'] = $this->button_label;
     }
+
 
     protected function content_template()
     {

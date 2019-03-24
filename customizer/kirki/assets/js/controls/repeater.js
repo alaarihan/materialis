@@ -18,13 +18,13 @@ var RepeaterRow = function (rowIndex, container, label) {
         self.remove();
     });
 
-    this.header.on('mousedown', function () {
+    this.header.on('mouseup', function () {
         self.container.trigger('row:start-dragging');
     });
 
-    this.container.on('keyup change', 'input, select, textarea', _.debounce(function (e) {
+    this.container.on('keyup change', 'input, select, textarea', function (e) {
         self.container.trigger('row:update', [self.rowIndex, jQuery(e.target).data('field'), e.target]);
-    }, 800));
+    });
 
     this.setRowIndex = function (rowIndex) {
         this.rowIndex = rowIndex;
@@ -68,6 +68,7 @@ var RepeaterRow = function (rowIndex, container, label) {
 };
 
 wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
+    __valueToSet: [],
     ready: function () {
 
         'use strict';
@@ -81,9 +82,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
         // The hidden field that keeps the data saved (though we never update it)
         this.settingField = this.container.find('[data-customize-setting-link]').first();
-
-        // Set the field value for the first time, we'll fill it up later
-        this.setValue([], false);
 
         // The DIV that holds all the rows
         this.repeaterFieldsContainer = this.container.find('.repeater-fields').first();
@@ -174,17 +172,19 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
         // This is the first time that we create all the rows
         if (settingValue.length) {
             _.each(settingValue, function (subValue) {
-                theNewRow = control.addRow(subValue);
+                theNewRow = control.addRow(subValue, true);
                 control.initColorPicker();
                 control.initDropdownPages(theNewRow, subValue);
             });
         }
 
         // Once we have displayed the rows, we cleanup the values
-        this.setValue(settingValue, true, true);
+        this.__valueToSet = settingValue;
+        this.setValue(settingValue, true);
 
         this.repeaterFieldsContainer.sortable({
             handle: '.repeater-row-header',
+            axis: "y",
             update: function (e, ui) {
                 control.sort();
             }
@@ -592,7 +592,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
             value = this.setting.get();
         }
 
-        return _.toArray(value);
+        return JSON.parse(JSON.stringify(_.toArray(value)));
 
     },
 
@@ -602,82 +602,115 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
      * @param newValue Object
      * @param refresh If we want to refresh the previewer or not
      */
-    setValue: function (newValue, refresh, filtering) {
 
-        'use strict';
 
-        // We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
+    putValueInSetting: _.debounce(function () {
+        var newValue = JSON.parse(JSON.stringify(this.__valueToSet));
+        this.setting.set(newValue);
+
+        var self = this;
+        newValue.forEach(function (item, index) {
+
+            if (!self.rows[index]) {
+                return;
+            }
+
+            var container = self.rows[index].container;
+            for (var field in item) {
+                var oldValue = container.find('[data-field="' + field + '"]').val();
+                if (item.hasOwnProperty(field) && oldValue !== item[field]) {
+                    container.find('[data-field="' + field + '"]').val(item[field]).trigger('change');
+                }
+            }
+        });
+    }, 300),
+
+
+    filterValue: function (newValue) {
         var filteredValue = newValue,
             filter = [];
 
-        if (filtering) {
-            jQuery.each(this.params.fields, function (index, value) {
-                if ('image' === value.type || 'cropped_image' === value.type || 'upload' === value.type) {
-                    filter.push(index);
+        jQuery.each(this.params.fields, function (index, value) {
+            if ('image' === value.type || 'cropped_image' === value.type || 'upload' === value.type) {
+                filter.push(index);
+            }
+        });
+        jQuery.each(newValue, function (index, value) {
+            jQuery.each(filter, function (ind, field) {
+                if ('undefined' !== typeof value[field] && 'undefined' !== typeof value[field].id) {
+                    filteredValue[index][field] = value[field].id;
                 }
             });
-            jQuery.each(newValue, function (index, value) {
-                jQuery.each(filter, function (ind, field) {
-                    if ('undefined' !== typeof value[field] && 'undefined' !== typeof value[field].id) {
-                        filteredValue[index][field] = value[field].id;
-                    }
-                });
-            });
+        });
+
+        return filteredValue;
+
+    },
+
+    normalizeValue: function (value, convertToArray) {
+
+        if (_.isString(value)) {
+
+            try {
+                value = decodeURI(value);
+
+            } catch (e) {
+
+            }
+
+            try {
+                value = JSON.parse(value);
+
+            } catch (e) {
+
+            }
 
         }
 
+        if (_.isObject(value) && convertToArray) {
+            var hasOnlyNumberKeys = _.keys(value).map(function (k) {
+                return _.isNumber(parseInt(k))
+            }).reduce(function (a, b) {
+                return (a && b);
+            }, true);
 
-        var value = filteredValue;
-        if (this.params.choices.beforeValueSet && window[this.params.choices.beforeValueSet]) {
-            filteredValue = window[this.params.choices.beforeValueSet].call(this, filteredValue);
-        }
+            if (hasOnlyNumberKeys) {
+                var newValue = [];
+                _.keys(value).forEach(function (k) {
 
-        if (window.CP_Customizer) {
-            if (window.CP_Customizer.preview.frame()) {
-                filteredValue = CP_Customizer.utils.normalizeValue(filteredValue)
-                this.setting.set(encodeURI(JSON.stringify(filteredValue)));
-
-                if (refresh) {
-
-                    // Trigger the change event on the hidden field so
-                    // previewer refresh the website on Customizer
-                    this.settingField.trigger('change');
-
-                }
-
-
-                var self = this;
-                filteredValue.forEach(function (item, index) {
-
-                    if (!self.rows[index]) {
+                    if (_.isUndefined(value[k])) {
                         return;
                     }
 
-                    var container = self.rows[index].container;
-                    for (var field in item) {
-
-                        var oldValue = container.find('[data-field="' + field + '"]').val();
-                        if (oldValue !== item[field]) {
-                            container.find('[data-field="' + field + '"]').val(item[field]).trigger('change');
-                        }
-                    }
+                    newValue.push(value[k]);
                 });
-            } else {
-                this.setting._value = encodeURI(JSON.stringify(filteredValue));
-            }
-        } else {
 
-            this.setting.set(encodeURI(JSON.stringify(filteredValue)));
-
-            if (refresh) {
-
-                // Trigger the change event on the hidden field so
-                // previewer refresh the website on Customizer
-                this.settingField.trigger('change');
-
+                value = newValue;
             }
         }
 
+        return value;
+    },
+
+    setValue: function (newValue, filtering) {
+
+        'use strict';
+
+        this.__valueToSet = this.getValue();
+        // We need to filter the values after the first load to remove data requrired for diplay but that we don't want to save in DB
+
+        if (filtering) {
+            newValue = this.filterValue(newValue);
+        }
+
+        if (this.params.choices.beforeValueSet && window[this.params.choices.beforeValueSet]) {
+            newValue = window[this.params.choices.beforeValueSet].call(this, newValue);
+        }
+
+        newValue = this.normalizeValue(newValue, true);
+
+        this.__valueToSet = newValue;
+        this.putValueInSetting();
 
     },
 
@@ -686,7 +719,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
      *
      * @param data (Optional) Object of field => value pairs (undefined if you want to get the default values)
      */
-    addRow: function (data) {
+    addRow: function (data, silent) {
 
         'use strict';
 
@@ -744,8 +777,12 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
                 }
             }
 
-            settingValue[this.currentIndex] = newRowSetting;
-            this.setValue(settingValue, true);
+
+            if (!silent) {
+                settingValue[this.currentIndex] = newRowSetting;
+                this.setValue(settingValue);
+            }
+
 
             this.currentIndex++;
 
@@ -827,7 +864,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
                 currentSettings = _.omit(currentSettings, _.isUndefined);
 
                 // Update the new setting values
-                this.setValue(currentSettings, true);
+                this.setValue(currentSettings);
 
             }
 
@@ -884,18 +921,23 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
             return;
         }
 
+
+        var value = currentSettings[row.rowIndex][fieldId];
         if ('checkbox' === type) {
 
-            currentSettings[row.rowIndex][fieldId] = element.is(':checked');
+            value = element.is(':checked');
 
         } else {
 
             // Update the settings
-            currentSettings[row.rowIndex][fieldId] = element.val();
+            value = element.val();
 
         }
-        this.setValue(currentSettings, true);
 
+        if (value !== currentSettings[row.rowIndex][fieldId]) {
+            currentSettings[row.rowIndex][fieldId] = value;
+            this.setValue(currentSettings);
+        }
     },
 
     /**
@@ -926,7 +968,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
                 currentSettings = control.getValue();
 
             currentSettings[rowIndex][currentPicker.data('field')] = ui.color.toString();
-            control.setValue(currentSettings, true);
+            control.setValue(currentSettings);
 
         };
 

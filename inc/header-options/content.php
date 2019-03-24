@@ -153,6 +153,17 @@ function materialis_print_header_media_frame($media)
 
     $headerContent = materialis_get_front_page_header_media_and_partial();
     $partial       = $headerContent['partial'];
+    
+    $style_overlay = '';
+    if ($headerContent['partial'] == 'media-on-top')
+    {
+        $style_overlay = 'margin-bottom:' . abs($frame_offset_top) . '%';
+    }
+    
+    if ($headerContent['partial'] == 'media-on-bottom')
+    {
+        $style_overlay = 'margin-top:' . abs($frame_offset_top) . 'px';
+    }
 
     $align = "";
     if (in_array($partial, array("media-on-right", "media-on-left"))) {
@@ -160,7 +171,7 @@ function materialis_print_header_media_frame($media)
     }
     ?>
     <div class="flexbox center-xs <?php echo $align; ?> middle-xs">
-        <div class="overlay-box">
+        <div class="overlay-box"  style="<?php echo esc_attr($style_overlay); ?>">
             <div class="<?php echo esc_attr($classes); ?>" style="<?php echo esc_attr($style); ?>"></div>
             <?php echo $media; ?>
         </div>
@@ -227,7 +238,25 @@ function materialis_get_header_top_spacing_script()
             function setHeaderTopSpacing() {
                 $('.header-wrapper .header,.header-wrapper .header-homepage').css({
                     'padding-top': $('.header-top').height()
-                })
+                });
+
+             setTimeout(function() {
+                  var headerTop = document.querySelector('.header-top');
+                  var headers = document.querySelectorAll('.header-wrapper .header,.header-wrapper .header-homepage');
+
+                  for (var i = 0; i < headers.length; i++) {
+                      var item = headers[i];
+                      item.style.paddingTop = headerTop.getBoundingClientRect().height + "px";
+                  }
+
+                    var languageSwitcher = document.querySelector('.materialis-language-switcher');
+
+                    if(languageSwitcher){
+                        languageSwitcher.style.top = "calc( " +  headerTop.getBoundingClientRect().height + "px + 1rem)" ;
+                    }
+                    
+                }, 100);
+
             }
 
             jQuery(window).on('resize orientationchange', setHeaderTopSpacing);

@@ -1,5 +1,7 @@
 (function () {
-    jQuery(document).ready(function ($) {
+
+    window.materialisMenuSticky = function() {
+        var $ = jQuery;
         var dataprefix = "data-sticky";
 
         function attrName(name) {
@@ -96,14 +98,19 @@
                 })
             }
         }
-            .bind({
-                "$els": stickyElements
-            });
+
+        .bind({
+            "$els": stickyElements
+        });
 
         $(window).bind('resize.sticky orientationchange.sticky', function () {
             setTimeout(resizeCallback, 50);
         });
         $(window).trigger('resize.sticky');
+    }
+
+    jQuery(document).ready(function ($) {
+        materialisMenuSticky();
     });
 
-})()
+})();

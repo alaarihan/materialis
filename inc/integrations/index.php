@@ -23,15 +23,12 @@ function materialis_load_integration_modules()
     $normmalizedABSPATH = wp_normalize_path(ABSPATH);
 
     foreach ($modules as $module) {
-
         $module = wp_normalize_path($module);
 
-        if (strpos($module, $normmalizedABSPATH) !== 0) {
-            materialis_require("{$module}/index.php");
+        if (file_exists("{$module}/integration.php")) {
+            require "{$module}/integration.php";
         } else {
-            if (file_exists("{$module}/index.php")) {
-                require "{$module}/index.php";
-            }
+            materialis_require("{$module}/integration.php");
         }
 
     }

@@ -47,7 +47,7 @@
         }
     });
 
-    __cpVideoElementFirstPlayed = false;
+    var __cpVideoElementFirstPlayed = false;
 
     document.addEventListener('wp-custom-header-video-loaded', function () {
         var videoElement = document.querySelector('video#wp-custom-header-video');

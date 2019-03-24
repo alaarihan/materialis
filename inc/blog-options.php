@@ -53,7 +53,6 @@ function materialis_add_blog_options($section)
         'default'  => true,
     ));
 
-
     materialis_add_kirki_field(array(
         'type'     => 'checkbox',
         'settings' => 'blog_post_highlight_enabled',
@@ -88,8 +87,8 @@ function materialis_add_blog_options($section)
     materialis_add_kirki_field(array(
         'type'        => 'checkbox',
         'settings'    => 'blog_show_post_featured_image',
-        'label'       => esc_html__('Use post featured image as hero background when available', 'materialis'),
-        'description' => esc_html__('The inner pages hero background should be set to image', 'materialis'),
+        'label'       => esc_html__('Use blog/post featured image as hero background when available', 'materialis'),
+        'description' => esc_html__('Must have inner pages hero background set to image, and blog page and/or post featured image added.', 'materialis'),
         'section'     => $section,
         'priority'    => 3,
         'default'     => true,

@@ -150,7 +150,7 @@
 
         var $currentSelectedItem = $("");
         // on tablet
-        $menu.on('tap.navigation', 'li.menu-item > a', function (event) {
+        $menu.on('tap.navigation', 'li.menu-item > a, li.page_item > a', function (event) {
             var $link = $(this);
             var $item = $link.parent();
             var $submenu = $item.children('ul');
@@ -176,6 +176,7 @@
                 }
 
             } else {
+                event.stopPropagation();
                 deselectItems($menu);
             }
 
@@ -187,7 +188,36 @@
             setOpenReverseClass($menu, $(this));
         });
 
+        addMenuScrollSpy($menu);
     });
+
+    function addMenuScrollSpy(startFrom) {
+
+        var $menu = startFrom;
+
+        if ($.fn.scrollSpy) {
+            $menu.find('a').scrollSpy({
+                onChange: function () {
+                    $menu.find('.current-menu-item,.current_page_item').removeClass('current-menu-item current_page_item');
+                    $(this).closest('li').addClass('current-menu-item');
+                },
+                onLeave: function () {
+                    $(this).closest('li').removeClass('current-menu-item current_page_item');
+                },
+                smoothScrollAnchor: true,
+                offset: function () {
+                    var $fixed = $('.navigation-bar.fixto-fixed');
+                    if ($fixed.length) {
+                        return $fixed[0].getBoundingClientRect().height;
+                    }
+
+                    return 0;
+                }
+            });
+        }
+
+        $(window).trigger('smoothscroll.update');
+    }
 
     $(function () {
 
@@ -195,7 +225,23 @@
             jQuery('.offcanvas_menu').find('li > ul').eq(0).each(function () {
                 jQuery(this).show();
                 jQuery(this).parent().addClass('open')
-            })
+            });
+
+            window.wp.customize.selectiveRefresh.bind('render-partials-response', function (response) {
+                var menuKeys = Object.getOwnPropertyNames(response.contents).filter(function (key) {
+                    return key.indexOf('nav_menu_instance[') !== -1;
+                });
+
+                if (menuKeys.length) {
+
+                    setTimeout(function () {
+                        $('ul.dropdown-menu').each(function () {
+                            addMenuScrollSpy($(this));
+                        });
+                    }, 1000);
+
+                }
+            });
         }
 
     });

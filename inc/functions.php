@@ -1,26 +1,154 @@
 <?php
-
 materialis_require("inc/variables.php");
 materialis_require("inc/defaults-dark.php");
 materialis_require("inc/defaults.php");
 
 function materialis_mod_default($name, $fallback = null)
 {
-    $defaults = materialis_theme_defaults();
+    if (materialis_has_in_memory('materialis_mod_default')) {
+        $defaults = materialis_get_from_memory('materialis_mod_defaults');
+    } else {
+        $defaults = materialis_theme_defaults();
 
-    $default = $fallback;
+        $default = $fallback;
 
-    if (isset($defaults[$name])) {
-        $default = $defaults[$name];
+        if (isset($defaults[$name])) {
+            $default = $defaults[$name];
+        }
     }
 
     return $default;
 }
 
+
 function materialis_get_theme_mod($key, $fallback = null)
 {
     return get_theme_mod($key, materialis_mod_default($key, $fallback));
 }
+
+function materialis_set_in_memory($key, $value = false)
+{
+    
+    if ( ! isset($GLOBALS['MATERIALIS_MEMORY_CACHE'])) {
+        $GLOBALS['MATERIALIS_MEMORY_CACHE'] = array();
+    }
+    
+    $GLOBALS['MATERIALIS_MEMORY_CACHE'][$key] = $value;
+}
+
+function materialis_has_in_memory($key)
+{
+    
+    if (isset($GLOBALS['MATERIALIS_MEMORY_CACHE']) && isset($GLOBALS['MATERIALIS_MEMORY_CACHE'][$key])) {
+        return $key;
+    } else {
+        return false;
+    }
+}
+
+function materialis_get_from_memory($key)
+{
+    if (materialis_has_in_memory($key)) {
+        return $GLOBALS['MATERIALIS_MEMORY_CACHE'][$key];
+    }
+    
+    return false;
+}
+
+function materialis_skip_customize_register()
+{
+    return isset($_REQUEST['materialis_skip_customize_register']);
+}
+
+function materialis_get_cache_option_key()
+{
+    return "__materialis_cached_values__";
+}
+
+function materialis_can_show_cached_value($slug)
+{
+    global $wp_customize;
+    
+    if ($wp_customize || materialis_is_customize_preview() || wp_doing_ajax() || WP_DEBUG || materialis_is_wporg_preview()) {
+        return false;
+    }
+    
+    if ($value = materialis_get_from_memory("materialis_can_show_cached_value_{$slug}")) {
+        return $value;
+    }
+    
+    $result = (materialis_get_cached_value($slug) !== null);
+    
+    materialis_set_in_memory("materialis_can_show_cached_value_{$slug}", $result);
+    
+    return $result;
+}
+
+function materialis_cache_value($slug, $value, $cache_on_ajax = false)
+{
+    
+    if (wp_doing_ajax()) {
+        if ( ! $cache_on_ajax) {
+            return;
+        }
+    }
+    
+    if (materialis_is_customize_preview()) {
+        return;
+    }
+
+    $cached_values = get_option(materialis_get_cache_option_key(), array());
+    
+    $cached_values[$slug] = $value;
+    
+    update_option(materialis_get_cache_option_key(), $cached_values, 'yes');
+    
+}
+
+function materialis_remove_cached_value($slug)
+{
+    $cached_values = get_option(materialis_get_cache_option_key(), array());
+    
+    if (isset($cached_values[$slug])) {
+        unset($cached_values[$slug]);
+    }
+    
+    update_option(materialis_get_cache_option_key(), $cached_values, 'yes');
+}
+
+function materialis_get_cached_value($slug)
+{
+    $cached_values = get_option(materialis_get_cache_option_key(), array());
+    
+    if (isset($cached_values[$slug])) {
+        return $cached_values[$slug];
+    }
+    
+    return null;
+}
+
+function materialis_clear_cached_values()
+{
+    // cleanup old cached values
+    $slugs = get_option('materialis_cached_values_slugs', array());
+    
+    if (count($slugs)) {
+        foreach ($slugs as $slug) {
+            materialis_remove_cached_value($slug);
+        }
+        
+        delete_option('materialis_cached_values_slugs');
+    }
+    // cleanup old cached values
+    
+    delete_option(materialis_get_cache_option_key());
+    
+    if (class_exists('autoptimizeCache')) {
+        autoptimizeCache::clearall();
+    }
+}
+
+add_action('cloudpress\companion\clear_caches', 'materialis_clear_cached_values');
 
 function materialis_get_var($name)
 {
@@ -49,16 +177,20 @@ function materialis_wp_kses_post($text)
     $rgbaRegex = "#rgba\(((\s*\d+\s*,){3}[\d\.]+)\)#i";
     $text      = preg_replace($rgbaRegex, "rgba__$1__rgb", $text);
 
+
     // fix google fonts
     $fontsOption       = apply_filters('materialis_google_fonts', materialis_get_general_google_fonts());
     $fonts             = array_keys($fontsOption);
     $singleQuotedFonts = array_map('materialis_wrap_with_single_quote', $fonts);
     $doubleQuotedFonts = array_map('materialis_wrap_with_double_quotes', $fonts);
 
+
     $text = str_replace($singleQuotedFonts, $fonts, $text);
     $text = str_replace($doubleQuotedFonts, $fonts, $text);
 
+
     $text = wp_kses_post($text);
+
 
     $text = str_replace("rgba__", "rgba(", $text);
     $text = str_replace("rgb__", "rgb(", $text);
@@ -81,7 +213,7 @@ function materialis_setup()
 {
     global $content_width;
 
-    if (!isset($content_width)) {
+    if ( ! isset($content_width)) {
         $content_width = 3840; // 4k :) - content width should be adapted from css not hardcoded
     }
 
@@ -271,7 +403,7 @@ function materialis_require($path)
 {
     $path = trim($path, "\\/");
 
-    $isInPro = locate_template("/pro/$path") && !(defined("MATERIALIS_ONLY_FREE") && MATERIALIS_ONLY_FREE);
+    $isInPro = locate_template("/pro/$path") && ! (defined("MATERIALIS_ONLY_FREE") && MATERIALIS_ONLY_FREE);
 
     if ($isInPro) {
         require_once get_template_directory() . "/{$path}";
@@ -283,21 +415,27 @@ function materialis_require($path)
 
 }
 
-if (!class_exists("Kirki")) {
+if ( ! class_exists("Kirki")) {
     include_once get_template_directory() . '/customizer/kirki/kirki.php';
 }
 
 materialis_require('/inc/templates-functions.php');
 materialis_require('/inc/theme-options.php');
 
+
 function materialis_add_kirki_field($args)
 {
-    $fallback = isset($args['default']) ? $args['default'] : null;
-    $default  = materialis_mod_default($args['settings'], $fallback);
+   $has_cached_values = materialis_can_show_cached_value("materialis_cached_kirki_style_materialis");
+   
+	if ( ! $has_cached_values) {
+        $args = apply_filters('materialis_kirki_field_filter', $args);
 
-    $args['default'] = $default;
-
-    Kirki::add_field('materialis', $args);
+		$fallback = isset($args['default']) ? $args['default'] : null;
+   	 	$default  = materialis_mod_default($args['settings'], $fallback);
+    	$args['default'] = $default;
+    	
+		Kirki::add_field('materialis', $args);
+    }
 }
 
 // SCRIPTS AND STYLES
@@ -306,6 +444,7 @@ function materialis_replace_file_extension($filename, $old_extenstion, $new_exte
 {
     return preg_replace('#\\' . $old_extenstion . '$#', $new_extension, $filename);
 }
+
 
 function materialis_enqueue($type = 'style', $handle, $args = array())
 {
@@ -328,7 +467,7 @@ function materialis_enqueue($type = 'style', $handle, $args = array())
 
     $isScriptDebug = defined("SCRIPT_DEBUG") && SCRIPT_DEBUG;
 
-    if ($data['has_min'] && !$isScriptDebug) {
+    if ($data['has_min'] && ! $isScriptDebug) {
         if ($type === 'style') {
             $data['src'] = materialis_replace_file_extension($data['src'], '.css', '.min.css');
         }
@@ -362,7 +501,7 @@ function materialis_add_script_data($data)
 {
 
     add_filter('materialis_script_data', function ($value) use ($data) {
-        foreach ((array) $data as $key => $value) {
+        foreach ((array)$data as $key => $value) {
             $value[$key] = $value;
         }
 
@@ -380,118 +519,132 @@ function materialis_associative_array_splice($oldArray, $offset, $key, $data)
     return $newArray;
 }
 
-function materialis_do_enqueue_assets()
+function materialis_enqueue_styles($textDomain, $ver, $is_child)
 {
     
     wp_enqueue_style( 'droidarabickufi-font','https://fonts.googleapis.com/earlyaccess/droidarabickufi.css', array(), '1.0.1' );
-
-    $theme        = wp_get_theme();
-    $ver          = $theme->get('Version');
-    $isChildTheme = ($theme->get('Template'));
-    $textDomain   = materialis_get_text_domain();
-
+  
     materialis_enqueue_style(
         $textDomain . '-style',
         array(
             'src'     => get_stylesheet_uri(),
-            'has_min' => !$isChildTheme,
+            'has_min' => apply_filters('materialis_stylesheet_has_min', ! $is_child),
+            'deps'    => apply_filters('materialis_stylesheet_deps', array()),
         )
     );
-
-    materialis_enqueue_style(
-        $textDomain . '-material-icons',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/css/material-icons.css',
-            'has_min' => true,
-        )
-    );
-
-    materialis_enqueue_style(
-        'animate',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/css/animate.css',
-            'has_min' => true,
-        )
-    );
-
-    materialis_enqueue_script(
-        $textDomain . '-smoothscroll',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/js/smoothscroll.js',
-            'deps'    => array('jquery', 'jquery-effects-core'),
-            'has_min' => true,
-        )
-    );
-
-    materialis_enqueue_script(
-        $textDomain . '-ddmenu',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/js/drop_menu_selection.js',
-            'deps'    => array('jquery-effects-slide', 'jquery'),
-            'has_min' => true,
-        )
-    );
-
-    materialis_enqueue_script(
-        'kube',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/js/kube.js',
-            'deps'    => array('jquery'),
-            'has_min' => true,
-        )
-    );
-
-    materialis_enqueue_script(
-        $textDomain . '-fixto',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/js/libs/fixto.js',
-            'deps'    => array('jquery'),
-            'has_min' => true,
-        )
-    );
-
-    wp_enqueue_script($textDomain . '-sticky', get_template_directory_uri() . '/assets/js/sticky.js', array($textDomain . '-fixto'), $ver, true);
-
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
-
-    $theme_deps = apply_filters("materialis_theme_deps", array('jquery', 'masonry'));
-
-    wp_enqueue_script($textDomain . '-theme', get_template_directory_uri() . '/assets/js/theme.js', $theme_deps, $ver, true);
-
-    materialis_add_script_data(apply_filters('materialis_theme_data_script', array()));
-
-    $maxheight = intval(materialis_get_theme_mod('logo_max_height', 70));
-    wp_add_inline_style($textDomain . '-style', sprintf('img.logo.dark, img.custom-logo{width:auto;max-height:%1$s;}', $maxheight . "px"));
-
-    materialis_enqueue_style(
-        $textDomain . '-webgradients',
-        array(
-            'src'     => get_template_directory_uri() . '/assets/css/webgradients.css',
-            'has_min' => true,
-        )
-    );
-
-	wp_enqueue_style( 'fontawsome-css', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '1.0' );
     
-    // Only home page.
-	if (is_front_page()) {
-		wp_enqueue_script( 'home-scripts', get_template_directory_uri() . '/home-assets/js/scripts.js', array('jquery'), '1.0.6', true );
-		wp_enqueue_style( 'home-animate', get_template_directory_uri() . '/home-assets/css/animate.min.css', array(), '1.0.0' );
-		wp_enqueue_style( 'home-style', get_template_directory_uri() . '/home-assets/css/style.css', array(), '1.0.9' );
-    }
+    if (apply_filters('materialis_load_bundled_version', true)) {
 
-    if ( is_rtl() ) {
-        wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), '1.0.3' );
-    }
-    
-    wp_enqueue_style( 'custom', get_template_directory_uri() . '/custom.css', array(), '1.0.8' );
+        /*
+            icon font files have relative paths to ../../assets/fonts/vendor/mdi/ that break for pro path
+            and can't be bundled and webpack crashes on second sass compile for material-icons
+        */
 
+        materialis_enqueue_style(
+            $textDomain . '-material-icons',
+            array(
+                'src'     => get_template_directory_uri() . '/assets/css/material-icons.css',
+                'has_min' => true,
+            )
+        );
+
+        materialis_enqueue_style(
+            $textDomain . '-style-bundle',
+            array(
+                'src' => get_template_directory_uri() . '/assets/css/theme.bundle.min.css',
+            )
+        );
+
+    } else {
+
+	    materialis_enqueue_style(
+		$textDomain . '-material-icons',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/css/material-icons.css',
+		    'has_min' => true,
+		)
+	    );
+
+	    materialis_enqueue_style(
+		'animate',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/css/animate.css',
+		    'has_min' => true,
+		)
+	    );
+
+	    materialis_enqueue_style(
+		$textDomain . '-webgradients',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/css/webgradients.css',
+		    'has_min' => true,
+		)
+	    );
+     }
 }
 
-add_action('wp_enqueue_scripts', 'materialis_do_enqueue_assets');
+function materialis_defer_js_scripts($tag)
+{
+    $matches = array(
+        'theme.bundle.min.js',
+        'companion.bundle.min.js',
+        includes_url('/js/masonry.min.js'),
+        includes_url('/js/imagesloaded.min.js'),
+        includes_url('/js/wp-embed.min.js'),
+    );
+    
+    foreach ($matches as $match) {
+        if (strpos($tag, $match) !== false) {
+            return str_replace('src', ' defer="defer" src', $tag);
+        }
+    }
+    
+    return $tag;
+    
+}
 
+add_filter('script_loader_tag', 'materialis_defer_js_scripts', 11, 1);
+
+function materialis_defer_css_scripts($tag)
+{
+    if (!is_admin())
+    {
+        $matches = array(
+            'fonts.googleapis.com',
+            'companion.bundle.min.css',
+        );
+    
+    } else {
+        $matches = array();
+
+    }
+    
+    if ( ! materialis_is_customize_preview()) {
+        foreach ($matches as $match) {
+            if (strpos($tag, $match) !== false) {
+                return str_replace('href', ' data-href', $tag);
+            }
+        }
+    }
+    
+    return $tag;
+}
+
+add_filter('style_loader_tag', 'materialis_defer_css_scripts', 11, 1);
+
+add_action('wp_head', function () {
+    ?>
+    <script type="text/javascript" data-name="async-styles">
+        (function () {
+            var links = document.querySelectorAll('link[data-href]');
+            for (var i = 0; i < links.length; i++) {
+                var item = links[i];
+                item.href = item.getAttribute('data-href')
+            }
+        })();
+    </script>
+    <?php
+});
 function materialis_print_scripts_data()
 {
     $data      = apply_filters('materialis_theme_data_script', array());
@@ -502,14 +655,112 @@ function materialis_print_scripts_data()
 
 add_action('wp_enqueue_scripts', 'materialis_print_scripts_data', 40);
 
+function materialis_enqueue_scripts($textDomain, $ver, $is_child)
+{
+    
+    if (apply_filters('materialis_load_bundled_version', true)) {
+        $theme_deps = array('jquery', 'jquery-effects-core', 'jquery-effects-slide', 'masonry');
+        materialis_enqueue_script(
+            $textDomain . '-theme',
+            array(
+                "src"  => get_template_directory_uri() . '/assets/js/theme.bundle.min.js',
+                "deps" => $theme_deps,
+            )
+        );
+        
+    } else {
+
+	    materialis_enqueue_script(
+		$textDomain . '-smoothscroll',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/js/smoothscroll.js',
+		    'deps'    => array('jquery', 'jquery-effects-core'),
+		    'has_min' => true,
+		)
+	    );
+
+	    materialis_enqueue_script(
+		$textDomain . '-ddmenu',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/js/drop_menu_selection.js',
+		    'deps'    => array('jquery-effects-slide', 'jquery'),
+		    'has_min' => true,
+		)
+	    );
+
+	    materialis_enqueue_script(
+		'kube',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/js/kube.js',
+		    'deps'    => array('jquery'),
+		    'has_min' => true,
+		)
+	    );
+
+	    materialis_enqueue_script(
+		$textDomain . '-fixto',
+		array(
+		    'src'     => get_template_directory_uri() . '/assets/js/libs/fixto.js',
+		    'deps'    => array('jquery'),
+		    'has_min' => true,
+		)
+	    );
+
+	    wp_enqueue_script($textDomain . '-sticky', get_template_directory_uri() . '/assets/js/sticky.js', array($textDomain . '-fixto'), $ver, true);
+	    $theme_deps = apply_filters("materialis_theme_deps", array('jquery', 'masonry'));
+
+	    wp_enqueue_script($textDomain . '-theme', get_template_directory_uri() . '/assets/js/theme.js', $theme_deps, $ver, true);
+
+	    materialis_add_script_data(apply_filters('materialis_theme_data_script', array()));
+    }	
+
+    $maxheight = intval(materialis_get_theme_mod('logo_max_height', 70));
+    wp_add_inline_style($textDomain . '-style', sprintf('img.logo.dark, img.custom-logo{width:auto;max-height:%1$s;}', $maxheight . "px"));
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
+	  wp_enqueue_style( 'fontawsome-css', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '1.0' );
+    
+    // Only home page.
+	  if (is_front_page()) {
+      wp_enqueue_script( 'home-scripts', get_template_directory_uri() . '/home-assets/js/scripts.js', array('jquery'), '1.0.6', true );
+      wp_enqueue_style( 'home-animate', get_template_directory_uri() . '/home-assets/css/animate.min.css', array(), '1.0.0' );
+      wp_enqueue_style( 'home-style', get_template_directory_uri() . '/home-assets/css/style.css', array(), '1.0.9' );
+    }
+
+    if ( is_rtl() ) {
+        wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), '1.0.3' );
+    }
+    
+    wp_enqueue_style( 'custom', get_template_directory_uri() . '/custom.css', array(), '1.0.8' );
+}
+
+
+function materialis_do_enqueue_assets()
+{
+
+    $theme        = wp_get_theme();
+    $ver          = $theme->get('Version');
+    $isChildTheme = ($theme->get('Template'));
+    $textDomain   = materialis_get_text_domain();
+
+    materialis_enqueue_styles($textDomain, $ver, $isChildTheme);
+    materialis_enqueue_scripts($textDomain, $ver, $isChildTheme);
+}    
+ 
+add_action('wp_enqueue_scripts', 'materialis_do_enqueue_assets');
+
+
 function materialis_customize_controls_enqueue_scripts_spectrum()
 {
 
     $theme = wp_get_theme();
     $ver   = $theme->get('Version');
 
+    if ( ! apply_filters('materialis_load_bundled_version', true)) {
     wp_enqueue_style('materialis-customizer-spectrum', get_template_directory_uri() . '/customizer/libs/spectrum.css', array(), $ver);
     wp_enqueue_script('materialis-customizer-spectrum', get_template_directory_uri() . '/customizer/libs/spectrum.js', array(), $ver, true);
+    }
 }
 
 add_action('customize_controls_enqueue_scripts', 'materialis_customize_controls_enqueue_scripts_spectrum');
@@ -519,7 +770,7 @@ function materialis_get_general_google_fonts()
     return array(
         array(
             'family'  => 'Roboto',
-            "weights" => array("300", "300italic", "400", "400italic", "500", "500italic", "700", "700italic", "900", "900italic"),
+            "weights" => array("300", "300italic", "400", "400italic", "500", "500italic", "700", "700italic", "900", "900italic",),
         ),
         array(
             'family'  => 'Playfair Display',
@@ -530,26 +781,35 @@ function materialis_get_general_google_fonts()
 
 function materialis_do_enqueue_google_fonts()
 {
-    $gFonts = materialis_get_general_google_fonts();
+    $fontsURL = array();
+    if (materialis_can_show_cached_value('materialis_google_fonts')) {
+        
+        $fontsURL = materialis_get_cached_value('materialis_google_fonts');
+    } else {
+	    $gFonts = materialis_get_general_google_fonts();
 
-    $fonts = array();
+	    $fonts = array();
 
-    foreach ($gFonts as $font) {
-        $fonts[$font['family']] = $font;
+	    foreach ($gFonts as $font) {
+		$fonts[$font['family']] = $font;
+	    }
+
+	    $gFonts    = apply_filters("materialis_google_fonts", $fonts);
+	    $fontQuery = array();
+	    foreach ($gFonts as $family => $font) {
+		$fontQuery[] = $family . ":" . implode(',', $font['weights']);
+	    }
+
+	    $query_args = array(
+		'family' => implode('%7C', $fontQuery),
+		'subset' => 'latin,latin-ext',
+	    );
+
+        $fontsURL = add_query_arg($query_args, 'https://fonts.googleapis.com/css');
+
+        materialis_cache_value('materialis_google_fonts', $fontsURL);
     }
 
-    $gFonts    = apply_filters("materialis_google_fonts", $fonts);
-    $fontQuery = array();
-    foreach ($gFonts as $family => $font) {
-        $fontQuery[] = $family . ":" . implode(',', $font['weights']);
-    }
-
-    $query_args = array(
-        'family' => implode('|', $fontQuery),
-        'subset' => 'latin,latin-ext',
-    );
-
-    $fontsURL = add_query_arg($query_args, 'https://fonts.googleapis.com/css');
     wp_enqueue_style('materialis-fonts', $fontsURL, array(), null);
 }
 
@@ -566,6 +826,7 @@ function materialis_pingback_header()
 
 add_action('wp_head', 'materialis_pingback_header');
 
+
 /**
  * Register sidebar
  */
@@ -573,7 +834,7 @@ function materialis_widgets_init()
 {
 
     $sidebars_defaults = array(
-        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z5">',
         'after_widget'  => '</div>',
         'before_title'  => '<h5 class="widgettitle"><i class="mdi widget-icon"></i>',
         'after_title'   => '</h5>',
@@ -651,6 +912,7 @@ add_filter('excerpt_more', 'materialis_excerpt_more');
 
 // UTILS
 
+
 function materialis_nomenu_fallback($walker = '')
 {
     $drop_down_menu_classes      = apply_filters('materialis_primary_drop_menu_classes', array('default'));
@@ -665,6 +927,7 @@ function materialis_nomenu_fallback($walker = '')
         'walker'     => $walker,
     ));
 }
+
 
 function materialis_nomenu_cb()
 {
@@ -744,7 +1007,7 @@ function materialis_bold_text($str)
 {
     $bold = materialis_get_theme_mod('bold_logo', true);
 
-    if (!$bold) {
+    if ( ! $bold) {
         return $str;
     }
 
@@ -770,6 +1033,7 @@ function materialis_bold_text($str)
     return $result;
 }
 
+
 function materialis_sanitize_checkbox($val)
 {
     return (isset($val) && $val == true ? true : false);
@@ -780,14 +1044,14 @@ function materialis_sanitize_textfield($val)
     return wp_kses_post(force_balance_tags($val));
 }
 
-if (!function_exists('materialis_post_type_is')) {
+if ( ! function_exists('materialis_post_type_is')) {
     function materialis_post_type_is($type)
     {
         global $wp_query;
 
         $post_type = $wp_query->query_vars['post_type'] ? $wp_query->query_vars['post_type'] : 'post';
 
-        if (!is_array($type)) {
+        if ( ! is_array($type)) {
             $type = array($type);
         }
 
@@ -812,13 +1076,14 @@ function materialis_to_bool($value)
     }
 
     if (is_numeric()) {
-        return !!intval($value);
+        return ! ! intval($value);
     }
 
-    return !!$value;
+    return ! ! $value;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
+
 
 function materialis_footer_container($class)
 {
@@ -831,13 +1096,14 @@ function materialis_footer_container($class)
     $attrs = apply_filters('materialis_footer_container_atts', $attrs);
 
     foreach ($attrs as $key => $value) {
-        $value = esc_attr(trim($value));
-        $key   = esc_attr($key);
+        $value  = esc_attr(trim($value));
+        $key    = esc_attr($key);
         $result .= " {$key}='{$value}'";
     }
 
     return $result;
 }
+
 
 // THEME PAGE
 function materialis_theme_page()
@@ -858,6 +1124,7 @@ function materialis_register_theme_page()
     add_theme_page(__('Materialis Info', 'materialis'), __('Materialis Info', 'materialis'), 'activate_plugins', 'materialis-welcome', 'materialis_load_theme_partial');
 }
 
+
 function materialis_instantiate_widget($widget, $args = array())
 {
 
@@ -876,4 +1143,54 @@ function materialis_instantiate_widget($widget, $args = array())
 
 }
 
+// load support for woocommerce
+if (class_exists('WooCommerce')) {
+    require_once get_template_directory() . "/inc/woocommerce/woocommerce.php";
+} else {
+    require_once get_template_directory() . "/inc/woocommerce/woocommerce-ready.php";
+}
+
 materialis_require("/inc/integrations/index.php");
+
+function materialis_is_woocommerce_page()
+{
+
+    if (function_exists("is_woocommerce") && is_woocommerce()) {
+        return true;
+    }
+
+    $woocommerce_keys = array(
+        "woocommerce_shop_page_id",
+        "woocommerce_terms_page_id",
+        "woocommerce_cart_page_id",
+        "woocommerce_checkout_page_id",
+        "woocommerce_pay_page_id",
+        "woocommerce_thanks_page_id",
+        "woocommerce_myaccount_page_id",
+        "woocommerce_edit_address_page_id",
+        "woocommerce_view_order_page_id",
+        "woocommerce_change_password_page_id",
+        "woocommerce_logout_page_id",
+        "woocommerce_lost_password_page_id",
+    );
+
+    foreach ($woocommerce_keys as $wc_page_id) {
+        if (get_the_ID() == get_option($wc_page_id, 0)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function materialis_customize_save_clear_data($value)
+{
+    
+    if ( ! isset($value['changeset_status']) || $value['changeset_status'] !== "auto-draft") {
+        materialis_clear_cached_values();
+    }
+    
+    return $value;
+}
+
+add_filter("customize_save_response", "materialis_customize_save_clear_data");

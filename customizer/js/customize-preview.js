@@ -251,6 +251,50 @@ function liveUpdateHeader(settingPart, callback) {
         }
     }
 
+
+    /* START FOOTER */
+
+    function toggleFooterSocialIcon(index, selector) {
+        return function (value) {
+            value.bind(function (newval) {
+                if (newval) {
+                    $('.footer .footer-social-icons ' + selector).eq(index).removeAttr('data-reiki-hidden');
+                } else {
+                    $('.footer .footer-social-icons ' + selector).eq(index).attr('data-reiki-hidden', 'true');
+                }
+            });
+        }
+    }
+
+    function changeFooterSocialIcon(index, selector) {
+        return function (value) {
+            value.bind(function (newval, oldval) {
+                $('.footer .footer-social-icons ' + selector).eq(index).find('i').removeClass(oldval).addClass(newval);
+            });
+        }
+    }
+
+    for (var ki = 0; ki < 5; ki++) {
+        wp.customize('footer_content_social_icon_' + ki + '_enabled', toggleFooterSocialIcon(ki, '.social-icon'));
+        wp.customize('footer_content_social_icon_' + ki + '_icon', changeFooterSocialIcon(ki, '.social-icon'));
+    }
+
+
+    wp.customize('footer_paralax', function (value) {
+        value.bind(function (newval) {
+            if (newval) {
+                $('.footer').addClass('paralax');
+                materialisFooterParalax();
+            }
+            else {
+                $('.footer').removeClass('paralax');
+                materialisStopFooterParalax();
+            }
+        });
+    });
+
+    /* END FOOTER */
+
 })(jQuery);
 
 (function ($) {
@@ -316,6 +360,9 @@ function liveUpdateHeader(settingPart, callback) {
                     'margin-top': '-' + wp.customize('layout_boxed_content_overlap_height').get() + 'px',
                 });
                 $('#page').css('background-color', wp.customize('layout_boxed_content_background_color').get());
+
+                $('.footer').removeClass('paralax');
+                materialisStopFooterParalax();
             } else {
                 $elements.removeClass('mdc-elevation--z20 boxed-layout');
                 $elements.css({
@@ -339,6 +386,22 @@ function liveUpdateHeader(settingPart, callback) {
             $elements.css({
                 'margin-top': '-' + value + 'px'
             });
+        });
+    });
+
+    // logo
+
+    wp.customize('logo_max_height', function (value) {
+        value.bind(function (newval) {
+
+            currentActionTime = Math.round(+new Date()/1000);
+
+            _.delay(function() {
+                if((Math.round(+new Date()/1000)) >= (currentActionTime + 3)) {
+                    parent.CP_Customizer.preview.refresh();
+                }
+            }, 3000);
+
         });
     });
 
@@ -483,27 +546,32 @@ function liveUpdateHeader(settingPart, callback) {
         var selectorStart = inner ? '.materialis-inner-page' : '.materialis-front-page';
         var selector = ".navigation-bar";
         var $navBar = $([selectorStart, selector].join(' '));
-        if (value) {
-            $navBar.attr({
-                "data-sticky": 0,
-                "data-sticky-mobile": 1,
-                "data-sticky-to": "top"
-            });
 
-            if ($navBar.data().fixtoInstance) {
-                $navBar.data().fixtoInstance.start();
+        if($navBar.length) {
+
+            if (value) {
+                $navBar.attr({
+                    "data-sticky": 0,
+                    "data-sticky-mobile": 1,
+                    "data-sticky-to": "top"
+                });
+
+                if ($navBar.data().fixtoInstance) {
+                    $navBar.data().fixtoInstance.start();
+                } else {
+                    materialisMenuSticky();
+                }
+
             } else {
-                $navBar.materialisMenuSticky();
+                $navBar.removeAttr('data-sticky');
+                $navBar.removeAttr('data-sticky-mobile');
+                $navBar.removeAttr('data-sticky-to');
+
+                if ($navBar.data().fixtoInstance) {
+                    $navBar.data().fixtoInstance.stop();
+                }
             }
 
-        } else {
-            $navBar.removeAttr('data-sticky');
-            $navBar.removeAttr('data-sticky-mobile');
-            $navBar.removeAttr('data-sticky-to');
-
-            if ($navBar.data().fixtoInstance) {
-                $navBar.data().fixtoInstance.stop();
-            }
         }
     });
 

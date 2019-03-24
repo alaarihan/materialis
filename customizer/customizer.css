@@ -1626,3 +1626,14 @@ li.category-title.closeable {
     height: auto;
     text-transform: uppercase;
 }
+
+#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control {
+  margin-right: 0px;
+}
+#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control li {
+  margin-bottom: 16px;
+}
+#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control li .description {
+  margin-top: 6px;
+  display: block;
+}

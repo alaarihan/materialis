@@ -10,7 +10,7 @@
 
 <body <?php body_class(); ?>>
 
-<div class="header-top">
+<div id="page-top" class="header-top">
     <?php materialis_print_header_top_bar(); ?>
     <?php materialis_get_navigation(); ?>
 </div>

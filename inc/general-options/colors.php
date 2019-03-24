@@ -38,6 +38,28 @@ function materialis_get_theme_colors($color = false)
     return $colors;
 }
 
+
+function materialis_get_changed_theme_colors()
+{
+    $colors         = materialis_get_theme_colors();
+    $default_colors = materialis_get_default_colors(true);
+    $result         = array();
+
+    foreach ($colors as $color) {
+        $name = $color['name'];
+
+        if (isset($default_colors[$name])) {
+            if ($default_colors[$name] !== $color['value']) {
+                $result[] = $color;
+            }
+        } else {
+            $result[] = $color;
+        }
+    }
+
+    return $result;
+}
+
 add_filter('kirki_color_picker_palettes', 'materialis_theme_kirki_palettes');
 
 function materialis_theme_kirki_palettes($palettes)

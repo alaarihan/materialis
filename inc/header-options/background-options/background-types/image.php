@@ -14,7 +14,7 @@ function materialis_override_inner_header_with_thumbnail_image_on_page($value)
 {
 
     global $post;
-    if ((isset($post) && $post->post_type === 'page') || materialis_is_blog()) {
+    if ((isset($post) && $post->post_type === 'page')) {
         $value = materialis_get_theme_mod('inner_header_show_featured_image', true);
         $value = (intval($value) === 1);
 
@@ -102,7 +102,7 @@ function materialis_header_background_mobile_image()
 
     $bgMobilePosition = $bgMobilePosition . " " . $bgMobilePositionOffset . "px";
 
-    if ($bgType === "image" && $bgImageMobile):
+    if ($bgType === "image"):
         ?>
         <style type="text/css" data-name="custom-mobile-image-position">
             @media screen and (max-width: 767px) {
