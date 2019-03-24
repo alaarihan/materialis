@@ -144,14 +144,28 @@ function materialis_is_modified()
 
 function materialis_is_wporg_preview()
 {
-    $url   = site_url();
-    $parse = parse_url($url);
-
-    if (isset($parse['host']) && $parse['host'] === 'wp-themes.com') {
-        return true;
+    
+    if (defined('MATERIALIS_IS_WPORG_PREVIEW') && MATERIALIS_IS_WPORG_PREVIEW) {
+        return MATERIALIS_IS_WPORG_PREVIEW;
     }
-
-    return false;
+    
+    if (materialis_has_in_memory('materialis_is_wporg_preview')) {
+        return materialis_get_from_memory('materialis_is_wporg_preview');
+    }
+    
+    $url    = site_url();
+    $parse  = parse_url($url);
+    $wp_org = 'wp-themes.com';
+    $result = false;
+    
+    if (isset($parse['host']) && $parse['host'] === $wp_org) {
+        $result = true;
+    }
+    
+    materialis_set_in_memory('materialis_is_wporg_preview', $result);
+    
+    return $result;
+    
 }
 
 function materialis_current_default_is($default)
@@ -170,7 +184,8 @@ function materialis_after_switch_theme_set_defaults_version()
     if (!$default_preset && !materialis_is_modified()) {
         set_theme_mod('theme_default_preset', materialis_current_default_slug());
     }
-
+    
+     materialis_clear_cached_values();
 }
 
 add_action('after_switch_theme', 'materialis_after_switch_theme_set_defaults_version');

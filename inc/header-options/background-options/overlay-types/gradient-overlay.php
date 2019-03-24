@@ -18,7 +18,7 @@ function materialis_header_background_overlay_settings_register_gradient_bg($sec
         'settings'        => $prefix . '_overlay_gradient_colors',
         'default'         => json_encode(materialis_mod_default($prefix . '_overlay_gradient_colors')),
         'choices'         => array(
-            'opacity' => 0.5,
+            'opacity' => 0.8,
         ),
         'active_callback' => array(
             array(

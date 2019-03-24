@@ -158,7 +158,7 @@ function materialis_default_icons()
         array(
             "icon"    => "mdi-youtube-play",
             "link"    => "https://www.youtube.com",
-            "enabled" => false,
+            "enabled" => true,
         ),
     );
 }
@@ -188,20 +188,20 @@ function materialis_print_area_social_icons($prefix, $area, $class = "social-ico
 
             if ( ! intval($is_enabled)) {
                 $hidden_attr = "data-reiki-hidden='true'";
-                continue;
             }
 
             if ( ! materialis_can_show_demo_content() && ! $link) {
                 continue;
             }
 
-            ?>
+            if(materialis_is_customize_preview() || (!materialis_is_customize_preview() && intval($is_enabled))) {
+              ?>
+              <a target="_blank" <?php echo $hidden_attr ?> class="social-icon" href="<?php echo esc_url($link) ?>">
+                  <i class="mdi <?php echo esc_attr($icon) ?>"></i>
+              </a>
+              <?php
+            }
 
-            <a target="_blank" <?php echo $hidden_attr ?> class="social-icon" href="<?php echo esc_url($link) ?>">
-                <i class="mdi <?php echo esc_attr($icon) ?>"></i>
-            </a>
-
-            <?php
         }
         ?>
 

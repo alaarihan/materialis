@@ -886,7 +886,8 @@
             close: function (e) {
                 if (e) {
                     var $el = $(e.target);
-                    var isTag = ($el[0].tagName === 'A' || $el[0].tagName === 'BUTTON');
+                    var tagName = $el[0].tagName;
+                    var isTag = (tagName === 'A' || tagName === 'BUTTON' || tagName === 'I' || $el.parents('a').length);
                     if (isTag && $el.closest('.offcanvas').length !== 0 && !$el.hasClass('close')) {
                         return;
                     }

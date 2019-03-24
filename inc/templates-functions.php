@@ -106,9 +106,10 @@ function materialis_get_header($header = null)
 {
     $name = apply_filters('materialis_header', $header);
 
-    if (!$name) {
+    if ( ! $name) {
         $name = $header;
     }
+
 
     do_action("materialis_before_header", $name);
 
@@ -121,7 +122,7 @@ function materialis_get_header($header = null)
         locate_template("/pro/{$fileName}.php", true);
     }
 
-    if (!$isInPro) {
+    if ( ! $isInPro) {
         get_header($name);
     }
 
@@ -136,7 +137,7 @@ function materialis_get_sidebar($name = null)
         locate_template("pro/sidebar-{$name}.php", true);
     }
 
-    if (!$isInPRO) {
+    if ( ! $isInPRO) {
         get_sidebar($name);
     }
 }
@@ -145,7 +146,7 @@ function materialis_get_navigation($navigation = null)
 {
     $template = apply_filters('materialis_navigation', null);
 
-    if (!$template || $template === "default") {
+    if ( ! $template || $template === "default") {
         $template = $navigation;
     }
 
@@ -165,7 +166,7 @@ function materialis_header_main_class()
 
     $transparent_nav = materialis_get_theme_mod($prefix . '_nav_transparent', materialis_mod_default("{$prefix}_nav_transparent"));
 
-    if (!$transparent_nav) {
+    if ( ! $transparent_nav) {
         $classes[] = "coloured-nav";
     }
 
@@ -181,6 +182,7 @@ function materialis_header_main_class()
 
     echo esc_attr(implode(" ", $classes));
 }
+
 
 function materialis_print_logo($footer = false)
 {
@@ -223,7 +225,8 @@ function materialis_single_item_title($before = "", $after = "")
     }
 }
 
-if (!function_exists('materialis_print_header_content_holder_class')) {
+
+if ( ! function_exists('materialis_print_header_content_holder_class')) {
     function materialis_print_header_content_holder_class()
     {
         $align = materialis_get_theme_mod('header_text_box_text_align', materialis_mod_default('header_text_box_text_align'));
@@ -240,13 +243,14 @@ if (!function_exists('materialis_print_header_content_holder_class')) {
     }
 }
 
+
 //FOOTER FUNCTIONS
 
 function materialis_get_footer_content($footer = null)
 {
     $template = apply_filters('materialis_footer', null);
 
-    if (!$template) {
+    if ( ! $template) {
         $template = $footer;
     }
 
@@ -262,7 +266,7 @@ function materialis_get_footer_content($footer = null)
 function materialis_get_footer_copyright()
 {
     $copyrightText = sprintf(
-        // Translators: %s is the link to the theme.
+    // Translators: %s is the link to the theme.
         esc_html__('Built using WordPress and the %s', 'materialis'),
         '<a target="_blank" href="https://extendthemes.com/go/built-with-materialis/">' . __('Materialis Theme', 'materialis') . '</a>'
     );
@@ -386,20 +390,20 @@ function materialis_print_post_thumb_image()
             <rect width="890" height="580" style="fill:<?php echo esc_attr($placeholder_color); ?>;"></rect>
         </svg>
         <?php
-}
+    }
 }
 
 function materialis_print_post_thumb($classes = "")
 {
 
     $show_placeholder = materialis_get_theme_mod('blog_show_post_thumb_placeholder', true);
-    if (!has_post_thumbnail() && !$show_placeholder) {
+    if ( ! has_post_thumbnail() && ! $show_placeholder) {
         return;
     }
     ?>
     <div class="post-thumbnail">
-        <a href="<?php the_permalink();?>" class="post-list-item-thumb <?php echo esc_attr($classes); ?>">
-            <?php materialis_print_post_thumb_image();?>
+        <a href="<?php the_permalink(); ?>" class="post-list-item-thumb <?php echo esc_attr($classes); ?>">
+            <?php materialis_print_post_thumb_image(); ?>
         </a>
     </div>
     <?php
@@ -409,7 +413,7 @@ function materialis_is_customize_preview()
 {
     $is_preview = (function_exists('is_customize_preview') && is_customize_preview());
 
-    if (!$is_preview) {
+    if ( ! $is_preview) {
         $is_preview = apply_filters('materialis_is_shortcode_refresh', $is_preview);
     }
 
@@ -438,12 +442,12 @@ function materialis_print_about_widget()
         <div id="about-box" class="widget_about mdc-elevation--z5">
             <div class="about-box-image mdc-elevation--z7" style="background-image: url(<?php echo esc_attr($author_avatar); ?>);"></div>
             <h4><?php echo esc_html($author_data->display_name); ?></h4>
-            <p class="about-box-subheading"><?php echo (get_option('blogdescription')); ?></p>
+            <p class="about-box-subheading"><?php echo(get_option('blogdescription')); ?></p>
             <p class="about-box-description"><?php echo esc_html($author_description); ?></p>
-            <a href="<?php echo esc_url(get_author_posts_url($author_data->ID)) ?>" class="button white outline"><?php esc_html_e('About Me', 'materialis')?></a>
+            <a href="<?php echo esc_url(get_author_posts_url($author_data->ID)) ?>" class="button white outline"><?php esc_html_e('About Me', 'materialis') ?></a>
         </div>
     <?php
-endif;
+    endif;
 }
 
 function materialis_has_category()
@@ -459,11 +463,12 @@ function materialis_the_category($small_buttons = false)
     $linkTemplate = '<a href="%1$s"  class="button color5 link %3$s">%2$s</a>';
     $classes      = $small_buttons ? "small" : "";
 
-    if (!count($categories)) {
+
+    if ( ! count($categories)) {
         return;
     }
 
-    if (is_archive() || !is_single()) {
+    if (is_archive() || ! is_single()) {
         $after = (count($categories) > 1) ? "<span class='has-more-categories'>[&hellip;]</span>" : "";
 
         printf($linkTemplate . $after,
@@ -493,8 +498,8 @@ function materialis_footer_background($footer_class)
     $attrs = apply_filters('materialis_footer_background_atts', $attrs);
 
     foreach ($attrs as $key => $value) {
-        $value = esc_attr(trim($value));
-        $key   = esc_attr($key);
+        $value  = esc_attr(trim($value));
+        $key    = esc_attr($key);
         $result .= " {$key}='{$value}'";
     }
 

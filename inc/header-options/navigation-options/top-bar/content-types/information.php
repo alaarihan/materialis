@@ -161,7 +161,7 @@ function materialis_print_header_top_bar_info_fields($area)
         ?>
         <div class="top-bar-field" data-type="group" <?php echo $preview_atts; ?> data-dynamic-mod="true">
             <i class="mdi <?php echo esc_attr($icon) ?>"></i>
-            <span><?php echo esc_html($text); ?></span>
+            <span><?php echo materialis_wp_kses_post($text); ?></span>
         </div>
         <?php
 

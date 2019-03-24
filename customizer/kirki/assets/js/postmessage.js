@@ -107,6 +107,7 @@
 
                                     cssArray[i] = '';
                                     _.each(newval, function (subValueValue, subValueKey) {
+
                                         if (undefined !== args.choice) {
                                             if (args.choice === subValueKey) {
                                                 cssArray[i] += args.element + '{' + args.property + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
@@ -115,7 +116,6 @@
                                             if (_.contains(['top', 'bottom', 'left', 'right'], subValueKey)) {
                                                 cssArray[i] += args.element + '{' + args.property + '-' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
                                             } else {
-
                                                 if (subValueKey === "variant") {
 
                                                     var fontStyle = (subValueValue.indexOf('italic') !== -1) ? "italic" : "normal";
@@ -125,7 +125,16 @@
                                                     cssArray[i] += args.element + '{font-weight:' + fontWeight + ';}';
 
                                                 } else {
-                                                    cssArray[i] += args.element + '{' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+                                                    if (subValueKey === 'addwebfont' || subValueKey == 'subsets') {
+                                                        return;
+                                                    } else {
+                                                        if (subValueKey === 'mobile-font-size') {
+                                                            cssArray[i] += '@media screen and (max-width: 767px) {' + args.element + '{font-size:' + args.prefix + subValueValue + args.units + args.suffix + ';}}';
+                                                        } else {
+                                                            cssArray[i] += args.element + '{' + subValueKey + ':' + args.prefix + subValueValue + args.units + args.suffix + ';}';
+                                                        }
+                                                    }
+
                                                 }
                                             }
                                         }

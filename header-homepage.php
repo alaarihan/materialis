@@ -11,7 +11,7 @@
 <body <?php body_class(); ?>>
 
 
-<div class="header-top homepage">
+<div id="page-top" class="header-top homepage">
 	<?php materialis_print_header_top_bar(); ?>
 	<?php materialis_get_navigation(); ?>
 </div>

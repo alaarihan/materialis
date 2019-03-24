@@ -163,12 +163,13 @@ function materialis_add_general_settings($wp_customize)
     /* logo max height */
 
     materialis_add_kirki_field(array(
-        'type'     => 'number',
-        'label'    => esc_html__('Logo Max Height (px)', 'materialis'),
-        'section'  => 'title_tagline',
-        'default'  => 70,
-        'settings' => 'logo_max_height',
-        'priority' => 8,
+        'type'      => 'number',
+        'label'     => esc_html__('Logo Max Height (px)', 'materialis'),
+        'settings'  => 'logo_max_height',
+        'section'   => 'title_tagline',
+        'default'   => 70,
+        'transport' => 'postMessage',
+        'priority'  => 8,
     ));
 
     $wp_customize->add_setting('bold_logo', array(
@@ -251,9 +252,15 @@ function materialis_customize_controls_enqueue_scripts()
     wp_enqueue_script('thickbox');
 
     wp_enqueue_style($textDomain . '-webgradients', get_template_directory_uri() . '/assets/css/webgradients.css');
-    wp_enqueue_style($textDomain . '-customizer-base', $cssUrl . '/customizer.css');
 
-    wp_enqueue_script($textDomain . '-customize', $jsUrl . "/customize.js", array('jquery'));
+    if (apply_filters('materialis_load_bundled_version', true)) {
+        wp_enqueue_script($textDomain . '-customize', $jsUrl . "/customize.bundle.min.js", array('jquery', 'customize-base', 'customize-controls', 'media-views'), true);
+        wp_enqueue_style($textDomain . '-customizer-base', $cssUrl . '/customizer.bundle.min.css');
+    } else {
+		wp_enqueue_style($textDomain . '-customizer-base', $cssUrl . '/customizer.css');
+        wp_enqueue_script($textDomain . '-customize', $jsUrl . "/customize.js", array('jquery', 'customize-base', 'customize-controls'), true);
+    }
+
     $settings = array(
         'stylesheetURL' => get_template_directory_uri(),
         'templateURL'   => get_template_directory_uri(),
@@ -284,6 +291,7 @@ function materialis_customize_preview_init()
 
 add_action('customize_preview_init', 'materialis_customize_preview_init');
 
+
 function materialis_get_gradients_classes()
 {
     return apply_filters("materialis_webgradients_list", array(
@@ -292,7 +300,6 @@ function materialis_get_gradients_classes()
         "ripe_malinka",
         "new_life",
         "sunny_morning",
-        "red_salvation",
     ));
 }
 
@@ -314,7 +321,7 @@ function materialis_get_parsed_gradients()
             ),
         ),
 
-        'plum_plate'       => array(
+        'plum_plate' => array(
             'angle'  => '135',
             'colors' => array(
                 0 => array(
@@ -328,15 +335,43 @@ function materialis_get_parsed_gradients()
             ),
         ),
 
-        'red_salvation'    => array(
-            'angle'  => '142',
-            'colors' => array(
+        'ripe_malinka' => array(
+            'angle'    => '120',
+            'colors'   => array(
                 0 => array(
-                    'color'    => 'rgba(244,59,71, 0.8)',
+                    'color'    => 'rgba(240,147,251,0.8)',
                     'position' => '0%',
                 ),
                 1 => array(
-                    'color'    => 'rgba(69,58,148, 0.8)',
+                    'color'    => 'rgba(245,87,108,0.8)',
+                    'position' => '100%',
+                ),
+            ),
+        ),
+
+        'new_life'   => array(
+            'angle'  => '90',
+            'colors' => array(
+                0 => array(
+                    'color'    => 'rgba(67,233,123,0.8)',
+                    'position' => '0%',
+                ),
+                1 => array(
+                    'color'    => 'rgba(56,249,215,0.8)',
+                    'position' => '100%',
+                ),
+            ),
+        ),
+
+        'sunny_morning' => array(
+            'angle'     => '120',
+            'colors'    => array(
+                0 => array(
+                    'color'    => 'rgba(246,211,101,0.8)',
+                    'position' => '0%',
+                ),
+                1 => array(
+                    'color'    => 'rgba(253,160,133,0.8)',
                     'position' => '100%',
                 ),
             ),
@@ -363,6 +398,7 @@ function materialis_wp_ajax_materialis_webgradients_list()
             'parsed'   => $parsed,
         );
     }
+
 
     $result = apply_filters("materialis_wp_ajax_webgradients_list", $result);
 
@@ -413,6 +449,7 @@ function materialis_body_class($classes)
 
 add_filter('body_class', 'materialis_body_class');
 
+
 // code from rest_sanitize_boolean
 function materialis_sanitize_boolean($value)
 {
@@ -425,8 +462,9 @@ function materialis_sanitize_boolean($value)
     }
 
     // Everything else will map nicely to boolean.
-    return (boolean) $value;
+    return (boolean)$value;
 }
+
 
 /**
  * @param      $control
@@ -436,7 +474,7 @@ function materialis_sanitize_boolean($value)
  */
 function materialis_customizer_focus_control_attr($control, $print = true)
 {
-    if (!materialis_is_customize_preview()) {
+    if ( ! materialis_is_customize_preview()) {
         return false;
     }
 

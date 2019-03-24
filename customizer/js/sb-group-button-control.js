@@ -48,7 +48,7 @@ wp.customize.controlConstructor['sidebar-button-group'] = wp.customize.Control.e
             if (in_row_with && in_row_with.length) {
                 _.each(in_row_with, function (c) {
                     control.container.css({
-                        "width": "39%",
+                        "width": "calc(35% - 6px)",
                         "clear": "right",
                         "float": "right",
                     });
@@ -57,7 +57,7 @@ wp.customize.controlConstructor['sidebar-button-group'] = wp.customize.Control.e
                     if (ct) {
                         ct.container.css({
                             "width": "auto",
-                            "max-width": "calc(60% - 12px)"
+                            "max-width": "calc(65% - 6px)"
                         })
                     }
                 })

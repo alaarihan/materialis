@@ -119,10 +119,14 @@ if ( ! class_exists( 'Kirki_Styles_Customizer' ) ) {
 		 *
 		 * @access public
 		 */
-		public function customizer_styles() {
-			wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ) . 'assets/css/customizer.css', null );
-			wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
-		}
+        public function customizer_styles()
+        {
+            
+            if ( ! apply_filters('materialis_load_bundled_version', true)) {
+				wp_enqueue_style( 'kirki-customizer-css', trailingslashit( Kirki::$url ) . 'assets/css/customizer.css', null );
+				wp_add_inline_style( 'kirki-customizer-css', $this->custom_css() );
+			}
+        }
 
 		/**
 		 * Gets the colors used.

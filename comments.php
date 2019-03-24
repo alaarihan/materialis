@@ -63,24 +63,24 @@ endif;
                     'comment_notes_before' => '',
                     'comment_field'        => '<div class="comment-form-comment mdc-text-field mdc-text-field--textarea">' .
                                               '<textarea id="comment" name="comment" class="mdc-text-field__input" rows="8" cols="40" required></textarea>' .
-                                              '<label for="comment" class="mdc-text-field__label">' . __('Comment', 'materialis') . '</label>' .
+                                              '<label for="comment" class="mdc-floating-label">' . __('Comment', 'materialis') . '</label>' .
                                               '</div>',
                     'fields'               => apply_filters(
                         'comment_form_default_fields',
                         array(
                             'author' => '<div class="comment-form-author mdc-text-field half right-margin">' .
                                         '<input type="text" id="author" name="author" class="mdc-text-field__input" size="30" maxlength="245" required>' .
-                                        '<label class="mdc-text-field__label" for="author">' . __('Your Name', 'materialis') . '</label>' .
+                                        '<label class="mdc-floating-label" for="author">' . __('Your Name', 'materialis') . '</label>' .
                                         '<div class="mdc-line-ripple"></div>' .
                                         '</div>',
                             'email'  => '<div class="comment-form-email mdc-text-field half left-margin">' .
                                         '<input type="email" id="email" name="email" class="mdc-text-field__input" size="30" maxlength="100" required>' .
-                                        '<label class="mdc-text-field__label" for="email">' . __('Your Email', 'materialis') . '</label>' .
+                                        '<label class="mdc-floating-label" for="email">' . __('Your Email', 'materialis') . '</label>' .
                                         '<div class="mdc-line-ripple"></div>' .
                                         '</div>',
                             'url'    => '<div class="comment-form-url mdc-text-field">' .
                                         '<input type="text" id="url" name="url" class="mdc-text-field__input" size="30" maxlength="200">' .
-                                        '<label class="mdc-text-field__label" for="url">' . __('Your Website', 'materialis') . '</label>' .
+                                        '<label class="mdc-floating-label" for="url">' . __('Your Website', 'materialis') . '</label>' .
                                         '<div class="mdc-line-ripple"></div>' .
                                         '</div>',
                         )

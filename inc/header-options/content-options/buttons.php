@@ -1,5 +1,6 @@
 <?php
 
+
 function materialis_header_buttons_defaults()
 {
     return materialis_mod_default('header_content_buttons');
@@ -79,6 +80,7 @@ function materialis_front_page_header_buttons_options($section, $prefix, $priori
         )
     );
 
+
     materialis_add_kirki_field(array(
         'type'      => 'ope-info-pro',
         'label'     => esc_html__('More colors and typography options available in PRO. @BTN@', 'materialis'),
@@ -121,15 +123,18 @@ function materialis_print_header_content_main_hook()
         $content = '<div data-dynamic-mod-container class="header-buttons-wrapper ' . $shadow_class . '"><div class="remove-gutter">' . $content . '</div></div>';
     }
 
+
     echo $content;
 
 }
 
 add_action("materialis_print_header_content", 'materialis_print_header_content_main_hook', 1);
 
+
 /*
-template functions
- */
+    template functions
+*/
+
 
 function materialis_buttons_list_item_mods_attr($index, $setting)
 {
@@ -149,9 +154,9 @@ function materialis_print_buttons_list($setting, $default = array())
 {
     $buttons = materialis_get_theme_mod($setting, $default);
 
-    if (!materialis_can_show_demo_content()) {
+    if ( ! materialis_can_show_demo_content()) {
         $buttons_mod_content = get_theme_mod($setting, null);
-        if (!is_array($buttons_mod_content)) {
+        if ( ! is_array($buttons_mod_content)) {
             return;
         }
     }
@@ -162,7 +167,7 @@ function materialis_print_buttons_list($setting, $default = array())
 
         if ($default_cnt == 2) {
             $button = apply_filters('materialis_print_buttons_list_button', $button, $setting, $index, 0);
-        } else if (!isset($button['class']) || !trim($button['class'])) {
+        } else if ( ! isset($button['class']) || ! trim($button['class'])) {
             if ($default_cnt == 0) {
                 $button = apply_filters('materialis_print_buttons_list_button', $button, $setting, $index, 1);
             }
@@ -187,6 +192,7 @@ function materialis_print_buttons_list($setting, $default = array())
         foreach ($extraAtts as $key => $value) {
             $extraAttsString .= " {$key}='" . esc_attr($value) . "'";
         }
+
 
         $title = html_entity_decode($title);
 
@@ -256,6 +262,7 @@ function materialis_buttons_list_item_mods($index, $setting)
 }
 
 add_filter('materialis_header_buttons_group', 'materialis_header_buttons_background_controls_group');
+
 
 function materialis_header_buttons_background_controls_group($controls)
 {

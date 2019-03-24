@@ -18,3 +18,7 @@ function materialis_pro_section_button($wp_customize)
             'capability' => "edit_theme_options",
         )));
 }
+
+add_filter('embed_oembed_html', function ($result) {
+    return "<div class='embed-container'>{$result}</div>";
+});

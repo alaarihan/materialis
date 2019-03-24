@@ -5,8 +5,8 @@ return array (
   array (
     'index' => 0,
     'id' => 'free-header_0',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header.jpg?v=1528720916',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header.jpg?v=1528720916',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header.jpg?v=1537976518',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header.jpg?v=1537976518',
     'description' => 'header preset 1',
     'settings' => 
     array (
@@ -220,19 +220,19 @@ return array (
       'header_separator_color' => '#ffffff',
       'header_separator_color_accent' => '#fa5252',
       'header_separator_height' => 154,
-      'header_content_show_subtitle2' => false,
+      'header_content_show_subtitle2' => true,
       'header_content_subtitle2_group' => '',
       'header_content_subtitle_spacing2' => 
       array (
         'top' => '0',
-        'bottom' => '20px',
+        'bottom' => '0px',
       ),
       'header_content_subtitle2_typography' => 
       array (
         'font-family' => 'Roboto',
-        'font-size' => '1.4rem',
+        'font-size' => '3rem',
         'mobile-font-size' => '1.3rem',
-        'font-weight' => '400',
+        'font-weight' => '300',
         'line-height' => '130%',
         'letter-spacing' => 'normal',
         'subsets' => 
@@ -268,7 +268,7 @@ return array (
       'header_show_text_morph_animation_info' => '',
       'header_text_morph_alternatives' => 'some text
 some other text',
-      'header_content_show_subtitle' => true,
+      'header_content_show_subtitle' => false,
       'header_content_subtitle_group' => '',
       'header_content_subtitle_spacing' => 
       array (
@@ -645,8 +645,8 @@ some other text',
   array (
     'index' => 1,
     'id' => 'free-header-0_1',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-0.jpg?v=1528720916',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-0.jpg?v=1528720916',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-0.jpg?v=1537976518',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-0.jpg?v=1537976518',
     'description' => 'header preset 2',
     'settings' => 
     array (
@@ -1278,16 +1278,16 @@ some other text',
       ),
       'header_title' => 'DRAG AND DROP BUSINESS THEME',
       'header_subtitle' => '',
-      'header_subtitle2' => '<span  style="font-size: 3rem;">Beautiful Materials Theme</span>',
-      'header_title_color' => '#000000',
+      'header_subtitle2' => '<span  style="font-size: 3rem;">Beautiful Materialis Theme</span>',
+      'header_title_color' => '#ffffff',
     ),
   ),
   'free-header-1' => 
   array (
     'index' => 2,
     'id' => 'free-header-1_2',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-1.jpg?v=1528720916',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-1.jpg?v=1528720916',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-1.jpg?v=1537976518',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-1.jpg?v=1537976518',
     'description' => 'header preset 3',
     'settings' => 
     array (
@@ -1927,8 +1927,8 @@ some other text',
   array (
     'index' => 3,
     'id' => 'free-header-2_3',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-2.jpg?v=1528720916',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-2.jpg?v=1528720916',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-2.jpg?v=1537976518',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-2.jpg?v=1537976518',
     'description' => 'header preset 4',
     'settings' => 
     array (
@@ -2568,8 +2568,8 @@ some other text',
   array (
     'index' => 4,
     'id' => 'free-header-3_4',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-3.jpg?v=1528720916',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-3.jpg?v=1528720916',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-3.jpg?v=1537976518',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-3.jpg?v=1537976518',
     'description' => 'header preset 5',
     'settings' => 
     array (
