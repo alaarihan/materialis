@@ -137,8 +137,8 @@ function materialis_setup()
         'option_type' => 'theme_mod',
     ));
 
-    materialis_theme_page();
-    materialis_suggest_plugins();
+    // materialis_theme_page();
+    // materialis_suggest_plugins();
 
 }
 
@@ -228,7 +228,7 @@ function materialis_tgma_suggest_plugins()
     tgmpa($plugins, $config);
 }
 
-add_action('tgmpa_register', 'materialis_tgma_suggest_plugins');
+// add_action('tgmpa_register', 'materialis_tgma_suggest_plugins');
 
 function materialis_can_show_demo_content()
 {
@@ -309,6 +309,7 @@ function materialis_replace_file_extension($filename, $old_extenstion, $new_exte
 
 function materialis_enqueue($type = 'style', $handle, $args = array())
 {
+    
     $theme = wp_get_theme();
     $ver   = $theme->get('Version');
     $data  = array_merge(array(
@@ -381,6 +382,8 @@ function materialis_associative_array_splice($oldArray, $offset, $key, $data)
 
 function materialis_do_enqueue_assets()
 {
+    
+    wp_enqueue_style( 'droidarabickufi-font','https://fonts.googleapis.com/earlyaccess/droidarabickufi.css', array(), '1.0.1' );
 
     $theme        = wp_get_theme();
     $ver          = $theme->get('Version');
@@ -469,6 +472,21 @@ function materialis_do_enqueue_assets()
             'has_min' => true,
         )
     );
+
+	wp_enqueue_style( 'fontawsome-css', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '1.0' );
+    
+    // Only home page.
+	if (is_front_page()) {
+		wp_enqueue_script( 'home-scripts', get_template_directory_uri() . '/home-assets/js/scripts.js', array('jquery'), '1.0.6', true );
+		wp_enqueue_style( 'home-animate', get_template_directory_uri() . '/home-assets/css/animate.min.css', array(), '1.0.0' );
+		wp_enqueue_style( 'home-style', get_template_directory_uri() . '/home-assets/css/style.css', array(), '1.0.9' );
+    }
+
+    if ( is_rtl() ) {
+        wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), '1.0.3' );
+    }
+    
+    wp_enqueue_style( 'custom', get_template_directory_uri() . '/custom.css', array(), '1.0.8' );
 
 }
 
@@ -575,7 +593,7 @@ function materialis_widgets_init()
         'name'          => esc_html__("Footer First Box Widgets", 'materialis'),
         'id'            => "first_box_widgets",
         'title'         => esc_html__("Widget Area", 'materialis'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
@@ -585,7 +603,7 @@ function materialis_widgets_init()
         'name'          => esc_html__("Footer Second Box Widgets", 'materialis'),
         'id'            => "second_box_widgets",
         'title'         => esc_html__("Widget Area", 'materialis'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
@@ -595,7 +613,17 @@ function materialis_widgets_init()
         'name'          => esc_html__("Footer Third Box Widgets", 'materialis'),
         'id'            => "third_box_widgets",
         'title'         => esc_html__("Widget Area", 'materialis'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="widgettitle">',
+        'after_title'   => '</h4>',
+    ));
+
+	register_sidebar(array(
+        'name'          => esc_html__("Footer Fourth Box Widgets", 'materialis'),
+        'id'            => "fourth_box_widgets",
+        'title'         => esc_html__("Widget Area", 'materialis'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',

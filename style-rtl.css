@@ -1,0 +1,69 @@
+body{
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: embed;
+    font-family: 'Droid Arabic Kufi', sans-serif;
+}
+h1, h1.title, h2, h3, h4, h5, h6 {
+    font-family: 'Droid Arabic Kufi', sans-serif;
+}
+
+.sidebar .widget .widgettitle i.widget-icon {
+    margin-right: 0;
+    margin-left: .5rem;
+}
+
+h1.hero-title {
+    letter-spacing: 0;
+}
+.post-comments .add-comment-toggler {
+    margin-left: 0;
+    margin-right: auto;
+}
+h1.hero-title {
+    font-size: 2.8rem;
+}
+.h2, h2 {
+    font-size: 2.2rem;
+}
+h3, h3 {
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+}
+body #page a, body #page p {
+    -ms-word-wrap: initial;
+    word-wrap: initial;
+}
+.nav-links .nav-previous .font-icon-post, .post-comments .navigation .nav-previous .font-icon-post {
+    margin-right: 0;
+    margin-left: .5rem;
+}
+
+.nav-links .mdi-chevron-left:before {
+    content: "\F142";
+}
+
+.nav-links .mdi-chevron-right:before {
+    content: "\F141";
+}
+.nav-links .nav-next, .nav-links .next-navigation, .post-comments .navigatio .nav-next, .post-comments .navigation .next-navigation {
+    text-align: left;
+}
+.offcanvas_menu li {
+    text-align: right;
+}
+
+.offcanvas_menu li a {
+    padding: .75rem 2.5rem .75rem 0;
+}
+
+.vc_col-sm-1, .vc_col-sm-10, .vc_col-sm-11, .vc_col-sm-12, .vc_col-sm-2, .vc_col-sm-3, .vc_col-sm-4, .vc_col-sm-5, .vc_col-sm-6, .vc_col-sm-7, .vc_col-sm-8, .vc_col-sm-9 {
+    float: right !important;
+}
+
+
+@media (min-width: 768px){
+    ul.dropdown-menu>li>a {
+        letter-spacing: 0;
+    }
+}

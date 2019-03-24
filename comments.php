@@ -7,7 +7,7 @@ endif;
 
 <div class="post-comments col-padding mdc-elevation--z5">
     <?php if (have_comments()): ?>
-        <div class="flexbox middle-sm space-bottom-large comments-counter-wrapper">
+        <div class="flexbox middle-sm comments-counter-wrapper">
             <h3 class="comments-title">
 			<span class="comments-number">
 				<?php comments_number(__('No Comments', 'materialis'), __('Comments: <span>1</span>', 'materialis'), __('Comments: <span>%</span>', 'materialis')); ?>
@@ -40,7 +40,7 @@ endif;
         endif;
 
     elseif (comments_open() && post_type_supports(get_post_type(), 'comments')): ?>
-        <div class="flexbox middle-sm space-bottom-large  comments-counter-wrapper">
+        <div class="flexbox middle-sm  comments-counter-wrapper">
             <h4 class="comments-title">
                 <span class="comments-number"><?php esc_html_e('No Comments', 'materialis'); ?></span>
             </h4>

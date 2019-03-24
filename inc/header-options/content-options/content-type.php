@@ -1001,15 +1001,15 @@ function materialis_front_page_header_content_options($section, $prefix, $priori
         'priority'        => $priority,
     ));
 
-    materialis_add_kirki_field(array(
-        'type'      => 'ope-info-pro',
-        'label'     => esc_html__('More content layouts and media types available in PRO. @BTN@', 'materialis'),
-        'section'   => $section,
-        'priority'  => $priority,
-        'settings'  => 'header_content_pro_info',
-        'default'   => true,
-        'transport' => 'postMessage',
-    ));
+    // materialis_add_kirki_field(array(
+    //     'type'      => 'ope-info-pro',
+    //     'label'     => esc_html__('More content layouts and media types available in PRO. @BTN@', 'materialis'),
+    //     'section'   => $section,
+    //     'priority'  => $priority,
+    //     'settings'  => 'header_content_pro_info',
+    //     'default'   => true,
+    //     'transport' => 'postMessage',
+    // ));
 
     materialis_add_kirki_field(array(
         'type'     => 'spacing',
