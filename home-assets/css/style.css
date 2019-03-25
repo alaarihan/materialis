@@ -18,8 +18,13 @@ body {background: #fff; font-family: 'Droid Arabic Kufi',sans-serif;; font-size:
 #main-content .circle {zoom: 0.8; width:768px; height: 768px; background: url(../img/menu_bg.png); margin:10px auto 0; position: relative; background-size: cover;}
 #main-content .circle, #main-content .circle * {-webkit-transition: all 0.5s ease-in-out 0s;-moz-transition: all 0.5s ease-in-out 0s;-ms-transition: all 0.5s ease-in-out 0s;-o-transition: all 0.5s ease-in-out 0s;transition: all 0.5s ease-in-out 0s;}
 #main-content .circle div.danlogo {position: absolute; width:97px; height: 172px; left:50%; margin-left: -48px; top:35px;}
-#main-content .circle button.icon {padding:0; margin:0; background: none; border:none; position: absolute; color: #3d472f;}
+#main-content .circle button.icon, 
+#main-content .circle a.icon {padding:0; margin:0; background: none; border:none; position: absolute; color: #3d472f;}
 #main-content .circle button.icon.about {right:140px; top:140px;}
+#main-content .circle a.icon.general-questions {
+	right: 66px;
+    top: 237px;
+}
 #main-content .circle button.icon.reg {left:140px; top:140px;}
 #main-content .circle button.icon.thoughts {right:30px; top:350px;}
 #main-content .circle button.icon.contact {left:40px; top:350px;}
@@ -37,6 +42,10 @@ body {background: #fff; font-family: 'Droid Arabic Kufi',sans-serif;; font-size:
 #main-content .circle.fly {position: absolute; right:30px; top:10px; width:450px; height: 450px; z-index: 2; zoom: 1;}
 #main-content .circle.fly div.danlogo { position: absolute; width:48px; height: auto; margin-left: -24px; top:25px;}
 #main-content .circle.fly button.icon.about {right:75px; top:70px; width:40px;}
+#main-content .circle.fly a.icon.general-questions {
+    right: 37px;
+    top: 135px;
+}
 #main-content .circle.fly button.icon.reg {left:75px; top:65px; width:40px;}
 #main-content .circle.fly button.icon.thoughts {right:15px; top:200px; width:64px;}
 #main-content .circle.fly button.icon.contact {left:22px; top:200px; width:36px;}
@@ -92,17 +101,27 @@ div.pdfemb-viewer {
 .library-categories .lib-cat{
 	text-align: center;
 	display: block;
+	margin: 10px 0;
 }
 
 .library-categories .lib-cat i{
 	font-size: 6em;
+	 -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .library-categories .lib-cat .name{
 	margin-top: 10px;
 }
 
+#main-content .circle a.icon.general-questions i {
+    font-size: 35px;
+}
 
+#main-content .circle button.icon.library i{
+	 -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 
 @media (max-width: 900px){
     #splash {

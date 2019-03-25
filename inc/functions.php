@@ -983,6 +983,8 @@ function materialis_title()
     } else if (is_archive()) {
         if (is_post_type_archive()) {
             $title = post_type_archive_title('', false);
+        } else if (is_tax()) {
+            $title = single_term_title();
         } else {
             $title = get_the_archive_title();
         }

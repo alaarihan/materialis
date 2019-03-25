@@ -10,7 +10,7 @@
 <?php materialis_get_header();?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
-	<div id="splash">
+	<div id="splash" class="hidden">
 		<div class="menu">
 			<a href="" class="icon home desktop"></a>
 			<a href="mobile-home" class="icon home mobile"></a>
@@ -20,10 +20,10 @@
 		</div>
 	</div>
 
-	<div id="main-content" class="hidden">
+	<div id="main-content">
 		<div class="container">
 			<div class="nav pull-left">
-				<a href="#" class="btn lang btn-default back">العودة</a>
+				<a href="#" class="btn lang btn-default back hidden">العودة</a>
 				<a href="https://community.dandara.org" target="_blank" class="btn lang">مجتمعات النقاش</a>
 				<a href="https://chat.dandara.org" target="_blank" class="btn lang">المحادثة المباشرة</a>
 				<a href="#" class="social fb"></a>
@@ -35,6 +35,10 @@
 			<div class="danlogo"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/home-assets/img/micon_danlogo.png" alt="" class="img-responsive"></div>
 
 			<button class="icon about" value="rotateOut"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/home-assets/img/micon_about.png" alt="" class="img-responsive"></button>
+			<a href="/أسئلة-عامة/" class="icon general-questions">
+				<i class="fas fa-question-circle"></i>
+				<div>أسئلة عامة</div>
+			</a>
 
 			<button class="icon thoughts"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/home-assets/img/micon_thoughts.png" alt="" class="img-responsive"></button>
 			
@@ -64,11 +68,6 @@
 				<div class="container">
 					<button class="btn btn-danger closex pull-left">X</button>
 					<div class="content">
-						<div class="buttons">
-							<a href="<?php echo esc_url(home_url( '/' )); ?>?p=9" target="_blank" class="btn abtn">الكتيب التعريفي</a>
-						
-						</div>
-						<div class="clearfix"></div>
 						<h2>من نحن</h2>
 						<?php echo do_shortcode( '[insert page="2" display="content"]' ); ?>
 					</div>
@@ -80,8 +79,6 @@
 				<div class="container">
 					<button class="btn btn-danger closex pull-left">X</button>
 					<div class="content">
-					
-
 						<h2>الانشطة</h2>
 						<?php echo do_shortcode( '[insert page="453" display="content"]' ); ?>
 					</div>
@@ -136,7 +133,7 @@
 				<div class="container">
 					<button class="btn btn-danger closex pull-left">X</button>
 					<div class="content">
-						<h2>التواصل معنا</h2>
+						<h2>تواصل معنا</h2>
 						<?php echo do_shortcode( '[insert page="423" display="content"]' ); ?>
 					</div>
 				</div>
@@ -146,7 +143,7 @@
 				<div class="container">
 					<button class="btn btn-danger closex pull-left">X</button>
 					<div class="content">
-						<h2>من المنصة</h2>
+						<h2>منصة القضايا المحمدية</h2>
 						<div class="row">
 							<?php
 							$gargs = array(

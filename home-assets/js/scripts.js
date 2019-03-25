@@ -172,15 +172,9 @@ jQuery('#main-content button.icon.conf').click(function(e){
 });
 
 function HashHandler(e) {
-	if(window.location.hash !== '#main' && window.location.hash != '' && window.location.hash != '#'){
-		jQuery('#splash').addClass('hidden')
-		jQuery('#main-content').removeClass('hidden')
-	}
-	if(window.location.hash === '#main'){
+	if(window.location.hash === '#main' || !window.location.hash || window.location.hash == '' || window.location.hash == '#'){
 		jQuery('#content button.closex').trigger('click')
 		showmain();
-	}else if(!window.location.hash || window.location.hash == '' || window.location.hash == '#'){
-		hidemain();
 	}else if(window.location.hash == '#about'){
 		jQuery('#main-content button.icon.about').trigger('click')
 	}else if(window.location.hash == '#gal'){
@@ -207,5 +201,4 @@ function HashHandler(e) {
 }
 
 window.addEventListener("hashchange", HashHandler, false);
-
 

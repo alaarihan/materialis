@@ -15,17 +15,21 @@ h1, h1.title, h2, h3, h4, h5, h6 {
     color: #3d472f;
 }
 a {
-    color: #338837;
+    color: rgb(48, 64, 34);
 }
 a:hover {
-    color: #68eb50;
+    color: rgb(83, 109, 62);
+}
+
+h1.hero-title {
+    margin-bottom: 0;
 }
 
 .sidebar .widget ul li a {
     color: #2b422c;
 }
 .sidebar .widget ul li a:hover, .sidebar .widget ul li a:hover * {
-    color: #68eb50;
+    color: rgb(83, 109, 62);
 }
 
 .sidebar .widget .widgettitle i.widget-icon {
@@ -35,8 +39,8 @@ a:hover {
 .coloured-nav ul.dropdown-menu.simple-text-buttons>li:not(.current-menu-item):not(.current_page_item).hover>a, .coloured-nav ul.dropdown-menu.simple-text-buttons>li:not(.current-menu-item):not(.current_page_item):hover>a, .fixto-fixed ul.dropdown-menu.simple-text-buttons>li:not(.current-menu-item):not(.current_page_item).hover>a, .fixto-fixed ul.dropdown-menu.simple-text-buttons>li:not(.current-menu-item):not(.current_page_item):hover>a {
     color: #68eb50;
 }
-.sidebar .widget ul li a:hover:before {
-    background: #68eb50;
+.sidebar .widget ul li:hover:before {
+    background: rgb(83, 109, 62);
     left: 0;
     right: -1px;
 }
@@ -61,7 +65,7 @@ a:hover {
 }
 
 ul.dropdown-menu li a {
-    padding: .9em .6em;
+    padding: .9em .3em;
 }
 
 .page-template-home-template .header-wrapper{
@@ -138,7 +142,7 @@ body.page-template-mobile-home-template .inner-header-description{
 }
 
 .breadcrumbs {
-    margin-top: 25px;
+    margin-top: 10px;
     background: #fff;
     margin-bottom: 8px;
     border-radius: 4px;
@@ -149,14 +153,24 @@ button.icon{
 	font-size: 14px;
 }
 
-#main-content .circle.fly button.icon {
+#main-content .circle.fly button.icon,
+#main-content .circle.fly a.icon {
     font-size: 10px;
 }
 
-button.icon i{
+#main-content .circle a.icon{
+	text-align: center;
+    font-weight: bold;
+    line-height: 1.5em;
+    font-size: 14px;
+}
+
+button.icon i,
+a.icon i{
 	font-size: 38px;
 }
-#main-content .circle.fly button.icon i {
+#main-content .circle.fly button.icon i,
+#main-content .circle.fly a.icon i {
     font-size: 24px;
 }
 
@@ -207,6 +221,9 @@ button.icon i{
 .logo_col, .main_menu_col {
     text-align: right;
 }
+.main_menu_col {
+    justify-content: flex-start;
+}
 
 ul.dropdown-menu li li a.hover, ul.dropdown-menu li li a:hover, ul.dropdown-menu li li:hover>a {
     background-color: #196830;
@@ -252,12 +269,13 @@ body.culture .tickerr{
 	display: none;
 }
 
-input.form-control,
-textarea.form-control {
+.wpcf7 input.form-control,
+.wpcf7 textarea.form-control {
     border: 1px #4a4a4a solid;
     border-radius: 5px;
     margin-bottom: 5px;
     padding: 7px;
+    width: 100%;
 }
 
 .footer-widgets .widget ul li {
@@ -333,12 +351,19 @@ textarea.form-control {
 	display: block;
 }
 
+.child-terms .child-term i{
+	 -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .book-item{
     text-align: center;
     margin: 15px 0;
 }
 .book-item i{
     font-size: 6em;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .book-item .name{
@@ -368,6 +393,41 @@ textarea.form-control {
 
 .book-terms i{
 	font-size: 6em;
+	-webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.wpb-js-composer .vc_tta-color-green.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading {
+    border-color: rgb(83, 109, 62) !important;
+    background-color: rgb(83, 109, 62) !important;
+}
+
+.wpb-js-composer .vc_tta-color-green.vc_tta-style-classic .vc_tta-panel.vc_active .vc_tta-panel-title>a {
+    color: #fff !important;
+}
+
+.post-list-item .wathiqa_page {
+    margin-bottom: 35px;
+}
+.wathiqa_page {
+    line-height: 2.2em;
+}
+.post-list-item .wathiqa_page .mdc-card {
+    padding: 0;
+    border-radius: 4px;
+    overflow: visible;
+}
+
+h4.wathiqa-page-number {
+    text-align: center;
+    margin-top: 40px;
+}
+
+h4.wathiqa-page-number:before {
+    content: '- ';
+}
+h4.wathiqa-page-number:after {
+    content: ' -';
 }
 
 @media (min-width: 1200px){
