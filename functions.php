@@ -64,8 +64,12 @@ if (version_compare(phpversion(), MATERIALIS_THEME_REQUIRED_PHP_VERSION, '>=')) 
 add_action( 'pre_get_posts', 'change_sort_order_for_wathiqa_page'); 
 function change_sort_order_for_wathiqa_page($query){
     if ( is_post_type_archive('wathiqa_page') ) {
-       $query->set( 'order', 'ASC' );
-       $query->set( 'orderby', 'title_num' );
+        if(!is_admin()){
+		    $query->set( 'order', 'ASC' );
+		    $query->set( 'orderby', 'title_num' );
+		   
+		   	$query->set( 'posts_per_page', 1000 );
+        }
     }  
 };
 
