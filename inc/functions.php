@@ -725,14 +725,14 @@ function materialis_enqueue_scripts($textDomain, $ver, $is_child)
 	  if (is_front_page()) {
       wp_enqueue_script( 'home-scripts', get_template_directory_uri() . '/home-assets/js/scripts.js', array('jquery'), '1.0.6', false );
       wp_enqueue_style( 'home-animate', get_template_directory_uri() . '/home-assets/css/animate.min.css', array(), '1.0.0' );
-      wp_enqueue_style( 'home-style', get_template_directory_uri() . '/home-assets/css/style.css', array(), '1.0.9' );
+      wp_enqueue_style( 'home-style', get_template_directory_uri() . '/home-assets/css/style.css', array(), '1.0.10' );
     }
 
     if ( is_rtl() ) {
-        wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), '1.0.3' );
+        wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), '1.0.4' );
     }
     
-    wp_enqueue_style( 'custom', get_template_directory_uri() . '/custom.css', array(), '1.0.8' );
+    wp_enqueue_style( 'custom', get_template_directory_uri() . '/custom.css', array(), '1.1.1' );
 }
 
 

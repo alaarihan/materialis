@@ -447,4 +447,12 @@ h4.wathiqa-page-number:after {
 	.footer-widgets .footer-content-col{
 		margin-bottom: 10px;
 	}
+	.page-id-725 #offcanvas-wrapper {
+		display: block !important;
+		width: 300px;
+	}
+	html.has-offscreen body.page-id-725:after {
+		opacity: 1 !important;
+		z-index: 299 !important;
+	}
 }

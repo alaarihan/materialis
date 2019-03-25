@@ -60,13 +60,20 @@ if (version_compare(phpversion(), MATERIALIS_THEME_REQUIRED_PHP_VERSION, '>=')) 
     add_action('admin_notices', 'materialis_php_version_notice');
 }
 
+// Change sort order for wathiqa post archive page
 add_action( 'pre_get_posts', 'change_sort_order_for_wathiqa_page'); 
 function change_sort_order_for_wathiqa_page($query){
     if ( is_post_type_archive('wathiqa_page') ) {
-     //If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
-       //Set the order ASC or DESC
        $query->set( 'order', 'ASC' );
-       //Set the orderby
        $query->set( 'orderby', 'title_num' );
     }  
+};
+
+// Redirect to mobile home page for mobile
+add_action( 'wp', 'redirect_if_mobile_and_front_page'); 
+function redirect_if_mobile_and_front_page(){
+    if ( wp_is_mobile() && is_front_page() ) {
+		wp_redirect( '/mobile' );
+		exit;
+	}
 };
