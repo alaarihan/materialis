@@ -2,7 +2,6 @@
 
     <div <?php echo materialis_page_content_atts("content blog-page"); ?>>
     <div class="gridContainer <?php materialis_page_content_wrapper_class(); ?>">
-        <div class="show-explination-action-popper">انظر الشرح في اصدأء الوثيقة</div>
         <div class="row">
             <div class="col-xs-12">
                 <div class="row">
