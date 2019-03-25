@@ -429,6 +429,9 @@ h4.wathiqa-page-number:before {
 h4.wathiqa-page-number:after {
     content: ' -';
 }
+.wathiqa_page .addtoany_share_save_container{
+    display: none !important;
+}
 
 @media (min-width: 1200px){
     .breadcrumbs, .tickerr {
