@@ -107,15 +107,19 @@
         $elem.unbind('touchstart', $.event.special.tap.handler).unbind('touchmove', $.event.special.tap.handler).unbind('touchend', $.event.special.tap.handler);
       },
       handler: function handler(event) {
-        var $elem = $(this);
+        var $elem = $(this),
+            handleObj = event.handleObj,
+            result;
         $elem.data(event.type, 1);
 
         if (event.type === 'touchend' && !$elem.data('touchmove')) {
           event.type = 'tap';
-          $.event.handle.apply(this, arguments);
+          result = handleObj.handler.call(this, event);
         } else if ($elem.data('touchend')) {
           $elem.removeData('touchstart touchmove touchend');
         }
+
+        return result;
       }
     };
   }
@@ -340,8 +344,8 @@ function _typeof(obj) {
       Kube. CSS & JS Framework
       Version 6.5.2
       Updated: February 2, 2017
-        http://imperavi.com/kube/
-        Copyright (c) 2009-2017, Imperavi LLC.
+       http://imperavi.com/kube/
+       Copyright (c) 2009-2017, Imperavi LLC.
       License: MIT
   */
   if (typeof jQuery === 'undefined') {
@@ -4946,7 +4950,7 @@ if (location.hash) {
 
   function getAnchors() {
     scrollItems = [];
-    anchors = jQuery('a').filter(function () {
+    anchors = jQuery('a:not(.screen-reader-text)').filter(function () {
       var elem = jQuery(this);
       var href = elem.attr('href');
       var target = elem.attr('target');
@@ -5040,12 +5044,12 @@ if (location.hash) {
 
     if (id.length === 0 && anchors) {
       // anchors.closest('ul').find('.current_page_item').removeClass('current_page_item');
-      anchors.parent().andSelf().removeClass('current_page_item current-menu-item');
+      anchors.parent().addBack().removeClass('current_page_item current-menu-item');
       var loc = (window.location + "").split('#')[0].replace(/\/$/, "");
-      anchors.closest('ul').find('[href$="' + loc + '"]').parent().andSelf().addClass('current-menu-item');
+      anchors.closest('ul').find('[href$="' + loc + '"]').parent().addBack().addClass('current-menu-item');
 
       if (!loc.length) {
-        anchors.closest('ul').find('[href$="' + window.location + '"]').parent().andSelf().addClass('current-menu-item');
+        anchors.closest('ul').find('[href$="' + window.location + '"]').parent().addBack().addClass('current-menu-item');
       }
     }
 
@@ -5054,11 +5058,11 @@ if (location.hash) {
 
       try {
         anchors.filter('.current_page_item, .current-menu-item').each(function () {
-          jQuery(this).parent().andSelf().removeClass('current_page_item current-menu-item');
+          jQuery(this).parent().addBack().removeClass('current_page_item current-menu-item');
         });
         anchors.closest('ul').find('.current_page_item, .current-menu-item').removeClass('current_page_item current-menu-item');
         cur.data('onepage-anchor').each(function () {
-          $(this).parent().andSelf().addClass('current-menu-item');
+          $(this).parent().addBack().addClass('current-menu-item');
         });
       } catch (e) {}
     }
@@ -5098,7 +5102,7 @@ if (location.hash) {
 
       if (parts.length >= 2) {
         if (anchor.length) {
-          jQuery(this).parent().andSelf().removeClass('current_page_item current-menu-item');
+          jQuery(this).parent().addBack().removeClass('current_page_item current-menu-item');
         }
       }
     });
@@ -5627,14 +5631,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./js/utils.js");
 
 Object(_utils__WEBPACK_IMPORTED_MODULE_0__["onDocReady"])(function ($) {
-  var $commentsWrapper = jQuery('.post-page .comments-form'),
+  var $commentsWrapper = jQuery('.comments-form'),
       $commentsForm = jQuery('#commentform');
 
   if (window.location.hash === "#respond") {
     $commentsWrapper.show();
   }
 
-  $('.post-page .post-comments .add-comment-toggler').click(function () {
+  $('.add-comment-toggler').click(function () {
     if ($commentsForm.is(':visible')) {
       jQuery('html, body').animate({
         scrollTop: $commentsForm.offset().top - jQuery('.navigation-bar.fixto-fixed').outerHeight() - 30
@@ -6687,9 +6691,7 @@ Object(_utils__WEBPACK_IMPORTED_MODULE_0__["onDocReady"])(function () {
   if ($offCanvasWrapper.length) {
     jQuery('html').addClass('has-offscreen');
     $offCanvasWrapper.appendTo('body');
-    $offCanvasWrapper.on('kube.offcanvas.ready', function () {
-      $offCanvasWrapper.removeClass('force-hide');
-    });
+    $offCanvasWrapper.removeClass('force-hide');
     $offCanvasWrapper.on('kube.offcanvas.open', function () {
       jQuery('html').addClass('offcanvas-opened');
     });
@@ -14412,7 +14414,7 @@ function (_MDCComponent) {
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
  *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
- * @version   v4.2.5+7f2b526d
+ * @version   v4.2.6+9869a4bc
  */
 (function (global, factory) {
   ( false ? undefined : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
@@ -15844,16 +15846,16 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/libs/fixto.js */"../assets/js/libs/fixto.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/libs/jquery.backstretch.js */"../assets/js/libs/jquery.backstretch.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/libs/typed.js */"../assets/js/libs/typed.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/kube.js */"../assets/js/kube.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/smoothscroll.js */"../assets/js/smoothscroll.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/drop_menu_selection.js */"../assets/js/drop_menu_selection.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/sticky.js */"../assets/js/sticky.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/video-bg.js */"../assets/js/video-bg.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/dev/js/theme.js */"./js/theme.js");
-module.exports = __webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/assets/js/woo.js */"../assets/js/woo.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/libs/fixto.js */"../assets/js/libs/fixto.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/libs/jquery.backstretch.js */"../assets/js/libs/jquery.backstretch.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/libs/typed.js */"../assets/js/libs/typed.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/kube.js */"../assets/js/kube.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/smoothscroll.js */"../assets/js/smoothscroll.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/drop_menu_selection.js */"../assets/js/drop_menu_selection.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/sticky.js */"../assets/js/sticky.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/video-bg.js */"../assets/js/video-bg.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/dev/js/theme.js */"./js/theme.js");
+module.exports = __webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/assets/js/woo.js */"../assets/js/woo.js");
 
 
 /***/ })

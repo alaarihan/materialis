@@ -1,18 +1,16 @@
 <?php
-function materialis_current_default_slug()
-{
+function materialis_current_default_slug() {
     return "dark-purple";
 }
 
-function materialis_theme_defaults()
-{
+function materialis_theme_defaults() {
 
     $gradients = materialis_get_parsed_gradients();
 
     $defaults = array(
 
-        'header_element_background_color'               => 'rgba(255,255,255,0.7)',
-        'header_element_background_border_thickness'    => array(
+        'header_element_background_color'            => 'rgba(255,255,255,0.7)',
+        'header_element_background_border_thickness' => array(
             'top'    => '0px',
             'bottom' => '0px',
             'left'   => '0px',
@@ -38,35 +36,35 @@ function materialis_theme_defaults()
         'inner_header_nav_transparent'                  => true,
         'header_slideshow'                              => array(
             array(
-                'url' => get_template_directory_uri() . '/assets/images/slideshow_slide1.jpg',
+                'url' => esc_url(get_template_directory_uri()) . '/assets/images/slideshow_slide1.jpg',
             ),
             array(
-                'url' => get_template_directory_uri() . '/assets/images/slideshow_slide2.jpg',
+                'url' => esc_url(get_template_directory_uri()) . '/assets/images/slideshow_slide2.jpg',
             ),
         ),
         'inner_header_slideshow'                        => array(
             array(
-                'url' => get_template_directory_uri() . '/assets/images/slideshow_slide1.jpg',
+                'url' => esc_url(get_template_directory_uri()) . '/assets/images/slideshow_slide1.jpg',
             ),
             array(
-                'url' => get_template_directory_uri() . '/assets/images/slideshow_slide2.jpg',
+                'url' => esc_url(get_template_directory_uri()) . '/assets/images/slideshow_slide2.jpg',
             ),
         ),
         'header_content_buttons'                        => array(
             array(
-                'label'  => __('Action Button 1', 'materialis'),
+                'label'  => __( 'Action Button 1', 'materialis' ),
                 'url'    => '#',
                 'target' => '_self',
                 'class'  => 'button btn-default big color2 mdc-elevation--z3',
             ),
             array(
-                'label'  => __('Action Button 2', 'materialis'),
+                'label'  => __( 'Action Button 2', 'materialis' ),
                 'url'    => '#',
                 'target' => '_self',
                 'class'  => 'button btn-default big white outline mdc-elevation--z3',
             ),
         ),
-        'header_front_page_image'                       => get_template_directory_uri() . '/assets/images/header-bg-image-default.jpg',
+        'header_front_page_image'                       => esc_url(get_template_directory_uri()) . '/assets/images/header-bg-image-default.jpg',
         'header_nav_border'                             => false,
         'header_show_overlay'                           => true,
         'header_overlay_type'                           => 'color',
@@ -84,7 +82,7 @@ function materialis_theme_defaults()
         'header_content_title_background_color'         => 'rgba(255,255,255,0.7)',
         'header_parallax'                               => true,
         'header_content_title_background_border_radius' => '8px',
-        'header_overlay_color'                          => materialis_get_theme_colors("color1"),
+        'header_overlay_color'                          => materialis_get_theme_colors( "color1" ),
         'header_overlay_opacity'                        => '0.7',
         'header_content_title_background_spacing'       => array(
             'top'    => '15px',
@@ -100,7 +98,7 @@ function materialis_theme_defaults()
         'inner_header_bg_position'                      => "center center",
         'inner_header_parallax'                         => false,
         'inner_header_show_overlay'                     => true,
-        'inner_header_overlay_color'                    => materialis_get_theme_colors("color1"),
+        'inner_header_overlay_color'                    => materialis_get_theme_colors( "color1" ),
         'inner_header_overlay_opacity'                  => '0.7',
         'inner_header_background_type'                  => 'image',
         'inner_header_bg_color'                         => '#228AE6',
@@ -124,17 +122,17 @@ function materialis_theme_defaults()
 
     );
 
-    $defaults = apply_filters('materialis_defaults', $defaults);
+    $defaults = apply_filters( 'materialis_defaults', $defaults );
 
     return $defaults;
 }
 
-function materialis_is_modified()
-{
+function materialis_is_modified() {
     $mods = get_theme_mods();
-    $keys = array_keys($mods);
-    foreach ($keys as $value) {
-        if (strpos("header", $value) !== false) {
+    $keys = array_keys( $mods );
+    foreach ( $keys as $value ) {
+        $value = strval( $value );
+        if ( strpos( "header", $value ) !== false ) {
             return true;
         }
     }
@@ -142,62 +140,21 @@ function materialis_is_modified()
     return false;
 }
 
-function materialis_is_wporg_preview()
-{
-    
-    if (defined('MATERIALIS_IS_WPORG_PREVIEW') && MATERIALIS_IS_WPORG_PREVIEW) {
-        return MATERIALIS_IS_WPORG_PREVIEW;
-    }
-    
-    if (materialis_has_in_memory('materialis_is_wporg_preview')) {
-        return materialis_get_from_memory('materialis_is_wporg_preview');
-    }
-    
-    $url    = site_url();
-    $parse  = parse_url($url);
-    $wp_org = 'wp-themes.com';
-    $result = false;
-    
-    if (isset($parse['host']) && $parse['host'] === $wp_org) {
-        $result = true;
-    }
-    
-    materialis_set_in_memory('materialis_is_wporg_preview', $result);
-    
-    return $result;
-    
+
+function materialis_current_default_is( $default ) {
+
+        $mod = get_theme_mod( 'theme_default_preset', false );
+
+        return ( $default === $mod );
 }
 
-function materialis_current_default_is($default)
-{
-    if (materialis_is_wporg_preview()) {
-        return ($default === materialis_current_default_slug());
-    } else {
-        $mod = get_theme_mod('theme_default_preset', false);
-        return ($default === $mod);
-    }
-}
-
-function materialis_after_switch_theme_set_defaults_version()
-{
-    $default_preset = get_theme_mod('theme_default_preset', false);
-    if (!$default_preset && !materialis_is_modified()) {
-        set_theme_mod('theme_default_preset', materialis_current_default_slug());
-    }
-    
-     materialis_clear_cached_values();
-}
-
-add_action('after_switch_theme', 'materialis_after_switch_theme_set_defaults_version');
-
-
-function materialis_can_show_demo_content_in_wporg($value){
-
-    if(materialis_is_wporg_preview()){
-        $value = true;
+function materialis_after_switch_theme_set_defaults_version() {
+    $default_preset = get_theme_mod( 'theme_default_preset', false );
+    if ( ! $default_preset && ! materialis_is_modified() ) {
+        set_theme_mod( 'theme_default_preset', materialis_current_default_slug() );
     }
 
-    return $value;
+    materialis_clear_cached_values();
 }
 
-add_filter('materialis_can_show_demo_content','materialis_can_show_demo_content_in_wporg');
+add_action( 'after_switch_theme', 'materialis_after_switch_theme_set_defaults_version' );

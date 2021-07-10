@@ -1137,7 +1137,7 @@ function materialis_print_hero_content_borders_hook()
         <?php if($holder_bg_enabled) { ?>
         .header-homepage .align-holder {
             border-style: solid;
-            border-width: <?php echo $value_holder['top'] ?> <?php echo $value_holder['right'] ?> <?php echo $value_holder['bottom'] ?> <?php echo $value_holder['left'] ?>;
+            border-width: <?php echo esc_attr($value_holder['top']) ?> <?php echo esc_attr($value_holder['right']) ?> <?php echo esc_attr($value_holder['bottom']) ?> <?php echo esc_attr($value_holder['left']) ?>;
         }
 
         <?php
@@ -1145,7 +1145,7 @@ function materialis_print_hero_content_borders_hook()
         if($title_bg_enabled) { ?>
         .header-homepage .hero-title {
             border-style: solid;
-            border-width: <?php echo $value_title['top'] ?> <?php echo $value_title['right'] ?> <?php echo $value_title['bottom'] ?> <?php echo $value_title['left'] ?>;
+            border-width: <?php echo esc_attr($value_title['top']) ?> <?php echo esc_attr($value_title['right']) ?> <?php echo esc_attr($value_title['bottom']) ?> <?php echo esc_attr($value_title['left']) ?>;
         }
 
         <?php
@@ -1153,7 +1153,7 @@ function materialis_print_hero_content_borders_hook()
         if($subtitle_bg_enabled) { ?>
         .header-homepage .header-subtitle {
             border-style: solid;
-            border-width: <?php echo $value_subtitle['top'] ?> <?php echo $value_subtitle['right'] ?> <?php echo $value_subtitle['bottom'] ?> <?php echo $value_subtitle['left'] ?>;
+            border-width: <?php echo esc_attr($value_subtitle['top']) ?> <?php echo esc_attr($value_subtitle['right']) ?> <?php echo esc_attr($value_subtitle['bottom']) ?> <?php echo esc_attr($value_subtitle['left']) ?>;
         }
 
         <?php
@@ -1161,7 +1161,7 @@ function materialis_print_hero_content_borders_hook()
         if($subtitle2_bg_enabled) { ?>
         .header-homepage .header-subtitle2 {
             border-style: solid;
-            border-width: <?php echo $value_subtitle2['top'] ?> <?php echo $value_subtitle2['right'] ?> <?php echo $value_subtitle2['bottom'] ?> <?php echo $value_subtitle2['left'] ?>;
+            border-width: <?php echo esc_attr($value_subtitle2['top']) ?> <?php echo esc_attr($value_subtitle2['right']) ?> <?php echo esc_attr($value_subtitle2['bottom']) ?> <?php echo esc_attr($value_subtitle2['left']) ?>;
         }
 
         <?php
@@ -1169,7 +1169,7 @@ function materialis_print_hero_content_borders_hook()
         if($buttons_bg_enabled) { ?>
         .header-homepage .header-buttons-wrapper {
             border-style: solid;
-            border-width: <?php echo $value_buttons['top'] ?> <?php echo $value_buttons['right'] ?> <?php echo $value_buttons['bottom'] ?> <?php echo $value_buttons['left'] ?>;
+            border-width: <?php echo esc_attr($value_buttons['top']) ?> <?php echo esc_attr($value_buttons['right']) ?> <?php echo esc_attr($value_buttons['bottom']) ?> <?php echo esc_attr($value_buttons['left']) ?>;
         }
 
         <?php } ?>

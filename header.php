@@ -9,7 +9,14 @@
 </head>
 
 <body <?php body_class(); ?>>
-
+<?php
+if ( function_exists( 'wp_body_open' ) ) {
+	wp_body_open();
+} else { 
+	do_action( 'wp_body_open' ); 
+}
+?>
+<?php materialis_print_skip_link(); ?>
 <div id="page-top" class="header-top">
     <?php materialis_print_header_top_bar(); ?>
     <?php materialis_get_navigation(); ?>

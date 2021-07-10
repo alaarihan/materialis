@@ -1,4 +1,4 @@
-function liveUpdate(setting, callback) {
+function materialisLiveUpdate(setting, callback) {
     var cb = function (value) {
         value.bind(callback);
     };
@@ -11,12 +11,12 @@ function liveUpdate(setting, callback) {
     }
 }
 
-function liveUpdateHeader(settingPart, callback) {
-    liveUpdate("header" + settingPart, function (value, oldValue) {
+function materialisLiveUpdateHeader(settingPart, callback) {
+    materialisLiveUpdate("header" + settingPart, function (value, oldValue) {
         callback(value, oldValue, false);
     });
 
-    liveUpdate("inner_header" + settingPart, function (value, oldValue) {
+    materialisLiveUpdate("inner_header" + settingPart, function (value, oldValue) {
         callback(value, oldValue, true);
     });
 }
@@ -343,8 +343,8 @@ function liveUpdateHeader(settingPart, callback) {
         $('.header .background-overlay').css("background-image", getGradientValue('inner_header_overlay_gradient_colors'));
     }
 
-    liveUpdate('header_overlay_gradient_colors', recalculateHeaderOverlayGradient);
-    liveUpdate('inner_header_overlay_gradient_colors', recalculateInnerHeaderOverlayGradient);
+    materialisLiveUpdate('header_overlay_gradient_colors', recalculateHeaderOverlayGradient);
+    materialisLiveUpdate('inner_header_overlay_gradient_colors', recalculateInnerHeaderOverlayGradient);
 })(jQuery);
 
 (function ($) {
@@ -530,7 +530,7 @@ function liveUpdateHeader(settingPart, callback) {
 
 
 (function ($) {
-    liveUpdateHeader("_nav_border", function (value, oldValue, inner) {
+   materialisLiveUpdateHeader("_nav_border", function (value, oldValue, inner) {
         var selectorStart = inner ? '.materialis-inner-page' : '.materialis-front-page';
         var selector = ".navigation-bar";
 
@@ -541,7 +541,7 @@ function liveUpdateHeader(settingPart, callback) {
         }
     });
 
-    liveUpdateHeader("_nav_sticked", function (value, oldValue, inner) {
+    materialisLiveUpdateHeader("_nav_sticked", function (value, oldValue, inner) {
 
         var selectorStart = inner ? '.materialis-inner-page' : '.materialis-front-page';
         var selector = ".navigation-bar";
@@ -576,7 +576,7 @@ function liveUpdateHeader(settingPart, callback) {
     });
 
 
-    liveUpdateHeader('_slideshow_duration', function (value, oldValue, inner) {
+    materialisLiveUpdateHeader('_slideshow_duration', function (value, oldValue, inner) {
         var selectorStart = inner ? '.materialis-inner-page' : '.materialis-front-page';
         var selector = inner ? ".header" : ".header-homepage";
         var $header = $([selectorStart, selector].join(' '));
@@ -588,7 +588,7 @@ function liveUpdateHeader(settingPart, callback) {
     });
 
 
-    liveUpdateHeader('_slideshow_speed', function (value, oldValue, inner) {
+    materialisLiveUpdateHeader('_slideshow_speed', function (value, oldValue, inner) {
         var selectorStart = inner ? '.materialis-inner-page' : '.materialis-front-page';
         var selector = inner ? ".header" : ".header-homepage";
         var $header = $([selectorStart, selector].join(' '));

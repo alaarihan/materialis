@@ -154,7 +154,7 @@ if (location.hash) {
 
     function getAnchors() {
         scrollItems = [];
-        anchors = jQuery('a').filter(function () {
+        anchors = jQuery('a:not(.screen-reader-text)').filter(function () {
             var elem = jQuery(this);
             var href = elem.attr('href');
             var target = elem.attr('target');
@@ -243,11 +243,11 @@ if (location.hash) {
         change_url_hash(id);
         if (id.length === 0 && anchors) {
             // anchors.closest('ul').find('.current_page_item').removeClass('current_page_item');
-            anchors.parent().andSelf().removeClass('current_page_item current-menu-item');
+            anchors.parent().addBack().removeClass('current_page_item current-menu-item');
             var loc = (window.location + "").split('#')[0].replace(/\/$/, "");
-            anchors.closest('ul').find('[href$="' + loc + '"]').parent().andSelf().addClass('current-menu-item');
+            anchors.closest('ul').find('[href$="' + loc + '"]').parent().addBack().addClass('current-menu-item');
             if (!loc.length) {
-                anchors.closest('ul').find('[href$="' + window.location + '"]').parent().andSelf().addClass('current-menu-item');
+                anchors.closest('ul').find('[href$="' + window.location + '"]').parent().addBack().addClass('current-menu-item');
 
             }
         }
@@ -256,12 +256,12 @@ if (location.hash) {
             lastId = id;
             try {
                 anchors.filter('.current_page_item, .current-menu-item').each(function () {
-                    jQuery(this).parent().andSelf().removeClass('current_page_item current-menu-item');
+                    jQuery(this).parent().addBack().removeClass('current_page_item current-menu-item');
 
                 });
                 anchors.closest('ul').find('.current_page_item, .current-menu-item').removeClass('current_page_item current-menu-item');
                 cur.data('onepage-anchor').each(function () {
-                    $(this).parent().andSelf().addClass('current-menu-item');
+                    $(this).parent().addBack().addClass('current-menu-item');
                 });
             } catch (e) {
             }
@@ -301,7 +301,7 @@ if (location.hash) {
 
             if (parts.length >= 2) {
                 if (anchor.length) {
-                    jQuery(this).parent().andSelf().removeClass('current_page_item current-menu-item');
+                    jQuery(this).parent().addBack().removeClass('current_page_item current-menu-item');
                 }
             }
         });

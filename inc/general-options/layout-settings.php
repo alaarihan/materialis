@@ -72,7 +72,6 @@ function materialis_add_layout_options()
             ),
         ),
     ));
-
 }
 
 materialis_add_layout_options();
@@ -91,7 +90,6 @@ function materialis_page_content_atts_boxed_layout_content($attrs)
     }
 
     return $attrs;
-
 }
 
 add_filter("materialis_page_content_atts", 'materialis_page_content_atts_boxed_layout_content', 1, 1);
@@ -102,13 +100,14 @@ function materialis_page_content_atts($class = "page-content")
     $attrs = array(
         'class' => $class,
         'style' => "",
+        'id' => 'page-content'
     );
 
     $attrs = apply_filters('materialis_page_content_atts', $attrs);
 
     $result = "";
     foreach ($attrs as $key => $value) {
-        $value  = trim(esc_attr($value));
+        $value  = trim($value);
         $result .= " {$key}='" . esc_attr($value) . "'";
     }
 

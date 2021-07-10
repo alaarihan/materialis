@@ -1,7 +1,29 @@
 <?php
+global $wp_version;
 
+if (version_compare($wp_version, '5.3') >= 0) {
 
-class Materialis_Logo_Nav_Menu extends \Walker_Nav_Menu {
+	class Materialis_Logo_Nav_Menu extends Materialis_Logo_Nav_Menu_Base
+	{
+
+		public function walk($elements, $max_depth, ...$args)
+		{
+			return call_user_func_array(array($this,'_walk'),func_get_args());
+		}
+	}
+} else
+{
+	class Materialis_Logo_Nav_Menu extends Materialis_Logo_Nav_Menu_Base
+	{
+
+		public function walk($elements, $max_depth)
+		{
+			return call_user_func_array(array($this,'_walk'),func_get_args());
+		}
+	}
+}
+
+class Materialis_Logo_Nav_Menu_Base extends \Walker_Nav_Menu {
 
 
 	public function display_logo( &$output ) {
@@ -12,7 +34,7 @@ class Materialis_Logo_Nav_Menu extends \Walker_Nav_Menu {
 		$output .= "<li class='logo'>{$logo}</li>";
 	}
 
-	public function walk( $elements, $max_depth ) {
+	public function _walk( $elements, $max_depth ) {
 
 
 		$args   = array_slice( func_get_args(), 2 );

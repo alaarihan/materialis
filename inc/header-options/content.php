@@ -275,7 +275,7 @@ function materialis_get_header_top_spacing_script()
 add_action('wp_enqueue_scripts', 'materialis_enqueue_header_top_spacing_script', 40);
 function materialis_enqueue_header_top_spacing_script()
 {
-    wp_add_inline_script('jquery-core', materialis_get_header_top_spacing_script());
+    wp_add_inline_script('jquery', materialis_get_header_top_spacing_script());
 }
 
 function materialis_print_default_after_header_content()
@@ -283,7 +283,9 @@ function materialis_print_default_after_header_content()
     //  execute top spacing script as soon as possible to prevent repositioning flicker
     ?>
     <script>
-        window.materialisSetHeaderTopSpacing();
+		if (window.materialisSetHeaderTopSpacing) {
+			window.materialisSetHeaderTopSpacing();
+		}
     </script>
     <?php
 }

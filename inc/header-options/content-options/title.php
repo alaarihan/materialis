@@ -295,6 +295,10 @@ function materialis_print_header_title()
         if ($title == "") {
             $title = strtoupper(esc_html__('Set the title in customizer', 'materialis'));
         }
+    } else {
+	    if ($title == "") {
+		    $title = get_bloginfo('site_title');
+	    }
     }
 
     $title = materialis_wp_kses_post($title);
@@ -308,7 +312,7 @@ function materialis_print_header_title()
         }
 
         if ($title) {
-            printf('<h1 class="hero-title ' . $shadow_class . '">%1$s</h1>', $title);
+            printf('<h1 class="hero-title ' . esc_attr($shadow_class) . '">%1$s</h1>', $title);
         }
     }
 }
