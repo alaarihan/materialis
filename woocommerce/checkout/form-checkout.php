@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
+ * @package WooCommerce\Templates
  * @version 3.5.0
  */
 
@@ -52,6 +52,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php endif; ?>
 
 		<div>
+			<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+
 			<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'materialis' ); ?></h3>
 
 			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>

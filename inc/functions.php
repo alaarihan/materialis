@@ -69,7 +69,7 @@ function materialis_can_show_cached_value($slug)
 {
     global $wp_customize;
     
-    if ($wp_customize || materialis_is_customize_preview() || wp_doing_ajax() || WP_DEBUG || materialis_is_wporg_preview()) {
+    if ($wp_customize || materialis_is_customize_preview() || wp_doing_ajax() || WP_DEBUG ) {
         return false;
     }
     
@@ -1196,3 +1196,37 @@ function materialis_customize_save_clear_data($value)
 }
 
 add_filter("customize_save_response", "materialis_customize_save_clear_data");
+
+
+function materialis_skip_link_focus_fix()
+{
+    // The following is minified via `terser --compress --mangle -- js/skip-link-focus-fix.js`.
+    ?>
+    <script>
+        /(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function() {
+            var t, e = location.hash.substring(1);
+            /^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus())
+        }, !1);
+    </script>
+<?php
+}
+
+add_action('wp_print_footer_scripts', 'materialis_skip_link_focus_fix');
+
+function materialis_color_picker_scripts() {
+	wp_enqueue_style('wp-color-picker' );
+	wp_enqueue_script('iris', admin_url('js/iris.min.js'), array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'), false, true);
+	wp_enqueue_script('wp-color-picker', admin_url('js/color-picker.min.js'), array('iris', 'wp'), false, true);
+
+	$colorpicker_l10n = array(
+		'clear' => __( 'Clear', 'materialis' ),
+		'defaultString' => __( 'Default', 'materialis' ), 
+		'pick' => __( 'Select Color', 'materialis' ),	
+		'current' => __( 'Current Color', 'materialis' )
+	);
+	wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
+}
+
+if (is_customize_preview()) {
+	add_action( 'init', 'materialis_color_picker_scripts');
+}

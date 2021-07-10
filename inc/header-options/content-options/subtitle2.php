@@ -301,7 +301,7 @@ function materialis_print_header_subtitle2()
         }
 
         if ($subtitle) {
-            printf('<p class="header-subtitle2 ' . $shadow_class . '">%1$s</p>', materialis_wp_kses_post($subtitle));
+            printf('<p class="header-subtitle2 ' . esc_attr($shadow_class) . '">%1$s</p>', materialis_wp_kses_post($subtitle));
         }
     }
 }

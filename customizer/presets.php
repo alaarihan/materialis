@@ -5,8 +5,8 @@ return array (
   array (
     'index' => 0,
     'id' => 'free-header_0',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header.jpg?v=1537976518',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header.jpg?v=1537976518',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header.jpg?v=1549962492',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header.jpg?v=1549962492',
     'description' => 'header preset 1',
     'settings' => 
     array (
@@ -645,8 +645,8 @@ some other text',
   array (
     'index' => 1,
     'id' => 'free-header-0_1',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-0.jpg?v=1537976518',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-0.jpg?v=1537976518',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-0.jpg?v=1549962492',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-0.jpg?v=1549962492',
     'description' => 'header preset 2',
     'settings' => 
     array (
@@ -1286,8 +1286,8 @@ some other text',
   array (
     'index' => 2,
     'id' => 'free-header-1_2',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-1.jpg?v=1537976518',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-1.jpg?v=1537976518',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-1.jpg?v=1549962492',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-1.jpg?v=1549962492',
     'description' => 'header preset 3',
     'settings' => 
     array (
@@ -1927,8 +1927,8 @@ some other text',
   array (
     'index' => 3,
     'id' => 'free-header-2_3',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-2.jpg?v=1537976518',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-2.jpg?v=1537976518',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-2.jpg?v=1549962492',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-2.jpg?v=1549962492',
     'description' => 'header preset 4',
     'settings' => 
     array (
@@ -2568,8 +2568,8 @@ some other text',
   array (
     'index' => 4,
     'id' => 'free-header-3_4',
-    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-3.jpg?v=1537976518',
-    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-3.jpg?v=1537976518',
+    'thumb' => '//extendthemes.com/assets/materialis/previews/headers/thumb-free-header-3.jpg?v=1549962492',
+    'preview' => '//extendthemes.com/assets/materialis/previews/headers/free-header-3.jpg?v=1549962492',
     'description' => 'header preset 5',
     'settings' => 
     array (

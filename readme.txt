@@ -2,8 +2,8 @@
 
 Contributors: horearadu
 Tags: entertainment, food-and-drink, portfolio, one-column, two-columns, right-sidebar, grid-layout, custom-header, custom-menu, custom-logo, full-width-template, theme-options, translation-ready, featured-images, threaded-comments
-Requires at least:      3.3.0
-Tested up to:           4.9.6
+Requires at least:      5.2
+Tested up to:           5.6
 
 == Description ==
 
@@ -43,6 +43,10 @@ The exceptions to this license are as follows:
 *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
    License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 
+*  Material Design fonts
+   Licensed under SIL OPEN FONT LICENSE Version 1.1 (https://github.com/Templarian/MaterialDesign/blob/master/LICENSE)
+   Copyright (c) 2014, Austin Andrews (http://materialdesignicons.com/)
+
 *  Kube. CSS & JS Framework - http://imperavi.com/kube/
    Copyright (c) 2009-2017, Imperavi LLC.
    Licensed under the MIT license (https://opensource.org/licenses/MIT)
@@ -72,6 +76,8 @@ The exceptions to this license are as follows:
    Roboto (https://fonts.google.com/specimen/Roboto)
    Licensed under Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
    Copyright © Christian Robertson
+   
+
 
 * Images
     The following SVG files used in the theme are distributed under the GPL v3 license (https://www.gnu.org/licenses/gpl-3.0.en.html)

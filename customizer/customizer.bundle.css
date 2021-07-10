@@ -927,7 +927,7 @@ div#TB_ajaxContent {
     right: 0px;
     bottom: 0;
     margin-top: -5px;
-    margin-bottom:  0;
+    margin-bottom: 0;
 }
 
 
@@ -1186,14 +1186,17 @@ li#accordion-section-header_layout h3:before {
     width: 20px;
     height: 20px;
     font-size: 20px;
-    line-height: 1;
     font-family: dashicons;
     text-decoration: inherit;
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
     vertical-align: top;
     text-align: center;
     content: "\f100";
+    vertical-align: middle;
+    margin-right: 6px;
+    display: inline-block;
+    line-height: 18px;
 }
 
 /*WEB GRADIENTS*/
@@ -1628,16 +1631,21 @@ li.category-title.closeable {
 }
 
 #customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control {
-  margin-right: 0px;
-}
-#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control li {
-  margin-bottom: 16px;
-}
-#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control li .description {
-  margin-top: 6px;
-  display: block;
+    margin-right: 0px;
 }
 
+#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control li {
+    margin-bottom: 16px;
+}
+
+#customize-control-woocommerce_thumbnail_cropping .woocommerce-cropping-control li .description {
+    margin-top: 6px;
+    display: block;
+}
+
+.customize-control-kirki-checkbox input[type=checkbox]:checked:before, .customize-control-kirki-multicheck input[type=checkbox]:checked:before, .customize-control-repeater input[type=checkbox]:checked:before {
+    line-height: 1;
+}
 #customize-controls #customize-info .accordion-section-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
 #customize-controls #customize-theme-controls .accordion-section > .accordion-section-title {

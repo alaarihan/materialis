@@ -11,8 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes
- * @package WooCommerce/Templates
+ * @package WooCommerce\Templates
  * @version 3.3.0
  */
 
@@ -23,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <form role="search" method="get" class="search-form woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <div class="mdc-text-field mdc-text-field--upgraded">
-        <input type="text" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field mdc-text-field__input" name="s" value="">
+        <input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field mdc-text-field__input" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'woocommerce' ); ?>" value="<?php echo get_search_query(); ?>" name="s">
         <label class="mdc-floating-label" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php echo esc_attr__( 'Search products&hellip;', 'woocommerce' ); ?></label>
         <div class="mdc-line-ripple"></div>
         <input type="hidden" name="post_type" value="product" />

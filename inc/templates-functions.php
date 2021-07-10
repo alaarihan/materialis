@@ -240,7 +240,7 @@ if ( ! function_exists('materialis_print_header_content_holder_class')) {
             $shadow_class = 'mdc-elevation--z' . $shadow_value . " ";
         }
 
-        echo "align-holder " . $shadow_class . esc_attr($align);
+        echo "align-holder " . esc_attr($shadow_class . $align);
     }
 }
 
@@ -269,7 +269,7 @@ function materialis_get_footer_copyright()
     $copyrightText = sprintf(
     // Translators: %s is the link to the theme.
         esc_html__('Built using WordPress and the %s', 'materialis'),
-        '<a target="_blank" href="https://extendthemes.com/go/built-with-materialis/">' . __('Materialis Theme', 'materialis') . '</a>'
+        '<a rel="nofollow" target="_blank" href="https://extendthemes.com/go/built-with-materialis/">' . __('Materialis Theme', 'materialis') . '</a>'
     );
 
     $previewAtts = "";
@@ -532,3 +532,21 @@ function materialis_is_font_page_with_posts_only($value)
 }
 
 add_filter('materialis_is_front_page', 'materialis_is_font_page_with_posts_only');
+
+
+function materialis_print_skip_link(){
+    ?>
+    <style>
+        .screen-reader-text[href="#page-content"]:focus {
+            background-color: #f1f1f1;
+            border-radius: 3px;
+            box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+            clip: auto !important;
+            clip-path: none;
+            color: #21759b;
+           
+        }
+    </style>
+    <a class="skip-link screen-reader-text" href="#page-content"><?php _e('Skip to content', 'materialis'); ?></a>
+    <?php
+}

@@ -267,14 +267,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./js/utils.js");
 
 Object(_utils__WEBPACK_IMPORTED_MODULE_0__["onDocReady"])(function ($) {
-  var $commentsWrapper = jQuery('.post-page .comments-form'),
+  var $commentsWrapper = jQuery('.comments-form'),
       $commentsForm = jQuery('#commentform');
 
   if (window.location.hash === "#respond") {
     $commentsWrapper.show();
   }
 
-  $('.post-page .post-comments .add-comment-toggler').click(function () {
+  $('.add-comment-toggler').click(function () {
     if ($commentsForm.is(':visible')) {
       jQuery('html, body').animate({
         scrollTop: $commentsForm.offset().top - jQuery('.navigation-bar.fixto-fixed').outerHeight() - 30
@@ -1327,9 +1327,7 @@ Object(_utils__WEBPACK_IMPORTED_MODULE_0__["onDocReady"])(function () {
   if ($offCanvasWrapper.length) {
     jQuery('html').addClass('has-offscreen');
     $offCanvasWrapper.appendTo('body');
-    $offCanvasWrapper.on('kube.offcanvas.ready', function () {
-      $offCanvasWrapper.removeClass('force-hide');
-    });
+    $offCanvasWrapper.removeClass('force-hide');
     $offCanvasWrapper.on('kube.offcanvas.open', function () {
       jQuery('html').addClass('offcanvas-opened');
     });
@@ -9052,7 +9050,7 @@ function (_MDCComponent) {
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
  *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
- * @version   v4.2.5+7f2b526d
+ * @version   v4.2.6+9869a4bc
  */
 (function (global, factory) {
   ( false ? undefined : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
@@ -10528,11 +10526,11 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/dev/js/theme.js */"./js/theme.js");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/dev/scss/style.scss */"./scss/style.scss");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/dev/scss/gutenberg-style.scss */"./scss/gutenberg-style.scss");
-__webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/dev/scss/woocommerce.scss */"./scss/woocommerce.scss");
-module.exports = __webpack_require__(/*! /media/Data/jenkins/workspace/Materialis Dev Free/build-materialis/materialis/dev/scss/material-icons.scss */"./scss/material-icons.scss");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/dev/js/theme.js */"./js/theme.js");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/dev/scss/style.scss */"./scss/style.scss");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/dev/scss/gutenberg-style.scss */"./scss/gutenberg-style.scss");
+__webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/dev/scss/woocommerce.scss */"./scss/woocommerce.scss");
+module.exports = __webpack_require__(/*! /var/lib/jenkins/workspace/Materialis FREE Release/build-materialis/materialis/dev/scss/material-icons.scss */"./scss/material-icons.scss");
 
 
 /***/ })
