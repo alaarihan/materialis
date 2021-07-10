@@ -146,11 +146,11 @@ function materialis_get_navigation($navigation = null)
 {
     $template = apply_filters('materialis_navigation', null);
 
-    if ( ! $template || $template === "default") {
+    if (!$template || $template === "default" || $template === "home-template" ) {
         $template = $navigation;
     }
 
-    get_template_part('template-parts/navigation/navigation', $template);
+    get_template_part('template-parts/navigation/navigation');
 }
 
 function materialis_header_main_class()
@@ -213,6 +213,7 @@ function materialis_print_logo($footer = false)
         }
 
         the_custom_logo();
+		printf('<a class="text-logo" data-type="group" ' . $preview_atts . ' data-dynamic-mod="true" href="%1$s">%2$s</a>', esc_url(home_url('/')), get_bloginfo('name'));
     } else {
         printf('<a class="text-logo" data-type="group" ' . $preview_atts . ' data-dynamic-mod="true" href="%1$s">%2$s</a>', esc_url(home_url('/')), materialis_bold_text(get_bloginfo('name')));
     }
@@ -277,7 +278,7 @@ function materialis_get_footer_copyright()
         $previewAtts = 'data-footer-copyright="true"';
     }
 
-    $copyright = '<p ' . $previewAtts . ' class="copyright">&copy;&nbsp;' . "&nbsp;" . date_i18n(__('Y', 'materialis')) . '&nbsp;' . esc_html(get_bloginfo('name')) . '.&nbsp;' . wp_kses_post($copyrightText) . '</p>';
+    $copyright = '<p ' . $previewAtts . ' class="copyright">&copy;&nbsp;' . "&nbsp;" . date_i18n(__('Y', 'materialis')) . '&nbsp;' . esc_html(get_bloginfo('name')) . '.&nbsp;' . __('all rights reserved.', 'materialis') . '</p>';
 
     return apply_filters('materialis_get_footer_copyright', $copyright, $previewAtts);
 }
@@ -429,6 +430,9 @@ function materialis_print_about_widget()
     } else {
         $author_data = get_user_by('email', get_option('admin_email'));
     }
+    
+    if(!$author_data)
+        return;
 
     $author_description = get_the_author_meta('description', $author_data->ID);
     $author_avatar      = get_avatar_url($author_data->ID, array(

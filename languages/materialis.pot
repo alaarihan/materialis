@@ -2,151 +2,2281 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: materialis\n"
-"POT-Creation-Date: 2017-10-09 12:49+0300\n"
-"PO-Revision-Date: 2016-01-06 19:25+0200\n"
+"POT-Creation-Date: 2018-10-05 20:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en_150\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Poedit-KeywordsList: __;__e\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: template-parts\n"
 "X-Poedit-SearchPath-2: page-templates\n"
 "X-Poedit-SearchPath-3: inc\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-0: *.js"
 
-#: comments.php:12
-msgid "No Responses"
+#: comments.php:13 comments.php:45
+msgid "No Comments"
 msgstr ""
 
-#: comments.php:12
-msgid "One Response"
+#: comments.php:13
+msgid "Comments: <span>1</span>"
 msgstr ""
 
-#: comments.php:12
-msgid "% Responses"
+#: comments.php:13
+msgid "Comments: <span>%</span>"
 msgstr ""
 
-#: comments.php:29
-msgid "<i class=\"font-icon-post fa fa-angle-double-left\"></i> Older Comments"
+#: comments.php:16 comments.php:47
+msgid "Add comment"
 msgstr ""
 
-#: comments.php:32
-msgid "Newer Comments <i class=\"font-icon-post fa fa-angle-double-right\"></i>"
+#: comments.php:23
+msgid "Reply"
+msgstr ""
+
+#: comments.php:33
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:36
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:52
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:60
+msgid "Add your comment"
+msgstr ""
+
+#: comments.php:62
+msgid "Send"
+msgstr ""
+
+#: comments.php:66
+msgid "Comment"
+msgstr ""
+
+#: comments.php:73
+msgid "Your Name"
+msgstr ""
+
+#: comments.php:78
+msgid "Your Email"
+msgstr ""
+
+#: comments.php:83
+msgid "Your Website"
+msgstr ""
+
+#. Name of the template
+msgid "Home Page"
+msgstr ""
+
+#: functions.php:33
+msgid "Materialis theme activation failed!"
+msgstr ""
+
+#: functions.php:35
+#, php-format
+msgid "You need to update your PHP version to use the %s."
+msgstr ""
+
+#. 1 is the users PHP version and 2 is the required PHP version.
+#: functions.php:38
+#, php-format
+msgid "Current PHP version is %1$s and the minimum required version is %2$s"
+msgstr ""
+
+#: searchform.php:4
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: index.php:25 template-parts/content-single.php:25
+#: template-parts/content-page.php:10 inc/templates-functions.php:302
+msgid "Page"
+msgstr ""
+
+#: customizer/companion-popup.php:2
+msgid ""
+"Please Install the Materialis Companion Plugin to Enable All the Theme "
+"Features"
+msgstr ""
+
+#: customizer/companion-popup.php:6
+msgid "Here's what you'll get:"
+msgstr ""
+
+#: customizer/companion-popup.php:8
+msgid "Beautiful ready-made homepage"
+msgstr ""
+
+#: customizer/companion-popup.php:9
+msgid "Drag and drop page customization"
+msgstr ""
+
+#: customizer/companion-popup.php:10
+msgid "35+ predefined content sections"
+msgstr ""
+
+#: customizer/companion-popup.php:11
+msgid "Live content editing"
+msgstr ""
+
+#: customizer/companion-popup.php:12
+msgid "5 header types"
+msgstr ""
+
+#: customizer/companion-popup.php:13
+msgid "3 footer types"
+msgstr ""
+
+#: customizer/companion-popup.php:14
+msgid "and many other features"
+msgstr ""
+
+#: customizer/companion-popup.php:35
+msgid "Don't show this popup in the future"
+msgstr ""
+
+#: customizer/companion-popup.php:49
+msgid "Maybe later"
+msgstr ""
+
+#: customizer/companion-popup.php:54
+msgid "Activate now"
+msgstr ""
+
+#: customizer/companion-popup.php:57
+msgid "Install now"
 msgstr ""
 
 #: customizer/WebGradientsControl.php:10
 msgid "Change Gradient"
 msgstr ""
 
-#: inc/functions.php:376
+#: customizer/GradientControl.php:15 inc/theme-options.php:266
+msgid "Select Gradient"
+msgstr ""
+
+#: customizer/SidebarGroupButtonControl.php:72 inc/theme-options.php:262
+msgid "Close Panel"
+msgstr ""
+
+#: customizer/customizer-controls.php:185
+msgid "Available in PRO"
+msgstr ""
+
+#: customizer/customizer-controls.php:193
+msgid "Section is already in page"
+msgstr ""
+
+#: customizer/customizer-controls.php:194
+msgid "Pro Only"
+msgstr ""
+
+#: customizer/customizer-controls.php:328
+msgid "Check all PRO features"
+msgstr ""
+
+#: customizer/customizer-controls.php:372
+msgid "Upgrade to PRO"
+msgstr ""
+
+#: customizer/customizer-controls.php:394
+msgid "Change Icon"
+msgstr ""
+
+#: customizer/customizer-controls.php:406
+msgid "Select Material Icon"
+msgstr ""
+
+#: customizer/customizer-controls.php:407
+msgid "Choose Icon"
+msgstr ""
+
+#: customizer/customizer-controls.php:451
+#: customizer/kirki/includes/class-kirki-l10n.php:208
+#: customizer/kirki/includes/sections/class-kirki-sections-hover-section.php:40
+msgid "Press return or enter to open this section"
+msgstr ""
+
+#: customizer/customizer-controls.php:455
+msgid "Manage page sections"
+msgstr ""
+
+#: customizer/customizer-controls.php:457
+msgid "No section added"
+msgstr ""
+
+#: customizer/customizer-controls.php:460
+msgid "Add Section"
+msgstr ""
+
+#: template-parts/content-post-meta.php:8
+msgid "by"
+msgstr ""
+
+#: template-parts/content-post-meta.php:10
+msgid "on"
+msgstr ""
+
+#: template-parts/post-meta.php:8
+msgid "Comments"
+msgstr ""
+
+#: template-parts/post-meta.php:13
+msgid "Post Time"
+msgstr ""
+
+#: template-parts/post-meta.php:20
+msgid "Categories"
+msgstr ""
+
+#: template-parts/content-single.php:21 template-parts/content-page.php:6
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-single.php:46
+msgid "Next:"
+msgstr ""
+
+#: template-parts/content-single.php:47
+msgid "Next post:"
+msgstr ""
+
+#: template-parts/content-single.php:51
+msgid "Previous:"
+msgstr ""
+
+#: template-parts/content-single.php:52
+msgid "Previous post:"
+msgstr ""
+
+#: template-parts/content.php:22
 msgid "Read more"
 msgstr ""
 
-#: inc/functions.php:423
+#: template-parts/content-none.php:4
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:7
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:9
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:12
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: inc/defaults.php:57 inc/defaults-dark.php:45
+msgid "Action Button 1"
+msgstr ""
+
+#: inc/defaults.php:63 inc/defaults-dark.php:51
+msgid "Action Button 2"
+msgstr ""
+
+#. %s is the link to the theme.
+#: inc/templates-functions.php:266
+#, php-format
+msgid "Built using WordPress and the %s"
+msgstr ""
+
+#: inc/templates-functions.php:267
+msgid "Materialis Theme"
+msgstr ""
+
+#: inc/templates-functions.php:276 inc/templates-functions.php:287
+msgid "Y"
+msgstr ""
+
+#: inc/templates-functions.php:276
+msgid "all rights reserved."
+msgstr ""
+
+#: inc/templates-functions.php:303
+msgid "<i class=\"mdi mdi-arrow-left\"></i>"
+msgstr ""
+
+#: inc/templates-functions.php:304
+msgid "<i class=\"mdi mdi-arrow-right\"></i>"
+msgstr ""
+
+#: inc/templates-functions.php:305
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/templates-functions.php:443
+msgid "About Me"
+msgstr ""
+
+#: inc/theme-info.php:4
+msgid "Getting started"
+msgstr ""
+
+#: inc/theme-info.php:8
+msgid "Free vs PRO"
+msgstr ""
+
+#: inc/theme-info.php:20
+msgid "Thanks for choosing Materialis!"
+msgstr ""
+
+#: inc/theme-info.php:21
+msgid ""
+"We're glad you chose our theme and we hope it will help you create a "
+"beautiful site in no time!<br> If you have any suggestions, don't hesitate "
+"to leave us some feedback."
+msgstr ""
+
+#: inc/functions.php:100
+msgid "Homepage Header Image"
+msgstr ""
+
+#: inc/functions.php:129
+msgid "Primary Menu"
+msgstr ""
+
+#: inc/functions.php:130
+msgid "Footer Menu"
+msgstr ""
+
+#: inc/functions.php:150
+msgid "Full HD"
+msgstr ""
+
+#: inc/functions.php:166
+msgid "Materialis Companion"
+msgstr ""
+
+#: inc/functions.php:167
+msgid ""
+"Materialis Companion plugin adds drag and drop functionality and many other "
+"features to the Materialis theme."
+msgstr ""
+
+#: inc/functions.php:169 inc/functions.php:179
+msgid "Activate"
+msgstr ""
+
+#: inc/functions.php:172 inc/functions.php:182
+msgid "Install"
+msgstr ""
+
+#: inc/functions.php:176
+msgid "Contact Form 7"
+msgstr ""
+
+#: inc/functions.php:177
+msgid ""
+"The Contact Form 7 plugin is recommended for the Materialis contact section."
+msgstr ""
+
+#: inc/functions.php:189
+msgid "Activate Materialis Companion"
+msgstr ""
+
+#: inc/functions.php:190
+msgid "This feature requires the Materialis Companion plugin to be activated."
+msgstr ""
+
+#: inc/functions.php:191
+msgid "Install Materialis Companion"
+msgstr ""
+
+#: inc/functions.php:192
+msgid "This feature requires the Materialis Companion plugin to be installed."
+msgstr ""
+
+#: inc/functions.php:581
+msgid "Sidebar widget area"
+msgstr ""
+
+#: inc/functions.php:586
+msgid "Pages Sidebar"
+msgstr ""
+
+#: inc/functions.php:591
+msgid "Footer First Box Widgets"
+msgstr ""
+
+#: inc/functions.php:593 inc/functions.php:603 inc/functions.php:613
+msgid "Widget Area"
+msgstr ""
+
+#: inc/functions.php:601
+msgid "Footer Second Box Widgets"
+msgstr ""
+
+#: inc/functions.php:611
+msgid "Footer Third Box Widgets"
+msgstr ""
+
+#: inc/functions.php:699
 msgid "Page not found"
 msgstr ""
 
-#: inc/functions.php:425
+#: inc/functions.php:701
 #, php-format
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: inc/header-options/background.php:18
-msgid "Background"
+#: inc/functions.php:846
+msgid "Materialis Info"
 msgstr ""
 
-#: inc/header-options/content-options/buttons.php:7
-msgid "Action Button 1"
+#: inc/theme-options.php:44
+msgid "Navigation"
 msgstr ""
 
-#: inc/header-options/content-options/buttons.php:13
-msgid "Action Button 2"
+#: inc/theme-options.php:54
+msgid "Hero"
 msgstr ""
 
-#: inc/header-options/content-options/buttons.php:71
-msgid "Action Button"
+#: inc/theme-options.php:65
+msgid "Front Page content"
 msgstr ""
 
-#: inc/header-options/content-options/buttons.php:147
-msgid "Action button"
+#: inc/theme-options.php:71
+msgid "Footer Settings"
 msgstr ""
 
-#: inc/header-options/navigation-options/top-bar/content-types/information.php:18
-msgid "Location,TX 75035,USA"
+#: inc/theme-options.php:77
+msgid "Layout"
 msgstr ""
 
-#: inc/header-options/navigation-options/top-bar/content-types/information.php:22
-msgid "+1234567890"
+#: inc/theme-options.php:83
+msgid "General Settings"
 msgstr ""
 
-#: inc/header-options/navigation-options/top-bar/content-types/information.php:26
-msgid "info@yourmail.com"
+#: inc/theme-options.php:87 inc/blog-options.php:9
+msgid "Blog Settings"
 msgstr ""
 
-#: inc/templates-functions.php:175
-msgid "Built using WordPress and Materialis Theme."
+#: inc/theme-options.php:97
+msgid "Front Page Hero"
 msgstr ""
 
-#: inc/templates-functions.php:177
-msgid "Y"
+#: inc/theme-options.php:102
+msgid "Front Page Hero Content"
 msgstr ""
 
-#: inc/templates-functions.php:209
-msgid "Older posts"
+#: inc/theme-options.php:107
+msgid "Inner Pages Hero"
 msgstr ""
 
-#: inc/templates-functions.php:210
-msgid "Newer posts"
-msgstr ""
-
-#: inc/templates-functions.php:211
-msgid "Posts navigation"
-msgstr ""
-
-#: inc/theme-options.php:163 inc/theme-options.php:168
-msgid "Select logo"
-msgstr ""
-
-#: inc/theme-options.php:164
-msgid "Change logo"
-msgstr ""
-
-#: inc/theme-options.php:165
-msgid "Remove"
-msgstr ""
-
-#: inc/theme-options.php:166
-msgid "Default"
+#: inc/theme-options.php:112
+msgid "Page Settings"
 msgstr ""
 
 #: inc/theme-options.php:167
+msgid "Logo Max Height (px)"
+msgstr ""
+
+#: inc/theme-options.php:179
+msgid "Alternate text logo words"
+msgstr ""
+
+#: inc/theme-options.php:192
+msgid "Dark Logo"
+msgstr ""
+
+#: inc/theme-options.php:200 inc/theme-options.php:205
+msgid "Select logo"
+msgstr ""
+
+#: inc/theme-options.php:201
+msgid "Change logo"
+msgstr ""
+
+#: inc/theme-options.php:202 customizer/kirki/includes/class-kirki-l10n.php:179
+msgid "Remove"
+msgstr ""
+
+#: inc/theme-options.php:203
+msgid "Default"
+msgstr ""
+
+#: inc/theme-options.php:204
 msgid "No logo selected"
 msgstr ""
 
-#: inc/theme-options.php:169
+#: inc/theme-options.php:206
 msgid "Choose logo"
 msgstr ""
 
-#: index.php:1
-msgid "<i class=\"mdi mdi-arrow-left\"></i>"
+#: inc/theme-options.php:263
+msgid "Choose Images"
 msgstr ""
 
-#: index.php:1
-msgid "<i class=\"mdi mdi-arrow-right\"></i>"
+#: inc/theme-options.php:264
+msgid "Web Gradients"
 msgstr ""
 
-#: index.php:1
-msgid "Page"
+#: inc/theme-options.php:265
+msgid "Material Icons"
 msgstr ""
 
-#: template-parts/content-none.php:1
+#: inc/theme-options.php:267
+msgid "Deselect"
+msgstr ""
+
+#: inc/theme-options.php:268
+msgid "Change image"
+msgstr ""
+
+#: inc/blog-options.php:18
+msgid "Show front page header on blog page"
+msgstr ""
+
+#: inc/blog-options.php:26
+msgid "Show blog sidebar"
+msgstr ""
+
+#: inc/blog-options.php:35
+msgid "Show post author info in sidebar"
+msgstr ""
+
+#: inc/blog-options.php:43
+msgid "Show post title in post page"
+msgstr ""
+
+#: inc/blog-options.php:51
+msgid "Show post meta"
+msgstr ""
+
+#: inc/blog-options.php:60
+msgid "Highlight first post"
+msgstr ""
+
+#: inc/blog-options.php:68
 #, php-format
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/blog-options.php:74
+msgid "Posts per row"
+msgstr ""
+
+#: inc/blog-options.php:83
+msgid "Display posts as masonry grid"
+msgstr ""
+
+#: inc/blog-options.php:91
+msgid "Use post featured image as hero background when available"
+msgstr ""
+
+#: inc/blog-options.php:92
+msgid "The inner pages hero background should be set to image"
+msgstr ""
+
+#: inc/blog-options.php:102
+msgid "Show thumbnail placeholder"
+msgstr ""
+
+#: inc/blog-options.php:109
+msgid "Placeholder Background Color"
+msgstr ""
+
+#: inc/footer-options.php:12
+msgid "San Francisco - Adress - 18 California Street 1100."
+msgstr ""
+
+#: inc/footer-options.php:18
+msgid "hello@mycoolsite.com"
+msgstr ""
+
+#: inc/footer-options.php:24
+msgid "+1 (555) 345 234343"
+msgstr ""
+
+#: inc/footer-options.php:55
+msgid "Footer Content"
+msgstr ""
+
+#: inc/footer-options.php:64
+msgid "Use footer parallax"
+msgstr ""
+
+#: inc/footer-options.php:84
+msgid "Footer Template"
+msgstr ""
+
+#: inc/footer-options.php:89
+msgid "Copyright text only"
+msgstr ""
+
+#: inc/footer-options.php:90
+msgid "Contact Boxes"
+msgstr ""
+
+#: inc/footer-options.php:91
+msgid "Dark Footer With Menu"
+msgstr ""
+
+#: inc/footer-options.php:102
+msgid "Box 1 Content"
+msgstr ""
+
+#: inc/footer-options.php:119 inc/footer-options.php:177
+#: inc/footer-options.php:236
+#: inc/header-options/background-options/bottom-arrow.php:65
+msgid "Icon"
+msgstr ""
+
+#: inc/footer-options.php:136 inc/footer-options.php:194
+#: inc/footer-options.php:253
+msgid "Text"
+msgstr ""
+
+#: inc/footer-options.php:160
+msgid "Box 2 Content"
+msgstr ""
+
+#: inc/footer-options.php:219
+msgid "Box 3 Content"
+msgstr ""
+
+#: inc/footer-options.php:279
+msgid "Contact Boxes Options"
+msgstr ""
+
+#: inc/footer-options.php:305
+#, php-format
+msgid "Social Icon %s Options"
+msgstr ""
+
+#: inc/footer-options.php:307
+#, php-format
+msgid "Show Icon %s"
+msgstr ""
+
+#: inc/footer-options.php:308
+#, php-format
+msgid "Icon %s url"
+msgstr ""
+
+#: inc/footer-options.php:309
+#, php-format
+msgid "Icon %s icon"
+msgstr ""
+
+#: inc/footer-options.php:394
+#: inc/header-options/navigation-options/top-bar/content-types/social-icons.php:100
+msgid "Social Icons Options"
+msgstr ""
+
+#: inc/footer-options.php:413
+msgid "Go to widgets section to add a widget here."
+msgstr ""
+
+#. Name of the template
+msgid "Front Page Template"
+msgstr ""
+
+#. Name of the template
+msgid "Page With Left Sidebar"
+msgstr ""
+
+#. Name of the template
+msgid "Page With Right Sidebar"
+msgstr ""
+
+#: inc/general-options/page-settings.php:10
+msgid "Enable smooth scrolling"
+msgstr ""
+
+#: inc/general-options/colors.php:6
+msgid "Primary"
+msgstr ""
+
+#: inc/general-options/colors.php:7
+msgid "Secondary"
+msgstr ""
+
+#: inc/general-options/colors.php:8
+msgid "color3"
+msgstr ""
+
+#: inc/general-options/colors.php:9
+msgid "color4"
+msgstr ""
+
+#: inc/general-options/colors.php:10
+msgid "color5"
+msgstr ""
+
+#: inc/general-options/colors.php:11
+msgid "color6"
+msgstr ""
+
+#: inc/general-options/colors.php:34
+#, php-format
+msgid "color %s not found"
+msgstr ""
+
+#: inc/general-options/layout-settings.php:17
+msgid "Layout Settings"
+msgstr ""
+
+#: inc/general-options/layout-settings.php:25
+msgid "Enable Boxed Content"
+msgstr ""
+
+#: inc/general-options/layout-settings.php:34
+msgid "Box Background Color"
+msgstr ""
+
+#: inc/general-options/layout-settings.php:59
+msgid "Overlap Height"
+msgstr ""
+
+#: inc/header-options/presets.php:33
+#: inc/header-options/background-options/background-type.php:24
+msgid "Background Type"
+msgstr ""
+
+#: inc/header-options/presets.php:35
+msgid "Apply Preset"
+msgstr ""
+
+#: inc/header-options/presets.php:53
+msgid ""
+"18 more beautiful header designs are available in the PRO version. @BTN@"
+msgstr ""
+
+#: inc/header-options/background.php:19
+#: inc/header-options/content-options/content-type.php:358
+msgid "Background"
+msgstr ""
+
+#: inc/header-options/navigation.php:11
+msgid "Top Bar"
+msgstr ""
+
+#: inc/header-options/navigation.php:12
+msgid "Front Page Navigation"
+msgstr ""
+
+#: inc/header-options/navigation.php:13
+msgid "Inner Page Navigation"
+msgstr ""
+
+#: inc/header-options/navigation.php:14
+msgid "Mobile (Offscreen) Navigation"
+msgstr ""
+
+#: inc/header-options/content.php:58
+#: inc/header-options/content-options/content-type.php:189
+#: inc/header-options/background-options/background-types/slideshow.php:68
+#: inc/header-options/background-options/background-types/image.php:8
+msgid "Image"
+msgstr ""
+
+#: inc/header-options/content.php:65
+msgid "Text on center"
+msgstr ""
+
+#: inc/header-options/content.php:66
+msgid "Text on right"
+msgstr ""
+
+#: inc/header-options/content.php:67
+msgid "Text on left"
+msgstr ""
+
+#: inc/header-options/content.php:68
+msgid "Text with media on left"
+msgstr ""
+
+#: inc/header-options/content.php:69
+msgid "Text with media on right"
+msgstr ""
+
+#: inc/infopage-parts/getting-started.php:4
+msgid "Get Started in 3 Easy Steps"
+msgstr ""
+
+#: inc/infopage-parts/getting-started.php:5
+msgid "1. Install the recommended plugins"
+msgstr ""
+
+#: inc/infopage-parts/getting-started.php:39
+msgid "Plugin is installed and active."
+msgstr ""
+
+#: inc/infopage-parts/getting-started.php:56
+msgid "Customize"
+msgstr ""
+
+#: inc/infopage-parts/getting-started.php:57
+msgid "3. Enjoy! :)"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:5
+msgid "Live editing in Customizer"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:10
+msgid "Front page header designs"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:11
+msgid "5"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:12
+msgid "19"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:15
+msgid "Video and slideshow backgrounds"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:17
+msgid "Unlimited"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:20
+msgid "Header overlay and separators"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:25
+msgid "Header layout options"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:26
+msgid "3"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:27
+msgid "17"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:30
+msgid "Header media types"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:31
+msgid "1 (image)"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:32
+msgid "4 (image, video, lightbox, multiple images)"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:35
+msgid "Page content sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:36
+msgid "35+"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:37
+msgid "150+"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:40
+msgid "Create multiple pages using predefined sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:41
+msgid "homepage only"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:42
+msgid "unlimited"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:45
+msgid "About and features sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:50
+msgid "Portfolio sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:55
+msgid "Team and testimonials sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:60
+msgid "Contact form sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:65
+msgid "Video and slideshow background"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:70
+msgid "Widgetized footer"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:75
+msgid "Parallax background"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:80
+msgid "Logo and navigation colors"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:85
+msgid "Typography style and colors"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:90
+msgid "Customize background for each section"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:95
+msgid "Google maps sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:100
+msgid "Photo gallery sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:105
+msgid "Pricing table sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:110
+msgid "Newsletter subscribe sections"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:115
+msgid "Customize footer text and colors"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:120
+msgid "Woocommerce integration"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:121
+msgid "Coming soon, limited support"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:122
+#: inc/infopage-parts/free-vs-pro.php:127
+msgid "Coming soon"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:125
+msgid "Multilanguage support"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:133
+msgid "Free and PRO versions compared"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:138
+msgid "Free Version"
+msgstr ""
+
+#: inc/infopage-parts/free-vs-pro.php:139
+msgid "Pro Version"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:112
+#: inc/header-options/content-options/title.php:116
+#: inc/header-options/content-options/buttons.php:314
+#: inc/header-options/content-options/subtitle.php:129
+#: inc/header-options/content-options/content-type.php:744
+#: inc/header-options/content-options/subtitle2.php:109
+#: inc/header-options/background-options/background-types/image.php:230
+#: inc/header-options/background-options/background-types/color.php:63
+msgid "Background Color"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:113
+msgid "Background Image"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:114
+msgid "No Repeat"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:115
+msgid "Repeat All"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:116
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:117
+msgid "Repeat Vertically"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:118
+msgid "Inherit"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:119
+msgid "Background Repeat"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:120
+msgid "Cover"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:121
+msgid "Contain"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:122
+msgid "Background Size"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:123
+msgid "Fixed"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:124
+msgid "Scroll"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:125
+msgid "Background Attachment"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:126
+msgid "Left Top"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:127
+msgid "Left Center"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:128
+msgid "Left Bottom"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:129
+msgid "Right Top"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:130
+msgid "Right Center"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:131
+msgid "Right Bottom"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:132
+msgid "Center Top"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:133
+msgid "Center Center"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:134
+msgid "Center Bottom"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:135
+#: inc/header-options/background-options/background-types/image.php:185
+msgid "Background Position"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:136
+msgid "Background Opacity"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:137
+msgid "ON"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:138
+msgid "OFF"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:139
+msgid "All"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:140
+msgid "Cyrillic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:141
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:142
+msgid "Devanagari"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:143
+msgid "Greek"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:144
+msgid "Greek Extended"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:145
+msgid "Khmer"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:146
+msgid "Latin"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:147
+msgid "Latin Extended"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:148
+msgid "Vietnamese"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:149
+msgid "Hebrew"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:150
+msgid "Arabic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:151
+msgid "Bengali"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:152
+msgid "Gujarati"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:153
+msgid "Tamil"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:154
+msgid "Telugu"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:155
+msgid "Thai"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:156
+msgctxt "font style"
+msgid "Serif"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:157
+msgctxt "font style"
+msgid "Sans Serif"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:158
+msgctxt "font style"
+msgid "Monospace"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:159
+msgid "Font Family"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:160
+msgid "Font Size"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:161
+msgid "Mobile Font Size"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:162
+msgid "Font Weight"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:163
+msgid "Line Height"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:164
+msgid "Font Style"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:165
+msgid "Letter Spacing"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:166
+#: inc/header-options/content-options/content-type.php:53
+#: inc/header-options/content-options/content-type.php:706
+msgid "Top"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:167
+#: inc/header-options/content-options/content-type.php:55
+#: inc/header-options/content-options/content-type.php:708
+msgid "Bottom"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:168
+#: inc/header-options/content-options/inner-pages.php:23
+#: inc/header-options/content-options/content-type.php:584
+msgid "Left"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:169
+#: inc/header-options/content-options/inner-pages.php:25
+#: inc/header-options/content-options/content-type.php:586
+msgid "Right"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:170
+#: inc/header-options/content-options/inner-pages.php:24
+#: inc/header-options/content-options/content-type.php:585
+msgid "Center"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:171
+msgid "Justify"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:172
+#: inc/header-options/background-options/header-separator.php:74
+#: inc/header-options/background-options/overlay-types/color-overlay.php:5
+#: inc/header-options/background-options/background-types/color.php:7
+msgid "Color"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:173
+msgid "Add Image"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:174
+msgid "Change Image"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:175
+msgid "No Image Selected"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:176
+msgid "Add File"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:177
+msgid "Change File"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:178
+msgid "No File Selected"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:180
+msgid "Select a font-family"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:181
+msgid "Variant"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:182
+msgid "Subset"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:183
+msgid "Size"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:184
+#: inc/header-options/content-options/content-type.php:396
+#: inc/header-options/background-options/header-separator.php:159
+msgid "Height"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:185
+msgid "Spacing"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:186
+msgid "Thin (100)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:187
+msgid "Thin (100) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:188
+msgid "Extra light (200)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:189
+msgid "Extra light (200) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:190
+msgid "Light (300)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:191
+msgid "Light (300) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:192
+msgid "Normal (400)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:193
+msgid "Normal (400) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:194
+msgid "Medium (500)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:195
+msgid "Medium (500) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:196
+msgid "Semi Bold (600)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:197
+msgid "Semi Bold (600) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:198
+msgid "Bold (700)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:199
+msgid "Bold (700) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:200
+msgid "Extra Bold (800)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:201
+msgid "Extra Bold (800) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:202
+msgid "Black (900)"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:203
+msgid "Black (900) Italic"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:204
+msgid "Invalid Value"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:205
+msgid "Add new"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:206
+msgid "row"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:207
+#, php-format
+msgid "Limit: %s rows"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:209
+#: customizer/kirki/includes/sections/class-kirki-sections-hover-section.php:46
+msgid "Back"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:210
+#, php-format
+msgid "%s Reset"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:211
+#: inc/header-options/content-options/inner-pages.php:17
+#: inc/header-options/content-options/content-type.php:578
+msgid "Text Align"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:212
+msgid "Text Transform"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:213
+#: inc/header-options/content-options/content-type.php:357
+#: inc/header-options/background-options/overlay-types/shapes-overlay.php:127
+#: inc/header-options/navigation-options/top-bar/content-areas.php:7
+msgid "None"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:214
+msgid "Capitalize"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:215
+msgid "Uppercase"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:216
+msgid "Lowercase"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:217
+msgid "Initial"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:218
+msgid "Select a Page"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:219
+msgid "Open Editor"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:220
+msgid "Close Editor"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:221
+msgid "Switch Editor"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:222
+msgid "Hex Value"
+msgstr ""
+
+#: customizer/kirki/includes/class-kirki-l10n.php:223
+msgid "Add Web Font"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:11
+msgid "Show title"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:20
+#: inc/header-options/content-options/buttons.php:22
+#: inc/header-options/content-options/subtitle.php:20
+#: inc/header-options/content-options/subtitle2.php:50
+#: inc/header-options/background-options/bottom-arrow.php:30
+#: inc/header-options/background-options/overlay-type.php:68
+#: inc/header-options/background-options/background-type.php:38
+#: inc/header-options/background-options/background-type.php:41
+#: inc/header-options/background-options/header-separator.php:29
+msgid "Options"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:49
+msgid "Title"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:70
+msgid "Title color"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:74
+msgid "White text"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:75
+msgid "Dark Text"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:99
+#: inc/header-options/content-options/buttons.php:283
+#: inc/header-options/content-options/subtitle.php:112
+#: inc/header-options/content-options/content-type.php:725
+#: inc/header-options/content-options/subtitle2.php:92
+msgid "Background Options"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:107
+#: inc/header-options/content-options/buttons.php:305
+#: inc/header-options/content-options/subtitle.php:120
+#: inc/header-options/content-options/content-type.php:734
+#: inc/header-options/content-options/subtitle2.php:100
+msgid "Enable Background"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:150
+#: inc/header-options/content-options/buttons.php:348
+#: inc/header-options/content-options/subtitle.php:163
+#: inc/header-options/content-options/content-type.php:779
+#: inc/header-options/content-options/subtitle2.php:143
+msgid "Background Spacing"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:180
+#: inc/header-options/content-options/buttons.php:378
+#: inc/header-options/content-options/subtitle.php:193
+#: inc/header-options/content-options/content-type.php:810
+#: inc/header-options/content-options/subtitle2.php:173
+msgid "Border Radius"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:210
+#: inc/header-options/content-options/buttons.php:408
+#: inc/header-options/content-options/subtitle.php:223
+#: inc/header-options/content-options/content-type.php:841
+#: inc/header-options/content-options/subtitle2.php:203
+msgid "Border Color"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:243
+#: inc/header-options/content-options/buttons.php:441
+#: inc/header-options/content-options/subtitle.php:256
+#: inc/header-options/content-options/content-type.php:875
+#: inc/header-options/content-options/subtitle2.php:236
+msgid "Background Border Thickness"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:260
+#: inc/header-options/content-options/buttons.php:458
+#: inc/header-options/content-options/subtitle.php:273
+#: inc/header-options/content-options/content-type.php:893
+#: inc/header-options/content-options/subtitle2.php:253
+msgid "Shadow Elevation"
+msgstr ""
+
+#: inc/header-options/content-options/title.php:296
+msgid "Set the title in customizer"
+msgstr ""
+
+#: inc/header-options/content-options/inner-pages.php:8
+msgid "Content"
+msgstr ""
+
+#: inc/header-options/content-options/inner-pages.php:54
+#: inc/header-options/content-options/content-type.php:1016
+msgid "Content Spacing"
+msgstr ""
+
+#: inc/header-options/content-options/inner-pages.php:88
+msgid "Show subtitle (blog description)"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:13
+msgid "Show buttons"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:43
+msgid "Buttons"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:54
+msgid "Button"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:59
+msgid "Label"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:60
+msgid "Action Button"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:64
+msgid "Link"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:69
+msgid "Target"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:74
+msgid "Class"
+msgstr ""
+
+#: inc/header-options/content-options/buttons.php:181
+msgid "Action button"
+msgstr ""
+
+#: inc/header-options/content-options/subtitle.php:11
+msgid "Show subtitle"
+msgstr ""
+
+#: inc/header-options/content-options/subtitle.php:43
+msgid "Subtitle"
+msgstr ""
+
+#: inc/header-options/content-options/subtitle.php:76
+msgid "You can set this subtitle from the customizer."
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:54
+#: inc/header-options/content-options/content-type.php:707
+msgid "Middle"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:95
+msgid "Media box settings"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:109
+msgid "Media Box Settings"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:119
+msgid "Media width"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:166
+msgid "Media Vertical Align"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:209
+msgid "Image width"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:268
+msgid "Media Box Spacing"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:337
+msgid "Frame Options"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:354
+msgid "Frame Type"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:359
+msgid "Border"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:376
+msgid "Width"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:416
+msgid "Offset left"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:436
+msgid "Offset top"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:456
+msgid "Frame thickness"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:496
+msgid "Frame Color"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:510
+msgid "Show frame over image"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:524
+msgid "Show frame shadow"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:537
+msgid "Hide frame on mobile"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:561
+msgid "Text box settings"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:569
+msgid "Text settings"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:596
+msgid "Text Width"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:636
+msgid "Overlap media with"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:700
+msgid "Text Vertical Align"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:921
+msgid "Content Options"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:929
+msgid "Make content full width"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:940
+msgid "Content layout"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:990
+msgid "Media Type"
+msgstr ""
+
+#: inc/header-options/content-options/content-type.php:1044
+msgid "Mobile Content Spacing"
+msgstr ""
+
+#: inc/header-options/content-options/subtitle2.php:42
+msgid "Show motto"
+msgstr ""
+
+#: inc/header-options/content-options/subtitle2.php:70
+msgid "Motto"
+msgstr ""
+
+#: inc/header-options/content-options/subtitle2.php:293
+msgid "Set the motto in customizer"
+msgstr ""
+
+#: inc/header-options/background-options/bottom-arrow.php:22
+msgid "Use Bottom Arrow"
+msgstr ""
+
+#: inc/header-options/background-options/bottom-arrow.php:46
+msgid "Bounce arrow"
+msgstr ""
+
+#: inc/header-options/background-options/bottom-arrow.php:83
+msgid "Icon Size"
+msgstr ""
+
+#: inc/header-options/background-options/bottom-arrow.php:152
+msgid "Icon Bottom Offset"
+msgstr ""
+
+#: inc/header-options/background-options/bottom-arrow.php:198
+msgid "Icon Color"
+msgstr ""
+
+#: inc/header-options/background-options/bottom-arrow.php:233
+msgid "Icon Background Color"
+msgstr ""
+
+#: inc/header-options/background-options/general.php:17
+msgid "Full Height Background"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-type.php:18
+msgid "Show overlay"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-type.php:27
+msgid "Overlay Options"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-type.php:36
+msgid "Overlay Type"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-type.php:39
+msgid "Shape Only"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:19
+msgid "Use Bottom Separator"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:45
+msgid "Bottom Separator Options"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:55
+#: inc/header-options/navigation-options/top-bar/content-areas.php:67
+msgid "Type"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:115
+msgid "Accent Color"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:204
+msgid "Wave and line"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:205
+msgid "Wave and line Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:233
+msgid "Wave no centric"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:234
+msgid "Wave no centric Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:235
+msgid "Clouds 2"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:236
+msgid "Triple Waves 1"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:237
+msgid "Triple Waves 1 Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:238
+#: inc/header-options/background-options/header-separator.php:242
+msgid "Triple Waves 2"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:239
+#: inc/header-options/background-options/header-separator.php:243
+msgid "Triple Waves 2 Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:240
+msgid "Stright Angles 1"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:241
+msgid "Stright Angles 1 Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:248
+msgid "Tilt"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:249
+msgid "Tilt Flipped"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:250
+msgid "Tilt Opacity"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:251
+msgid "Triangle"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:252
+msgid "Triangle Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:253
+msgid "Triangle Asymmetrical"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:254
+msgid "Triangle Asymmetrical Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:255
+msgid "Fan Opacity"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:256
+msgid "Mountains"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:257
+msgid "Pyramids"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:258
+msgid "Pyramids Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:259
+msgid "Waves"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:260
+msgid "Waves Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:261
+msgid "Waves Brush"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:262
+msgid "Waves Pattern"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:263
+msgid "Clouds"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:264
+msgid "Clouds Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:265
+msgid "Curve"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:266
+msgid "Curve Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:267
+msgid "Curve Asymmetrical"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:268
+msgid "Curve Asymmetrical Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:269
+msgid "Drops"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:270
+msgid "Drops Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:271
+msgid "Arrow"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:272
+msgid "Arrow Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:273
+msgid "Book"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:274
+msgid "Book Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:275
+msgid "Split"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:276
+msgid "Split Negative"
+msgstr ""
+
+#: inc/header-options/background-options/header-separator.php:277
+msgid "Zigzag"
+msgstr ""
+
+#: inc/header-options/navigation-options/offscreen.php:13
+msgid "Offscreen Menu Settings"
+msgstr ""
+
+#: inc/header-options/navigation-options/offscreen.php:22
+msgid "Show offscreen navigation on tablet"
+msgstr ""
+
+#: inc/header-options/navigation-options/offscreen.php:32
+msgid "Show offscreen navigation on desktop"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:20
+msgid "Inner Pages Navigation options"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:20
+msgid "Front Page Navigation options"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:31
+msgid "Stick to top"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:41
+msgid "Boxed Navigation"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:52
+msgid "Show Navigation Bottom Border"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:65
+msgid "Bottom Border Options"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:83
+msgid "Bottom Border Color"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:117
+msgid "Bottom Border Thickness"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:168
+msgid "Border Options"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:182
+msgid "Transparent Nav Bar"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:204
+msgid "Navigation bar type"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:208
+msgid "Logo on left, Navigation on right"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:209
+msgid "Logo on center, Navigation below"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:235
+msgid "Navigation style"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:239
+msgid "Simple text menu"
+msgstr ""
+
+#: inc/header-options/navigation-options/nav-bar.php:240
+msgid "Material Buttons"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar.php:21
+msgid "Top Bar Display"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar.php:29
+msgid "Show Top Bar"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-types/color-overlay.php:18
+msgid "Overlay Color"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-types/color-overlay.php:57
+msgid "Overlay Opacity"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-types/gradient-overlay.php:5
+#: inc/header-options/background-options/overlay-types/gradient-overlay.php:16
+#: inc/header-options/background-options/background-types/gradient.php:8
+msgid "Gradient"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-types/shapes-overlay.php:9
+msgid "Overlay Shapes"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-types/shapes-overlay.php:28
+msgid "Shape Light"
+msgstr ""
+
+#: inc/header-options/background-options/overlay-types/shapes-overlay.php:131
+msgid "Circles"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:7
+msgid "Video"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:48
+msgid "Pause"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:49
+msgid "Play"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:50
+msgid "Video is paused."
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:51
+msgid "Video is playing."
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:89
+msgid "Video Background Options"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:106
+msgid "Self hosted video (MP4)"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:125
+msgid "External Video"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/video.php:143
+msgid "Video Poster"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/slideshow.php:8
+msgid "Slideshow"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/slideshow.php:37
+msgid "Slideshow Background Options"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/slideshow.php:53
+msgid "Header Slideshow Images"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/slideshow.php:58
+msgid "slideshow image"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/slideshow.php:85
+msgid "Slide Duration"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/slideshow.php:104
+msgid "Effect Speed"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:147
+msgid "Image Background Options"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:165
+msgid "Header Image"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:262
+msgid "Show page featured image when available"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:281
+msgid "Enable parallax effect"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:300
+msgid "Mobile Image Background Options"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:317
+msgid "Mobile Only Image"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:318
+msgid "Leave this field empty if you want to use the main image header image"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:336
+msgid "Mobile Bg. Horizontal Position"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/image.php:360
+msgid "Mobile Bg. Vertical Offset"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/gradient.php:34
+msgid "Gradient Background Options"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/gradient.php:51
+msgid "Header Gradient"
+msgstr ""
+
+#: inc/header-options/background-options/background-types/color.php:47
+msgid "Color Background Options"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-areas.php:30
+msgid "Top bar left area"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-areas.php:35
+msgid "Top bar right area"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/social-icons.php:5
+#: inc/header-options/navigation-options/top-bar/content-types/social-icons.php:34
+msgid "Social Icons"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/social-icons.php:53
+#, php-format
+msgid "Show Icon %d"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/social-icons.php:73
+#, php-format
+msgid "Icon %d icon"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/social-icons.php:86
+#, php-format
+msgid "Field %d link"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:6
+msgid "Information Fields"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:27
+msgid "Location,TX 75035,USA"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:31
+msgid "+1234567890"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:35
+msgid "info@yourmail.com"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:45
+msgid "Information fields icons"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:64
+#, php-format
+msgid "Show Field %d"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:76
+#, php-format
+msgid "Field %d icon"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:88
+#, php-format
+msgid "Field %d text"
+msgstr ""
+
+#: inc/header-options/navigation-options/top-bar/content-types/information.php:103
+msgid "Info Options"
+msgstr ""
+
+#. Name of the theme
+msgid "Dandara Material"
+msgstr ""
+
+#. Description of the theme
+msgid "Dandara Official Theme"
+msgstr ""
+
+#. URI of the theme
+#. Author URI of the theme
+msgid "https://dandara.org"
+msgstr ""
+
+#. Author of the theme
+msgid "Alaa Rihan"
 msgstr ""

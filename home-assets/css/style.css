@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+* {-webkit-transition: all 0.3s ease-in-out 0s;-moz-transition: all 0.3s ease-in-out 0s;-ms-transition: all 0.3s ease-in-out 0s;-o-transition: all 0.3s ease-in-out 0s;transition: all 0.3s ease-in-out 0s;}
+body {background: #fff; font-family: 'Droid Arabic Kufi',sans-serif;; font-size: 16px; color:#3d472f; overflow-x:none;}
+#splash {width:100%; height: 970px; background: url(../img/splash_bg.jpg) center center no-repeat; background-size: cover; padding-top: 190px;}
+#splash .menu {width:655px; height: 655px; margin:0 auto; border-radius: 50%; border:solid 3px #926d3e; position: relative;}
+#splash .menu a.icon {display: block; width:300px; height: 300px; position: absolute;}
+#splash .menu a.home {background: url(../img/icon_home.png); width:357px; height: 358px; top:-136px; left:50%; margin-left: -178px;}
+#splash .menu a.culture {background: url(../img/icon_culture.png); right:-120px; top:50%; margin-top:-150px;}
+#splash .menu a.development {background: url(../img/icon_development.png); left:-120px; top:50%; margin-top:-150px;}
+#splash .menu a.amra {background: url(../img/icon_amra.png); width:246px; height: 246px; bottom: -107px; left:50%; margin-left: -123px;}
+#main-content {padding-top: 30px; min-height: 100vh; position: absolute; width:100%; background: url(../img/main_bg.jpg); right: 0;}
+#main-content .nav {margin-bottom: 50px;}
+#main-content .nav a {display: block; margin-right: 15px; float: left;}
+#main-content .nav a.lang, .about .buttons .abtn {padding:10px 15px; background: #3d472f; border-radius: 5px; color:#fff; text-transform: uppercase; font-size: 18px; font-weight: bold;}
+#main-content .nav a.social {width:45px; height: 45px; background: url(../img/social_icons.png);}
+#main-content .nav a.tw {background-position: -53px 0;}
+#main-content .nav a.wp {background-position: -107px 0;}
+#main-content .circle {zoom: 0.8; width:768px; height: 768px; background: url(../img/menu_bg.png); margin:10px auto 0; position: relative; background-size: cover;}
+#main-content .circle, #main-content .circle * {-webkit-transition: all 0.5s ease-in-out 0s;-moz-transition: all 0.5s ease-in-out 0s;-ms-transition: all 0.5s ease-in-out 0s;-o-transition: all 0.5s ease-in-out 0s;transition: all 0.5s ease-in-out 0s;}
+#main-content .circle div.danlogo {position: absolute; width:97px; height: 172px; left:50%; margin-left: -48px; top:35px;}
+#main-content .circle button.icon, 
+#main-content .circle a.icon {padding:0; margin:0; background: none; border:none; position: absolute; color: #3d472f;}
+#main-content .circle button.icon.about {right:140px; top:140px;}
+#main-content .circle a.icon.general-questions {
+	right: 66px;
+    top: 237px;
+}
+#main-content .circle button.icon.reg {left:140px; top:140px;}
+#main-content .circle button.icon.thoughts {right:30px; top:350px;}
+#main-content .circle button.icon.contact {left:40px; top:350px;}
+#main-content .circle button.icon.conf {right:140px; bottom:140px;}
+#main-content .circle button.icon.lib {left:130px; bottom:140px;}
+#main-content .circle button.icon.gal {left:50%; bottom:30px; width:63px; height: 78px; margin-left: -33px;}
+#main-content .circle button.icon.library {
+    left: 28%;
+    bottom: 73px;
+}
+#main-content .circle.fly button.icon.library {
+    bottom: 47px;
+    zoom: 90%;
+}
+#main-content .circle.fly {position: absolute; right:30px; top:10px; width:450px; height: 450px; z-index: 2; zoom: 1;}
+#main-content .circle.fly div.danlogo { position: absolute; width:48px; height: auto; margin-left: -24px; top:25px;}
+#main-content .circle.fly button.icon.about {right:75px; top:70px; width:40px;}
+#main-content .circle.fly a.icon.general-questions {
+    right: 37px;
+    top: 135px;
+}
+#main-content .circle.fly button.icon.reg {left:75px; top:65px; width:40px;}
+#main-content .circle.fly button.icon.thoughts {right:15px; top:200px; width:64px;}
+#main-content .circle.fly button.icon.contact {left:22px; top:200px; width:36px;}
+#main-content .circle.fly button.icon.conf {right:70px; bottom:72px; width:44px;}
+#main-content .circle.fly button.icon.lib {left:65px; bottom:77px; width:59px;}
+#main-content .circle.fly button.icon.gal {bottom:20px; width:44px; height: auto; margin-left: -22px;}
+#content p, #content h2, #content form {direction: rtl; text-align: right;}
+#content h2 {margin-bottom: 10px; font-weight: bold;}
+#content .content {margin-right: 400px; background: #fff; padding:20px 15px; box-shadow: 0 0 0 2px rgba(0,0,0,.1)}
+.about a.abtn {float: right; margin-left: 15px;}
+.panel {border: 1px solid #B39776 !important;}
+.panel-heading {background:#3D472F; text-decoration: none;direction: rtl}
+.panel-body {background: #fff;}
+.panel-heading h4 a {color:#fff; font-weight: bold; display: block; width:100%;}
+.gal .img .img-responsive {max-height: 130px;}
+.gal .img {position: relative; margin-bottom: 10px;}
+.gal .posttitle {font-size: 13px; font-weight: bold; text-decoration: none; color:#1D1D1B;}
+.gal .col-md-4 {margin-bottom: 10px; height: 175px;}
+.btn.closex {
+    background: #3d472f;
+    position: absolute;
+    left: -25px;
+    z-index: 1;
+    top: -34px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: #fff;
+}
+.login label {
+    width: 165px;
+    vertical-align: top;
+}
+.form-row label + * {
+    width: calc(100% - 165px);
+}
+
+.hidden {
+    display: none!important;
+}
+
+div.pdfemb-viewer {
+    margin: 0 auto !important;
+}
+#splash .menu a.home.mobile{
+    display: none;
+}
+
+.library-categories{
+	margin: 40px 0;
+}
+
+.library-categories .lib-cat{
+	text-align: center;
+	display: block;
+	margin: 10px 0;
+}
+
+.library-categories .lib-cat i{
+	font-size: 6em;
+	 -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.library-categories .lib-cat .name{
+	margin-top: 10px;
+}
+
+#main-content .circle a.icon.general-questions i {
+    font-size: 35px;
+}
+
+#main-content .circle button.icon.library i{
+	 -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+@media (max-width: 900px){
+    #splash {
+        padding-top: 80px;
+        max-height: 100vh;
+    }
+    #splash .menu{
+        max-width: 100%;
+        max-height: 100%;
+        zoom: .47;
+    }
+     #splash .menu a.home.desktop{
+        display: none;
+    }
+    #splash .menu a.home.mobile{
+        display: block;
+    }
+}
+
+@media (max-width: 1380px){
+	#content .content {
+		margin-right: 500px;
+	}
+}

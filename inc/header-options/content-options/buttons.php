@@ -4,7 +4,6 @@
 function materialis_header_buttons_defaults() {
 	return materialis_mod_default( 'header_content_buttons' );
 }
-
 function materialis_front_page_header_buttons_options( $section, $prefix, $priority ) {
 	materialis_add_kirki_field( array(
 		'type'     => 'checkbox',

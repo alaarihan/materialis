@@ -37,15 +37,15 @@ function materialis_offscreen_menu_settings()
     ));
 
 
-    materialis_add_kirki_field(array(
-        'type'      => 'ope-info-pro',
-        'label'     => esc_html__('More colors and typography options available in PRO. @BTN@', 'materialis'),
-        'section'   => $section,
-        'priority'  => $priority,
-        'settings'  => "{$prefix}_offscreen_pro_info",
-        'default'   => true,
-        'transport' => 'postMessage',
-    ));
+    // materialis_add_kirki_field(array(
+    //     'type'      => 'ope-info-pro',
+    //     'label'     => esc_html__('More colors and typography options available in PRO. @BTN@', 'materialis'),
+    //     'section'   => $section,
+    //     'priority'  => $priority,
+    //     'settings'  => "{$prefix}_offscreen_pro_info",
+    //     'default'   => true,
+    //     'transport' => 'postMessage',
+    // ));
 
 }
 

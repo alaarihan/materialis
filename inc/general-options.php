@@ -4,7 +4,7 @@ require_once get_template_directory() . "/inc/general-options/colors.php";
 require_once get_template_directory() . "/inc/general-options/layout-settings.php";
 require_once get_template_directory() . "/inc/general-options/companion-options.php";
 
-add_action('customize_register', 'materialis_pro_section_button');
+// add_action('customize_register', 'materialis_pro_section_button');
 
 
 function materialis_pro_section_button($wp_customize)

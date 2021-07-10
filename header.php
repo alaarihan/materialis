@@ -29,5 +29,15 @@ if ( function_exists( 'wp_body_open' ) ) {
             <?php materialis_print_video_container(); ?>
             <?php materialis_print_inner_pages_header_content(); ?>
             <?php materialis_print_header_separator(); ?>
+            
+            <div class="tickerr">
+                <?php echo do_shortcode( '[hsas-shortcode group="" speed="20" direction="right" gap="100"]' ); ?>
+            </div>
         </div>
+    </div>
+    <div class="breadcrumbs mdc-elevation--z2" typeof="BreadcrumbList" vocab="https://schema.org/">
+        <?php if(function_exists('bcn_display'))
+        {
+            bcn_display();
+        }?>
     </div>

@@ -269,8 +269,8 @@ function materialis_setup()
         'option_type' => 'theme_mod',
     ));
 
-    materialis_theme_page();
-    materialis_suggest_plugins();
+    // materialis_theme_page();
+    // materialis_suggest_plugins();
 
 }
 
@@ -360,7 +360,7 @@ function materialis_tgma_suggest_plugins()
     tgmpa($plugins, $config);
 }
 
-add_action('tgmpa_register', 'materialis_tgma_suggest_plugins');
+// add_action('tgmpa_register', 'materialis_tgma_suggest_plugins');
 
 function materialis_can_show_demo_content()
 {
@@ -448,6 +448,7 @@ function materialis_replace_file_extension($filename, $old_extenstion, $new_exte
 
 function materialis_enqueue($type = 'style', $handle, $args = array())
 {
+    
     $theme = wp_get_theme();
     $ver   = $theme->get('Version');
     $data  = array_merge(array(
@@ -521,6 +522,8 @@ function materialis_associative_array_splice($oldArray, $offset, $key, $data)
 function materialis_enqueue_styles($textDomain, $ver, $is_child)
 {
     
+    wp_enqueue_style( 'droidarabickufi-font','https://fonts.googleapis.com/earlyaccess/droidarabickufi.css', array(), '1.0.1' );
+  
     materialis_enqueue_style(
         $textDomain . '-style',
         array(
@@ -713,10 +716,23 @@ function materialis_enqueue_scripts($textDomain, $ver, $is_child)
 
     $maxheight = intval(materialis_get_theme_mod('logo_max_height', 70));
     wp_add_inline_style($textDomain . '-style', sprintf('img.logo.dark, img.custom-logo{width:auto;max-height:%1$s;}', $maxheight . "px"));
-
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
+	  wp_enqueue_style( 'fontawsome-css', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css', array(), '1.0' );
+    
+    // Only home page.
+	  if (is_front_page()) {
+      wp_enqueue_script( 'home-scripts', get_template_directory_uri() . '/home-assets/js/scripts.js', array('jquery'), '1.0.6', false );
+      wp_enqueue_style( 'home-animate', get_template_directory_uri() . '/home-assets/css/animate.min.css', array(), '1.0.0' );
+      wp_enqueue_style( 'home-style', get_template_directory_uri() . '/home-assets/css/style.css', array(), '1.0.10' );
+    }
+
+    if ( is_rtl() ) {
+        wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), '1.0.4' );
+    }
+    
+    wp_enqueue_style( 'custom', get_template_directory_uri() . '/custom.css', array(), '1.1.1' );
 }
 
 
@@ -838,7 +854,7 @@ function materialis_widgets_init()
         'name'          => esc_html__("Footer First Box Widgets", 'materialis'),
         'id'            => "first_box_widgets",
         'title'         => esc_html__("Widget Area", 'materialis'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
@@ -848,7 +864,7 @@ function materialis_widgets_init()
         'name'          => esc_html__("Footer Second Box Widgets", 'materialis'),
         'id'            => "second_box_widgets",
         'title'         => esc_html__("Widget Area", 'materialis'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
@@ -858,7 +874,17 @@ function materialis_widgets_init()
         'name'          => esc_html__("Footer Third Box Widgets", 'materialis'),
         'id'            => "third_box_widgets",
         'title'         => esc_html__("Widget Area", 'materialis'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="widgettitle">',
+        'after_title'   => '</h4>',
+    ));
+
+	register_sidebar(array(
+        'name'          => esc_html__("Footer Fourth Box Widgets", 'materialis'),
+        'id'            => "fourth_box_widgets",
+        'title'         => esc_html__("Widget Area", 'materialis'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s mdc-elevation--z3">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
@@ -957,6 +983,8 @@ function materialis_title()
     } else if (is_archive()) {
         if (is_post_type_archive()) {
             $title = post_type_archive_title('', false);
+        } else if (is_tax()) {
+            $title = single_term_title();
         } else {
             $title = get_the_archive_title();
         }

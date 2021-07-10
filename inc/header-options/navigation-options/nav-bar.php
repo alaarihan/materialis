@@ -188,15 +188,15 @@ function materialis_navigation_general_options($inner = false)
         'update'    => apply_filters('materialis_transparent_navigation_settings_partial_update', array(), $prefix),
     ));
 
-    materialis_add_kirki_field(array(
-        'type'      => 'ope-info-pro',
-        'label'     => esc_html__('More colors and typography options available in PRO. @BTN@', 'materialis'),
-        'section'   => $section,
-        'priority'  => $priority,
-        'settings'  => "{$prefix}_nav_pro_info",
-        'default'   => true,
-        'transport' => 'postMessage',
-    ));
+    // materialis_add_kirki_field(array(
+    //     'type'      => 'ope-info-pro',
+    //     'label'     => esc_html__('More colors and typography options available in PRO. @BTN@', 'materialis'),
+    //     'section'   => $section,
+    //     'priority'  => $priority,
+    //     'settings'  => "{$prefix}_nav_pro_info",
+    //     'default'   => true,
+    //     'transport' => 'postMessage',
+    // ));
 
     materialis_add_kirki_field(array(
         'type'     => 'select',

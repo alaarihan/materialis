@@ -78,9 +78,9 @@ function materialis_theme_kirki_palettes($palettes)
     return array_unique($palettes);
 }
 
-materialis_add_kirki_field(array(
-    'type'     => 'ope-info-pro',
-    'label'    => esc_html__('Customize all theme colors in PRO. @BTN@', 'materialis'),
-    'section'  => 'colors',
-    'settings' => "site_colors_info_pro",
-));
+// materialis_add_kirki_field(array(
+//     'type'     => 'ope-info-pro',
+//     'label'    => esc_html__('Customize all theme colors in PRO. @BTN@', 'materialis'),
+//     'section'  => 'colors',
+//     'settings' => "site_colors_info_pro",
+// ));

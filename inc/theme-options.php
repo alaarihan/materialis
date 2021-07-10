@@ -31,10 +31,10 @@ function materialis_add_sections($wp_customize)
 {
 
     /** @var WP_Customize_Manager $wp_customize */
-    $wp_customize->add_section('header_layout', array(
-        'title'    => esc_html__('Front Page Header Designs', 'materialis'),
-        'priority' => 1,
-    ));
+    // $wp_customize->add_section('header_layout', array(
+    //     'title'    => esc_html__('Front Page Header Designs', 'materialis'),
+    //     'priority' => 1,
+    // ));
 
     $wp_customize->add_panel('navigation_panel',
         array(
